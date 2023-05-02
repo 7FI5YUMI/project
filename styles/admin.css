@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navigation{
+    background-color: #D8E2F0;
+    height: 108px;
+}
+.nav-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.head_nav{
+    display: flex;
+    align-items: center;
+    margin-left: 16%;
+    flex-grow: 1;
+}
+.sidebar{
+    background-color: #050A30;
+    width: 15%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.all_wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
+.sidebar_content{
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 15px;
+}
+.sidebar-content-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 57px;
+
+}
+.sidebar-content-items li a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar-content-items li{
+    list-style: none;
+}
+
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo{
+    text-align: center; 
+    color: #ffff;
+    margin-top: 11%;
+}
+.admin_name{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: center;
+    margin-top: 23%;
+}
+.admin-img{
+    width: 42px;
+    height: 42px;
+}
+.sidebar-img{
+    width: 42px;
+    height: 42px;
+}
+.box-wrapper--one{
+    display: flex;
+    flex-direction: row;
+    margin-left: 4%;
+
+}
+.box-wrapper--two{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 4%;
+    margin-top: 4%
+}
+.box_car{
+    width: 430px;
+    height: 230px;
+    margin-left: 16%;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #578384;
+    border-radius: 6px;
+}
+.box_car::before{
+    content: '';
+    background-color: #fff;
+    /* position: fixed; */
+    width: 439px;
+    height: 3px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 58%;
+    left: 3%;
+    margin-left: 16%;
+}
+.box_car-item{
+    width: 430px;
+    height: 230px;
+    /* margin-left: 16%; */
+
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+.box_bike{
+    width: 430px;
+    height: 230px;
+    margin-left: 16%;
+    margin-top: 3%;
+    display: flex;
+    border-radius: 6px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #DB1F48;
+}
+.box_bike::before{
+    content: '';
+    background-color: #fff;
+    width: 433px;
+    height: 3px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 58%;
+    left: 41%;
+    margin-left: 16%;
+}
+.head{
+    margin: -7px 162px 77px 10px;
+    color: #fff;
+    font-size: 32px;
+}
+.box_bike-item{
+    width: 430px;
+    height: 230px;
+    /* margin-left: 16%; */
+    margin-top: 3%; 
+    display: flex;
+    justify-content: space-between;
+}
+.box_parking{
+    width: 430px;
+    height: 230px;
+    margin-left: 16%;
+    margin-top: 3%;
+    display: flex;
+    border-radius: 6px;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: #326789;
+}
+.box_parking::before{
+    content: '';
+    background-color: #fff;
+    width: 433px;
+    height: 3px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 21%;
+    left: 3%;
+    margin-left: 16%;
+}
+.box_parking-item{
+    width: 433px;
+    height: 230px;
+    /* margin-left: 16%; */
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+.box_booking{
+    width: 430px;
+    height: 230px;
+    margin-left: 16%;
+    margin-top: 3%;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: #94C973;
+}
+.box_booking::before{
+    content: '';
+    background-color: #fff;
+    width: 433px;
+    height: 3px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 21%;
+    left: 41%;
+    margin-left: 16%;
+}
+.box_booking-item{
+    width: 433px;
+    height: 230px;
+    /* margin-left: 16%; */
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+.adminname-display{
+    margin-left: 16%;
+    margin-top: 1%;
+}
+.number{
+    margin: 31px;
+    font-size: 32px;
+    
+}
+.more_info{
+    margin: -47px 15px 0px 1px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 5px;
+}
+.copyright_wrapper{
+    margin-left: 15%;
+    margin-top: 5%;
+    background-color: #D9D9D9;
+    height: 45px;
+    text-align: center;
+}
