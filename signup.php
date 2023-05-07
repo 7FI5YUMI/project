@@ -1,5 +1,5 @@
 <?php
- include("databaseconn.php");
+ include("./database/databaseconn.php");
 $firstNameErr = $lastNameErr = $phoneErr = $userNameErr = $emailErr = $passwordErr = $confirmPasswordErr = "";
 $firstNameValidErr = $lastNameValidErr = $phoneValidErr =  $userNameValidErr = $emailErrvalid = $passwordValidErr = $confirmPasswordValidErr = $confirmPasswordErr1 =  "";
 if(isset($_POST['register'])){
@@ -57,26 +57,20 @@ if(isset($_POST['register'])){
         $confirmPasswordErr1 = "password do not match";
     }
     else{
-        $sql = "CREATE DATABASE test_input";
-         if(mysqli_query($conn,$sql)){
-           echo "sucess";
-           }
-          else{
-        echo "unsuccess";
-           }
+        $query = "INSERT INTO USER(firstname,lastname,contact,email,username,password,confirmpassword)VALUES('$firstName','$lastName',$phone,'$email','$userName','$password','$confirmPassword')";
+    $result = mysqli_query($conn,$query);
+    if($result){
+        header("location:login.php");
+    }
+    else{
+        die("Terminated");
+    }
         
 
     }
-
-
-    
-
 }
+
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

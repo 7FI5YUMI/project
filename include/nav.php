@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +20,6 @@
                     <li><a href="#">About us</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-
             </div>
             <div class="nav-login">
                 <div class="nav-login_button">

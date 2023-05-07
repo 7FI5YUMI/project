@@ -1,3 +1,8 @@
+<?php
+ session_start();
+ include("./database/databaseconn.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +36,7 @@
     
     <main class="main">
         <div class="main-welcome-text">
-            <h2>Hello <?php echo $_SESSION['username'] = $username;?></h2>
+            <h2>Hello <?php echo $_SESSION['username']?></h2>
             <h3>Welcome to the users panel</h3>
         </div>
     </main>
@@ -55,7 +60,7 @@
                 </div>
                 <div class="button-park">
                     <button class="button-parking">
-                        <a href="#">Park here</a>
+                        <a href="./parking.php">Park here</a>
                     </button>
                 </div>
                 <div class="button-book">

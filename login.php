@@ -1,5 +1,5 @@
 <?php
-include("databaseconn.php");
+include("./database/databaseconn.php");
 $nameErr = $passwordErr = "";
 $nameErrvalid = $passwordErrvalid = "";
 if(isset($_POST['submit'])){
@@ -22,27 +22,24 @@ if(isset($_POST['submit'])){
          $passwordErrvalid = "password should be of 8 character ";
     }
     else{
-        // $query = "SELECT * FROM USER WHERE username = '$username' and password = '$password'";
-        // $res = mysqli_query($conn,$query);
+        $query = "SELECT * FROM USER WHERE username = '$username' and password = '$password'";
+        $res = mysqli_query($conn,$query);
         
         
-        //     if($res){
-        //         if(mysqli_num_rows($res) == 1){
-        //             session_start();
-        //             //store data into session
-        //             $_SESSION['loggedin'] = TRUE;
-        //             $_SESSION['username'] = $username;
+            if($res){
+                if(mysqli_num_rows($res) == 1){
+                    session_start();
+                    //store data into session
+                    $_SESSION['loggedin'] = TRUE;
+                    $_SESSION['username'] = $username;
                     
                     
-        //             header("location:user.php");
-                    
-        //             echo "Login successfully";
-        //             }
-        //             else{
-        //             echo "incorrect username or password! please try again";
-        //         }
-        //     }
-        echo "success";
+                    header("location:user.php");
+                    }
+                    else{
+                    echo "incorrect username or password! please try again";
+                }
+            }
     }
 }
 ?>
