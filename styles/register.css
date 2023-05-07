@@ -1,7 +1,10 @@
+/* google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 .error{
     color: red;
@@ -21,12 +24,11 @@ body {
     gap: 14px;
 }
 /* second wrapper */
-
 .second_wrapper {
     display: flex;
     flex-direction: column;
     background-color: #fafdff;
-    gap: 38px;
+    gap: 20px;
     height: 834px;
     width: 560px;
     box-shadow: 10px 10px 20px 20px grey;
@@ -34,6 +36,9 @@ body {
     align-items: center;
     border-radius: 4px;
 
+}
+.error{
+    color: red;
 }
 
 
@@ -83,6 +88,13 @@ input[type="password"] {
     width: 190px;
     padding: 10px;
     border-radius: 4px;
+}
+/* phone */
+.phone_input{
+    width: 390px;
+    padding: 10px;
+    border-radius: 4px;
+
 }
 /* username */
 .uname_input{

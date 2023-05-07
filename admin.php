@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/admin.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="./styles/admin.css">
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -20,7 +19,6 @@
                 </div>
                 <div class="account">
                     <img src="./assets/icons/Administrator Male.svg" alt="admin_male">
-
                 </div>
             </div>
         </section>
@@ -71,7 +69,7 @@
                     <li>
                         <span class="image">
                             <a href="#">
-                                <img class="sidebar-img" src="/assets/icons/Payments.svg" alt="payment">
+                                <img class="sidebar-img" src="./assets/icons/Payments.svg" alt="payment">
                             </a>
                             <a href="#">payment</a>
                         </span>
@@ -79,7 +77,7 @@
                     <li>
                         <span class="image">
                             <a href="#">
-                                <img class="sidebar-img" src="/assets/icons/Logout.svg" alt="logout">
+                                <img class="sidebar-img" src="./assets/icons/Logout.svg" alt="logout">
                             </a>
                             <a href="#">logout</a>
                         </span>
@@ -88,10 +86,10 @@
             </div>
         </div>
     </aside>
-    <main>
+    <main id="main_content">
         <div class="adminname-display">
             <h2>Hello admin_name</h2>
-            <h3>Welcome to the dashboard</h3>
+            <h3 class="welcome">Welcome to the dashboard</h3>
         </div>
         <div class="box-wrapper--one">
             <div class="box_car">
@@ -104,7 +102,7 @@
                 </div>
                 <div class="head">Total four wheeler</div>
                 <div class="more_info">
-                    <p>More info</p><span><img src="/assets/icons/More Info.svg" alt=""></span>
+                    <p>More info</p><span><img src="./assets/icons/More Info.svg" alt=""></span>
                  </div>
             </div>
             <div class="box_bike">
@@ -118,7 +116,7 @@
                     Total two wheeler
                 </div>
                 <div class="more_info">
-                    <p>More info</p><span><img src="/assets/icons/More Info.svg" alt=""></span>
+                    <p>More info</p><span><img src="./assets/icons/More Info.svg" alt=""></span>
                  </div>
             </div>
         </div>
@@ -133,7 +131,7 @@
                 </div>
                 <div class="head">Parking Slot</div>
                 <div class="more_info">
-                    <p>More info</p><span><img src="/assets/icons/More Info.svg" alt=""></span>
+                    <p>More info</p><span><img src="./assets/icons/More Info.svg" alt=""></span>
                  </div>
             </div>
             <div class="box_booking">
@@ -146,7 +144,7 @@
                 </div>
                 <div class="head">Booking Status</div>
                 <div class="more_info">
-                   <p>More info</p><span><img src="/assets/icons/More Info.svg" alt=""></span>
+                   <p>More info</p><span><img src="./assets/icons/More Info.svg" alt=""></span>
                 </div>
             </div>
             

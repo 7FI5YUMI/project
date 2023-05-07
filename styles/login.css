@@ -1,7 +1,11 @@
+/* google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    
 }
 .all_wrapper{
     display: flex;
@@ -59,27 +63,35 @@ input[type="password"]{
 .forgot{
     margin: 10px 10px 10px 172px;
 }
-button{
+
+.button{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
     gap: 8px;
-    padding: 11px;
+    padding: 8px;
     background-color: #8000FF;
     border: 1px solid #8000FF;
     color: #ffff;
     border-radius: 5px;
-
+    width: 180px;
 }
 
-.login_img img{
-    width: 24px;
-    height: 24px;
 
+.login_button{
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    color: #ffff;
+}
+.login_img{
+    width: 21px;
+    height: 21px;
 }
 
+.error{
+    color: #FF0000;
+}
 
 .prev_account{
-    margin: 27px 10px 10px 10px;
+    margin: 18px 10px 10px 10px;
 }

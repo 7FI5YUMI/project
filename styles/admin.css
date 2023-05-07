@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
 }
 .navigation{
     background-color: #D8E2F0;
@@ -43,6 +45,11 @@
     gap: 57px;
 
 }
+main{
+    margin-left: 4%;
+
+}
+
 .sidebar-content-items li a{
     color: #fff;
     text-decoration: none;
@@ -70,6 +77,7 @@
     color: #fff;
     justify-content: center;
     margin-top: 23%;
+    gap: 11px;
 }
 .admin-img{
     width: 42px;
@@ -82,14 +90,13 @@
 .box-wrapper--one{
     display: flex;
     flex-direction: row;
-    margin-left: 4%;
+   
 
 }
 .box-wrapper--two{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 4%;
     margin-top: 4%
 }
 .box_car{
@@ -102,11 +109,12 @@
     align-items: center;
     background-color: #578384;
     border-radius: 6px;
+    /* position: relative; */
 }
 .box_car::before{
     content: '';
     background-color: #fff;
-    /* position: fixed; */
+    position: absolute;
     width: 439px;
     height: 3px;
     border-radius: 5px;
@@ -119,7 +127,6 @@
     width: 430px;
     height: 230px;
     /* margin-left: 16%; */
-
     margin-top: 3%;
     display: flex;
     justify-content: space-between;
@@ -147,7 +154,7 @@
     margin-left: 16%;
 }
 .head{
-    margin: -7px 162px 77px 10px;
+    margin: -12px 138px 77px 10px;
     color: #fff;
     font-size: 32px;
 }
@@ -222,7 +229,10 @@
     justify-content: space-between;
 }
 .adminname-display{
+    margin-top: 1%;
     margin-left: 16%;
+}
+.welcome{
     margin-top: 1%;
 }
 .number{
@@ -241,6 +251,8 @@
     margin-left: 15%;
     margin-top: 5%;
     background-color: #D9D9D9;
-    height: 45px;
-    text-align: center;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
