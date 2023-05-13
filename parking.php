@@ -1,3 +1,21 @@
+<?php
+$parking_Slot_Error = "";
+if(isset($_POST['parking-login'])){
+    $parking_Slot_Number = $_POST['parking-slot-number'];
+
+    if(empty($parking_Slot_Number)){
+        $parking_Slot_Error = "parking slot is required";
+    }
+    else{
+        header("location:parking.php");
+    }
+}
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,55 +26,27 @@
     <title>Parking</title>
 </head>
 <body>
-    <div class="navigation">
-        <nav class="navbar">
-            <div class="nav-logo">
-                <img src="./assets/logo/logo.png" alt="logo" class="logo-img">
-            </div>
-            <div class="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Payment</a></li>
-                </ul>
-
-            </div>
-            <div class="nav-login">
-                <div class="nav-login_button">
-                    <button><a class="login-button-text" href="">Logout</a></button>
-                </div>
-            </div>
-        </nav>
-    </div>
-
+    <?php include("./include/after-login-nav.php");?>
     <div class="wrapper">
-        <form method="post" action="">
-            <div class="wrapper-two">
-                <div class="parking-text-one">
-                    <h2 class="parking-text">Choose slot for parking</h2>
-                </div>
-                <div class="parking_id">
-                    <label for="parkingid">Parking_id</label>
+        <form post="post" action="">
+            <div class="fl_wrapper">
+            <h2>Enter parking space details</h2>
+                <div class="parking_slot-n">
+                    <label for="parking-slot-n">Parking slot number</label>
                     <br>
-                <input type="text" name="parking_id" class="parking">
+                    <input type="text" name="parking-slot-number" class="parking">
                 </div>
-                <div class="parkind_slot_num">
-                    <label for="parking_slot_number">Parking_slot_number</label>
+                <div class="parking-status">
+                    <label for="parking-status">Parking status</label>
                     <br>
-                <input type="text" name="parking_slot_number" class="parking">
+                    <input type="text" name="parking_Status" class="parking">
                 </div>
-                <div class="parking_status">
-                    <label for="parking_status">Parking status</label>
-                    <br>
-                <input type="text" name="parking_status" class="parking">
-                </div>
-                <div class="parking_button">
-                    <input type="submit" name="submit" class="parking-login">
-                </div>
+            </div>
+            <div class="button">
+                <input type="submit" name="submit" value="next" class="parking-login">
             </div>
         </form>
     </div>
-
-    <?php include("./include/footer.php"); ?>
+    <?php require("./include/footer.php");?>
 </body>
 </html>

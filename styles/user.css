@@ -19,7 +19,6 @@
     width: 68px;
     margin-top: 8px;
 }
-
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -43,7 +42,6 @@
     text-decoration: none;
     font-family: 'Ubuntu', sans-serif;
 }
-
 button{
     width: 160px;
     padding: 8px;
@@ -83,6 +81,12 @@ button{
 .vehicle-category{
     margin-bottom: 1%;
 }
+.bike-list{
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+
+}
 .bike-list li{
     list-style: none;
 }
@@ -104,8 +108,6 @@ button{
     text-decoration: none;
     color: #000;
 }
-
-
 .button-parking{
     width: 180px;
     padding: 8px;
@@ -133,5 +135,4 @@ button{
     padding: 8px;
     border-radius: 5px;
     background-color: #fff;
-
 }

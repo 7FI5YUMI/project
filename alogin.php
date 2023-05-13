@@ -6,10 +6,16 @@ if(isset($_POST['submit'])){
     $username = $_POST['name'];
     $password = $_POST['pass'];
 
-    if(empty($username)){
+    if(empty($name)){
         $nameErr = "username is required";
     }
-    else if(empty($password)){
+    else if(strlen($name)<8){
+        $nameErrvalid = "username should be of 8 character";
+    }
+    else{
+        echo $name;
+    }
+    if(empty($password)){
         $passwordErr = "Password is required";
     }
     else if(strlen($password)<=8){
@@ -18,26 +24,20 @@ if(isset($_POST['submit'])){
     else{
         $query = "SELECT * FROM user WHERE username = '$username' and password = '$password'";
         $res = mysqli_query($conn,$query);
-        
-        
-            if($res){
-                if(mysqli_num_rows($res) == 1){
-                    session_start();
-                    //store data into session
-                    $_SESSION['loggedin'] = TRUE;
-                    $_SESSION['username'] = $username;
-                    
-                    header("location:user.php");
-                    }
-                    else{
-                        echo "incorrect username or password! please try again";
-                    }
+        $count = mysqli_num_rows($res);
+        if($count>0){
+            session_start();
+            $row = mysqli_fetch_assoc($res);
+            // $_SESSION['Role'] = $row->role;
+            $_SESSION['loggedin'] = TRUE;
+            if($row['role']==0){
+                header("Location:admin.php");
+            }if($row['role']==1){
+               header("Location:user.php");
 
-                    
             }
-            
-               
-    }  
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -53,7 +53,6 @@ if(isset($_POST['submit'])){
 </head>
 
 <body>
-
     <div class="all_wrapper">
         <form method="post" action="">
             <div class="wrapper">
@@ -89,8 +88,6 @@ if(isset($_POST['submit'])){
             </div>
         </form>
     </div>
-   
-   
 </body>
 
 </html>

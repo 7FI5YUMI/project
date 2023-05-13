@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 59vh;
+}
+/* navbar start */
+.navigation{
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 100px;
+}
+
+.login-button-text{
+    color: #fff;
+}
+
+.logo-img{
+    height: 68px;
+    width: 68px;
+    margin-top: 8px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.parking-wrapper{
+    display: flex;
+    gap: 10px;
+}
+.nav-list{
+    display: flex;
+    gap: 80px;
+}
+.nav-list li{
+    list-style: none;
+
+}
+.nav-login{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-list li a{
+    color: #000;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+button{
+    width: 160px;
+    padding: 8px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+}
+.wrapper-two{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+.vehicle{
+    width: 265px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.parking-login{
+    width: 160px;
+    padding: 8px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+}
+.parking{
+    width: 265px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.parking-status{
+    width: 538px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+}
+.button_wrapper{
+    display: flex;
+    gap: 10px;
+}
+.vehicle-info-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.footer{
+    width: 100%;
+    height: 261px;
+    background-color: #28282B;
+    margin-top: 2%;
+}
+.error{
+    color: red;
+}
