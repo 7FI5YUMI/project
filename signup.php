@@ -1,12 +1,16 @@
 <?php
  include("./database/databaseconn.php");
+ $usernameExist = false;
+ $usernameExistErr = "";
 $firstNameErr = $lastNameErr = $phoneErr = $userNameErr = $emailErr = $passwordErr = $confirmPasswordErr = "";
 $firstNameValidErr = $lastNameValidErr = $phoneValidErr =  $userNameValidErr = $emailErrvalid = $passwordValidErr = $confirmPasswordValidErr = $confirmPasswordErr1 =  "";
+$success = '';
 if(isset($_POST['register'])){
+    $firstName = $_POST['fname'];
     $firstName = $_POST['fname'];
     $lastName = $_POST['lname'];
     $phone = $_POST['phone'];
-    //username
+    // username
     $userName = $_POST['uname'];
     $email = $_POST['email'];
     $password = $_POST['pass'];
@@ -36,6 +40,16 @@ if(isset($_POST['register'])){
     elseif(empty($userName)){
         $userNameErr = "username is required";
     }
+    elseif($exist=true){
+        $usernameExist = "SELECT * FROM user where username = '$userName'";
+        $res = mysqli_query($conn,$usernameExist);
+        $numExistRows = mysqli_num_rows($res);
+        if($numExistRows>0){
+            $usernameExistErr = "already have an username try another";
+        }else{
+            $exist = false;
+        }
+    }
     elseif(empty($email)){
         $emailErr = "Email is required";
     }
@@ -59,18 +73,14 @@ if(isset($_POST['register'])){
     }
     else{
         $encrypt_password = password_hash($password,PASSWORD_DEFAULT);
-        $query = "INSERT INTO user(firstname,lastname,contact,email,username,password)VALUES('$firstName','$lastName',$phone,'$email','$userName','$encrypt_password')";
-    $result = mysqli_query($conn,$query);
-    if($result){
-        echo "<script>";
-        echo "alert('registered successfully');";
-        echo "</script>";
-        header("location:login.php");
-    }
-    else{
-        die("Terminated");
-    }
-
+        $query = "INSERT INTO `user`(firstname,lastname,contact,email,username,password)VALUES('$firstName','$lastName',$phone,'$email','$userName','$encrypt_password')";
+        $result = mysqli_query($conn,$query);
+        if($result){
+           $success = "registered successfully";
+        }
+        else{
+         die("Terminated");
+        }
     }
 }
 ?>
@@ -81,8 +91,13 @@ if(isset($_POST['register'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/register.css">
-    <script src="/jquery.min.js"></script>
+    <!-- <script src="/jquery.min.js"></script> -->
     <title>Signup Form</title>
+    <?php
+    if($success!=NULL){
+    ?> <style>.success{display: block;color:white;background-color: lightseagreen;width:80%;text-align:center;margin:auto;border-radius:0.2rem;padding:0.7rem}</style> <?php
+    }
+    ?>
 </head>
 <body>
     <div class="fl_wrapper">
@@ -121,6 +136,7 @@ if(isset($_POST['register'])){
                     <input type="text" name="uname" class="uname_input" placeholder="Username">
                     <div class="error"><?php echo "*".$userNameErr;?></div>
                     <div class="error"><?php echo $userNameValidErr;?></div>
+                    <div class="error"><?php echo $usernameExistErr;?></div>
                 </div>
                 <div class="email">
                     <label for="email">Email</label>
@@ -150,6 +166,9 @@ if(isset($_POST['register'])){
                 <div class="prev_account">
                     <p>Already have an account?<a href="./login.php">Login</a> </p>
                 </div>
+            </div>
+            <div class="success_wrapper">
+                <div class="success"><?php echo $success;?></div>
             </div>
         </form>
     </div>

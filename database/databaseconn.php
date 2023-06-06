@@ -30,14 +30,64 @@ if(!$conn){
 //     echo "<script>alert('table created successfully')</script>";
 // }
 // else{
-//     die("Terminate");
+//     die("Terminated");
 // }
 
-$sql = "Create table vehicle(
+// $sql = "CREATE TABLE vehicle(
+//     id int primary key AUTO_INCREMENT,
+//     vehicle_platenumber int unsigned unique not null,
+//     vehicle_category varchar(100) not null,
+//     vehicle_type varchar(100) not null,  
+//     user_id int,
+//     foreign key(user_id) references user(id) 
+//     ON UPDATE CASCADE
+//     ON DELETE CASCADE         
+// )";
 
-)";
+// $result = mysqli_query($conn,$sql);
+// if($result){
+//     echo "Table successfully created";
+// }
+// else{
+//     die ("Table not created");
+// }
 
+// creating table duration
+// $query = "CREATE TABLE duration(
+//     entry_time datetime not null,
+//     exit_time datetime not null,
+//     vehicle_id int,
+//     foreign key (vehicle_id) references vehicle(id)
+//     on update cascade
+//     on delete cascade
+//     parkingslot_id int,
+//     foreign key (parkingslot_id) references parking(id)
+//    on update cascade
+//    on delete cascade
+// )";
 
+// $res = mysqli_query($conn,$query);
+// if($res){
+//     echo "table created successfully";
+// }
+// else{
+//     echo "table not created";
+// }
 
-
+// $sql = "CREATE TABLE parking (
+//     id int NOT NULL,
+//     parkingslot_number int unsigned NOT NULL,
+//     parking_status varchar(100) NOT NULL,
+//     vehicle_id int,
+//     foreign key (vehicle_id) references vehicle(id)
+//     ON UPDATE CASCADE 
+//     ON DELETE CASCADE
+//   )";
+//   $result = mysqli_query($conn,$sql);
+//   if($result){
+//     echo "table created successfully";
+//   }
+//   else{
+//     echo "table not created" or die("terminated");
+//   }
 ?>

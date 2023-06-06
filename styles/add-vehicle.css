@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+.vehicle_add-admin{
+    border-collapse: collapse;
+    width: 95%;
+    text-align: center;
+    margin-left: 0%;
+    
+    
+}
+/* table{
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+    margin-left: 15%;
+    
+
+} */
+
+.head_vehicle{
+    background-color: purple;
+    height: 50px;
+    color: white;
+}
+
+td{
+    padding: 10px;
+}
+
+.addVehicle{
+    width: 350px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    margin: 1% 32% 4% 0%;
+    border-radius: 6px;
+}
+

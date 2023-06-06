@@ -1,43 +1,93 @@
 <?php
 require("./database/databaseconn.php");
+$login = false;
+session_start();
+$usernameExistErr = "";
 $nameErr = $passwordErr = "";
 $nameErrvalid = $passwordErrvalid = "";
-if(isset($_POST['submit'])){
+$passErr = "";
+if (isset($_POST['submit'])) {
     $username = $_POST['name'];
     $password = $_POST['pass'];
+    $role = $_POST['role'];
 
-    if(empty($username)){
+    if (empty($username)) {
         $nameErr = "username is required";
-    }
-    else if(empty($password)){
+    } else if (empty($password)) {
         $passwordErr = "Password is required";
+    } else if (strlen($password) <= 8) {
+        $passwordErrvalid = "password should be of 8 character ";
     }
-    else if(strlen($password)<=8){
-         $passwordErrvalid = "password should be of 8 character ";
-    }
-    else{
-        $query = "SELECT * FROM user WHERE username = '$username' and password = '$password'";
-        $res = mysqli_query($conn,$query);
+    else {
+        $query = "SELECT * FROM user WHERE username = '$username'";
+        $res = mysqli_query($conn, $query);
+        $role = mysqli_fetch_assoc($res);
         
-        
-            if($res){
-                if(mysqli_num_rows($res) == 1){
-                    session_start();
-                    //store data into session
-                    $_SESSION['loggedin'] = TRUE;
-                    $_SESSION['username'] = $username;
-                    
-                    header("location:user.php");
-                    }
-                    else{
-                        echo "incorrect username or password! please try again";
-                    }
+        if ($role['role'] == '1') {
+            $login = true;
+            session_start();
+             $_SESSION['username']=$username;
+            //  $_SESSION['id'] = $id;
+            $_SESSION['loggedIn'] == TRUE;
+            header("Location:admin.php");
 
-                    
-            }
-            
-               
-    }  
+        } elseif ($role['role'] == '0') {
+            $login = true;
+            session_start();
+             $_SESSION['username'] = $username;
+            $_SESSION['loggedIn'] == TRUE;
+            header("Location:user.php");
+
+
+        } else {
+            echo 'invalid username or password';
+        }
+        // if ($res) {
+        //     if (mysqli_num_rows($res) == 1) {
+        //         while ($row = mysqli_fetch_assoc($res)) {
+        //             if (password_verify($password, $row['password'])) {
+        //                 session_start();
+        //                 //store data into session
+        //                 // $_SESSION['role'] = $role;
+        //                 // $_SESSION['loggedIn'] = TRUE;
+        //                 // $_SESSION['username'] = $username;
+        //                 // header("location:user.php");
+        //                 // $_SESSION['role'] = $role;
+        //                 $_SESSION['username'] = $username;
+        //                 // $_SESSION['role'] = $role;
+        //                 if($role == '1'){
+        //                     $_SESSION['username'] = $username;
+        //                     header("Location:admin.php");
+        //                 }
+        //                 elseif($role == '0')
+        //                 {
+        //                     $_SESSION['username'] = $username;
+        //                     header("Location:user.php");
+        //                 }
+        //                 else{
+        //                     echo 'invalid username or password';
+        //                 }
+
+
+
+
+
+        //                 // if($_SESSION['role']=="1"){
+        //                 //     header("Location:admin.php");
+
+        //                 // }
+        //                 // else{
+        //                 //     header("location:user.php");
+        //                 // }
+        //             } else {
+        //                 $passErr = "incorrect username or password! please try again";
+        //             }
+
+
+        //         }
+        //     }
+        // }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -49,6 +99,7 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/login.css">
+    <!-- <link rel="stylesheet" href="./jquery.min.js"> -->
     <title>Login Form</title>
 </head>
 
@@ -66,19 +117,30 @@ if(isset($_POST['submit'])){
                         <label for="username">username</label>
                         <br>
                         <input type="text" name="name">
-                        <div class="error"><?php echo $nameErr;?></div>
-                        <div class="error"><?php echo $nameErrvalid;?></div>
+                        <div class="error">
+                            <?php echo $nameErr; ?>
+                        </div>
+                        <div class="error">
+                            <?php echo $nameErrvalid; ?>
+                        </div>
                     </div>
                     <div class="pass">
                         <label for="password">password</label>
                         <br>
                         <input type="password" name="pass">
-                        <div class="error"><?php echo $passwordErr;?></div>
-                        <div class="error"><?php echo $passwordErrvalid;?></div>
+                        <div class="error">
+                            <?php echo $passwordErr; ?>
+                        </div>
+                        <div class="error">
+                            <?php echo $passwordErrvalid; ?>
+                        </div>
+                    </div>
+                    <div class="error">
+                        <?php echo $passErr; ?>
                     </div>
                     <a class="forgot" href="">Forgot password?</a>
                     <div class="button">
-                        <input type="submit" name="submit" value="Login" class="login_button">
+                        <input type="submit" id="submit" name="submit" value="Login" class="login_button">
                         <img src="./assets/icons/login.svg" alt="login_icon" class="login_img">
 
                     </div>
@@ -89,8 +151,6 @@ if(isset($_POST['submit'])){
             </div>
         </form>
     </div>
-   
-   
 </body>
 
 </html>

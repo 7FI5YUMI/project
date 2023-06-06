@@ -117,3 +117,51 @@ button{
 .error{
     color: red;
 }
+select .category{
+    width: 538px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+/* .success_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+}
+/*
+/* for parking  */
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 59vh;
+}
+
+.parking{
+    width: 265px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.fl_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 7%;
+}
+.parking-login{
+    /* width: 160px; */
+    padding: 8px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+}

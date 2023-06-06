@@ -1,12 +1,14 @@
 /* google fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
-.error{
+
+.error {
     color: red;
 }
 
@@ -23,6 +25,7 @@ body {
     display: flex;
     gap: 14px;
 }
+
 /* second wrapper */
 .second_wrapper {
     display: flex;
@@ -37,7 +40,8 @@ body {
     border-radius: 4px;
 
 }
-.error{
+
+.error {
     color: red;
 }
 
@@ -77,54 +81,58 @@ input[type="password"] {
     align-items: center;
     justify-content: center;
 }
+
 /* firstname */
-.fname_input{
+.fname_input {
     width: 190px;
     padding: 10px;
     border-radius: 4px;
 }
+
 /* lastname */
-.lname_input{
+.lname_input {
     width: 190px;
     padding: 10px;
     border-radius: 4px;
 }
+
 /* phone */
-.phone_input{
+.phone_input {
     width: 390px;
     padding: 10px;
     border-radius: 4px;
 
 }
+
 /* username */
-.uname_input{
-   width: 390px;
-   padding: 10px;
-   border-radius: 4px;
+.uname_input {
+    width: 390px;
+    padding: 10px;
+    border-radius: 4px;
 }
+
 /* email */
-.email_input{
-    width: 390px;
-    padding: 10px;
-    border-radius: 4px;
-
-}
-.n_input{
+.email_input {
     width: 390px;
     padding: 10px;
     border-radius: 4px;
 
 }
 
-.header-text h3{
+.n_input {
+    width: 390px;
+    padding: 10px;
+    border-radius: 4px;
+
+}
+
+.header-text h3 {
     color: #000000;
     font-size: 22px;
     margin: 0px 6px 14px 5px;
 }
 
-.desc{
+.desc {
     margin: 20px 1px 19px 4px;
 }
-/* h2,p{
-    color: #fff;
-} */
+

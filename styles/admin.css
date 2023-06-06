@@ -1,25 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
-.navigation{
+
+.navigation {
     background-color: #D8E2F0;
     height: 108px;
 }
-.nav-wrapper{
+
+.nav-wrapper {
     display: flex;
     justify-content: space-between;
 }
-.head_nav{
+
+.head_nav {
     display: flex;
     align-items: center;
     margin-left: 16%;
     flex-grow: 1;
 }
-.sidebar{
+
+.sidebar {
     background-color: #050A30;
     width: 15%;
     height: 100%;
@@ -27,51 +32,56 @@
     left: 0;
     top: 0;
 }
-.all_wrapper{
+
+.all_wrapper {
     display: flex;
     justify-content: center;
     margin-top: 20%;
 }
-.sidebar_content{
+
+.sidebar_content {
     display: flex;
     justify-content: center;
     flex-shrink: 0;
     margin: 15px;
 }
-.sidebar-content-items{
+
+.sidebar-content-items {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 57px;
 
 }
-main{
+
+main {
     margin-left: 4%;
 
 }
 
-.sidebar-content-items li a{
+.sidebar-content-items li a {
     color: #fff;
     text-decoration: none;
 }
 
-.sidebar-content-items li{
+.sidebar-content-items li {
     list-style: none;
 }
 
-.image{
+.image {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-.logo{
-    text-align: center; 
+.logo {
+    text-align: center;
     color: #ffff;
     margin-top: 11%;
 }
-.admin_name{
+
+.admin_name {
     display: flex;
     align-items: center;
     color: #fff;
@@ -79,27 +89,32 @@ main{
     margin-top: 23%;
     gap: 11px;
 }
-.admin-img{
+
+.admin-img {
     width: 42px;
     height: 42px;
 }
-.sidebar-img{
+
+.sidebar-img {
     width: 42px;
     height: 42px;
 }
-.box-wrapper--one{
+
+.box-wrapper--one {
     display: flex;
     flex-direction: row;
-   
+
 
 }
-.box-wrapper--two{
+
+.box-wrapper--two {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 4%
 }
-.box_car{
+
+.box_car {
     width: 430px;
     height: 230px;
     margin-left: 16%;
@@ -111,7 +126,8 @@ main{
     border-radius: 6px;
     /* position: relative; */
 }
-.box_car::before{
+
+.box_car::before {
     content: '';
     background-color: #fff;
     position: absolute;
@@ -123,7 +139,8 @@ main{
     left: 3%;
     margin-left: 16%;
 }
-.box_car-item{
+
+.box_car-item {
     width: 430px;
     height: 230px;
     /* margin-left: 16%; */
@@ -131,7 +148,8 @@ main{
     display: flex;
     justify-content: space-between;
 }
-.box_bike{
+
+.box_bike {
     width: 430px;
     height: 230px;
     margin-left: 16%;
@@ -142,7 +160,8 @@ main{
     align-items: center;
     background-color: #DB1F48;
 }
-.box_bike::before{
+
+.box_bike::before {
     content: '';
     background-color: #fff;
     width: 433px;
@@ -153,20 +172,23 @@ main{
     left: 41%;
     margin-left: 16%;
 }
-.head{
+
+.head {
     margin: -12px 138px 77px 10px;
     color: #fff;
     font-size: 32px;
 }
-.box_bike-item{
+
+.box_bike-item {
     width: 430px;
     height: 230px;
     /* margin-left: 16%; */
-    margin-top: 3%; 
+    margin-top: 3%;
     display: flex;
     justify-content: space-between;
 }
-.box_parking{
+
+.box_parking {
     width: 430px;
     height: 230px;
     margin-left: 16%;
@@ -178,7 +200,8 @@ main{
     align-items: center;
     background-color: #326789;
 }
-.box_parking::before{
+
+.box_parking::before {
     content: '';
     background-color: #fff;
     width: 433px;
@@ -189,7 +212,8 @@ main{
     left: 3%;
     margin-left: 16%;
 }
-.box_parking-item{
+
+.box_parking-item {
     width: 433px;
     height: 230px;
     /* margin-left: 16%; */
@@ -197,7 +221,8 @@ main{
     display: flex;
     justify-content: space-between;
 }
-.box_booking{
+
+.box_booking {
     width: 430px;
     height: 230px;
     margin-left: 16%;
@@ -209,7 +234,8 @@ main{
     align-items: center;
     background-color: #94C973;
 }
-.box_booking::before{
+
+.box_booking::before {
     content: '';
     background-color: #fff;
     width: 433px;
@@ -220,7 +246,8 @@ main{
     left: 41%;
     margin-left: 16%;
 }
-.box_booking-item{
+
+.box_booking-item {
     width: 433px;
     height: 230px;
     /* margin-left: 16%; */
@@ -228,31 +255,59 @@ main{
     display: flex;
     justify-content: space-between;
 }
-.adminname-display{
+
+.adminname-display {
     margin-top: 1%;
     margin-left: 16%;
 }
-.welcome{
+
+.welcome {
     margin-top: 1%;
 }
-.number{
+
+.number {
     margin: 31px;
     font-size: 32px;
-    
+
 }
-.more_info{
+
+.more_info {
     margin: -47px 15px 0px 1px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
-.copyright_wrapper{
+
+.copyright_wrapper {
     margin-left: 15%;
     margin-top: 5%;
     background-color: #D9D9D9;
     height: 38px;
     display: flex;
+    position: fixed;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
+
+/* success message for successfully adding parking slot */
+.success_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.success {
+    /* border: 1px solid #000; */
+    /* background-color: #5cb85c; */
+    /* width: 580px; */
+    /* height: 55px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #008000;
+}
+
+/* for table */

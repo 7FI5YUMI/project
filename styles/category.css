@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10%;
+    /* margin-top: 15%; */
+}
+
+.v_category{
+    border-collapse: collapse;
+    width: 60%;
+    height: 55px;
+}
+
+.category_head{
+    padding: 10px;
+}
+
+.edit{
+    width: 150px;
+    padding: 10px;
+    background-color: cornflowerblue;
+}
+.delete{
+    width: 150px;
+    padding: 10px;
+    background-color: #d9534f;
+     color: #fff;
+}
+.action{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 34px;
+    width: 100%;
+    /* border: none; */
+}
+
+

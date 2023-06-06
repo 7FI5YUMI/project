@@ -1,11 +1,6 @@
 <?php
- include("./database/databaseconn.php");
  session_start();
-//  $user = $_SESSION['username'];
- if(!isset($_SESSION['username'])){
-    header("Location:login.php");
-    exit;
- }
+ include("./database/databaseconn.php");
 
  if(isset($_POST['park'])){
     header("location: vehicle.php");

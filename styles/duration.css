@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.wrapper-start-end{
+    margin-top: 10%;
+}
+
+.start-end{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* margin-top:11%; */
+    margin-bottom: 15%;
+}
+
+.entry-time{
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.exit-time{
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.datetime-submit{
+    width: 250px;
+    padding: 8px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+}
+/* for generating error */
+.error{
+    color: red;
+}
+
+
+
