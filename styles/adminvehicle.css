@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper-two{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+.vehicle{
+    width: 265px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.parking-login{
+    width: 160px;
+    padding: 8px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+}
+.parking{
+    width: 539px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.parking-status{
+    width: 538px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+}
+.button_wrapper{
+    display: flex;
+    gap: 10px;
+}
+.vehicle-info-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.footer{
+    width: 100%;
+    height: 261px;
+    background-color: #28282B;
+    margin-top: 2%;
+}
+.error{
+    color: red;
+}
+select .category{
+    width: 538px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}

@@ -35,6 +35,34 @@ if($numRows>0){
     }
 }
 
+$query = "SELECT entry_time from duration where vehicle_id = $vehicleId";
+$result = mysqli_query($conn,$query);
+while($row=mysqli_fetch_assoc($result)){
+    $entryTime = $row['entry_time'];
+}
+$query = "SELECT exit_time from duration where vehicle_id = $vehicleId";
+$result = mysqli_query($conn,$query);
+while($row=mysqli_fetch_assoc($result)){
+    $exitTime = $row['exit_time'];
+}
+
+  
+$datetime_1 = $entryTime; 
+$datetime_2 = $exitTime; 
+ 
+$start_datetime = new DateTime($datetime_1); 
+$diff = $start_datetime->diff(new DateTime($datetime_2)); 
+// $payment = $diff * 50;
+// echo $diff->days.' Days total<br>'; 
+// echo $diff->y.' Years<br>'; 
+// echo $diff->m.' Months<br>'; 
+// echo $diff->d.' Days<br>'; 
+// echo $diff->h*50.' Hours<br>'; 
+// echo $diff->i.' Minutes<br>'; 
+// echo $diff->s.' Seconds<br>';
+
+
+
 
 
 $entry_timeErr = $exit_timeErr = "";
@@ -91,6 +119,7 @@ if (isset($_POST['date-time-submit'])) {
     <div class="wrapper-start-end">
     <form method="post" action="">
         <div class="start-end">
+        <?php echo $diff->h*50;?>
             <div class="start">
                 <label for="entrydate">Entry date and time</label>
                 <br>

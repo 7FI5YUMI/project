@@ -22,12 +22,12 @@
     padding: 10px;
 }
 
-.edit{
+.btn-update{
     width: 150px;
     padding: 10px;
-    background-color: cornflowerblue;
+    background-color: #84a2d9;
 }
-.delete{
+.btn-delete{
     width: 150px;
     padding: 10px;
     background-color: #d9534f;
@@ -43,5 +43,23 @@
     width: 100%;
     /* border: none; */
 }
+
+.add-category{
+    width: 350px;
+    padding: 10px;
+    background-color: #84a2d9;
+    margin: 1% 2% 2% 0%;
+    border-radius: 6px;
+}
+
+.add-category a{
+    text-decoration: none;
+    color: #fff;
+}
+.add-category a:hover{
+    text-decoration: underline;
+
+}
+
 
 

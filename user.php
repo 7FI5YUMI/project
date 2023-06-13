@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user.css">
+    <link rel="stylesheet" href="./styles/user_style.css">
     <title>Users</title>
 </head>
 <body>
@@ -36,8 +36,16 @@
 
             </div>
             <div class="nav-login">
+                <div class="profile">
+                    <a href="./profile.php">
+                        <img src="./assets/icons/profile.svg" alt="profile" class="profile-img">
+                    </a>
+                </div>
                 <div class="nav-login_button">
-                    <button><a class="login-button-text" href="./logout.php">Logout</a></button>
+                    <button class="logout-btn">
+                        <img src="./assets/icons/Logout (1).svg" alt="logout" class="logout-img">
+                        <a class="login-button-text" href="./logout.php">Logout</a>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -59,13 +67,13 @@
                 <div class="image">
                     <img src="./assets/icons/Directions car.svg" alt="car">
                     <div class="bike-head">
-                        <h2 class="bike-head-text">Four Wheeler</h2>
+                        <h2 class="bike-head-text">Register your vehicle here</h2>
                     </div>
                 </div>
                 <div class="box-bike-list">
                     <ul class="bike-list">
-                        <li>Parking fees: 50/hr</li>
-                        <li>Vehicle type: Four Wheeler</li>
+                        <!-- <li>Parking fees: 50/hr</li> -->
+                        <li>Vehicle type: Four Wheeler or four wheeler</li>
                     </ul>
                 </div>
                 <div class="button-park">
@@ -73,31 +81,6 @@
                     <input type="submit" name="park" class="button-parking" value="next">
                     </form>
                 </div>
-                <!-- <div class="button-book">
-                    <button class="button-booking"><a href="#">Book here</a></button>
-                </div> -->
-            </div>
-            <div class="box-bike">
-                <div class="image">
-                    <img src="./assets/icons/bike.svg" alt="car">
-                    <div class="bike-head">
-                        <h2 class="bike-head-text">Two Wheeler</h2>
-                    </div>
-                </div>
-                <div class="box-bike-list">
-                    <ul class="bike-list">
-                        <li>Parking fees: 25/hr</li>
-                        <li>Vehicle type: Four Wheeler</li>
-                    </ul>
-                </div>
-                <div class="button-park">
-                    <form method="post" action="">
-                    <input type="submit" name="book" class="button-parking" value="next">
-                    </form>
-                </div>
-                <!-- <div class="button-book">
-                    <button class="button-booking"><a href="#">Book here</a></button>
-                </div> -->
             </div>
             <div class="box-bike">
                 <div class="image">
@@ -107,13 +90,15 @@
                     </div>
                 </div>
                 <div class="button-parking-slot-one">
-                    <button class="button-parking-slot"><a href="#">View parkingslot</a></button>
+                    <button class="button-parking-slot"><a href="./userparking.php">View parkingslot</a></button>
                 </div>
             </div>
             
         </div>
         
     </section>
-    <?php include("./include/footer.php");?>
+    <div class="footer-user">
+       <?php include("./include/footer.php");?>
+    </div>
 </body>
 </html>

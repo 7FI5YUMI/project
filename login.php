@@ -26,10 +26,9 @@ if (isset($_POST['submit'])) {
         if ($role['role'] == '1') {
             $login = true;
             session_start();
-             $_SESSION['username']=$username;
-            //  $_SESSION['id'] = $id;
+             $_SESSION['admin']=$username;
             $_SESSION['loggedIn'] == TRUE;
-            header("Location:admin.php");
+           header("Location:admin.php");
 
         } elseif ($role['role'] == '0') {
             $login = true;
@@ -106,6 +105,7 @@ if (isset($_POST['submit'])) {
 <body>
 
     <div class="all_wrapper">
+    
         <form method="post" action="">
             <div class="wrapper">
                 <div class="form_heading">

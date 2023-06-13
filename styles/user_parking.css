@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.parkingbox_wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+
+}
+
+.box {
+    height: 102px;
+    background-color: #f2f2f2;
+    text-align: center;
+    width: 137px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.register-vehicle{
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    margin-top: 8%;
+}
+
+.registered-vehicle{
+    width: 265px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.footer-user-parking{
+    width: 100%;
+    margin-top: 5%;
+}

@@ -26,21 +26,47 @@
 } */
 
 .head_vehicle{
-    background-color: purple;
+    background-color: #f2f2f2;
     height: 50px;
-    color: white;
+    color: #000;
 }
 
 td{
     padding: 10px;
 }
 
-.addVehicle{
+.add_vehicle{
     width: 350px;
     padding: 10px;
-    background-color: blue;
-    color: white;
-    margin: 1% 32% 4% 0%;
+    background-color: #0000ff;
+    margin: 4% 32% 4% 0%;
     border-radius: 6px;
+}
+
+.add_vehicle a{
+    text-decoration: none;
+    color: #fff;
+}
+.add_vehicle a:hover{
+    text-decoration: underline;
+
+}
+
+.button{
+    width: 180px;
+    padding: 5px;
+    background-color: 	#d9534f;
+    border:1px solid #000;
+    border-radius: 5px;
+
+}
+
+.button a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.button a:hover{
+    text-decoration: underline;
 }
 

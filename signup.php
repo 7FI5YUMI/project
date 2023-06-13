@@ -73,7 +73,7 @@ if(isset($_POST['register'])){
     }
     else{
         $encrypt_password = password_hash($password,PASSWORD_DEFAULT);
-        $query = "INSERT INTO `user`(firstname,lastname,contact,email,username,password)VALUES('$firstName','$lastName',$phone,'$email','$userName','$encrypt_password')";
+        $query = "INSERT INTO user(firstname,lastname,contact,email,username,password)VALUES('$firstName','$lastName',$phone,'$email','$userName','$encrypt_password')";
         $result = mysqli_query($conn,$query);
         if($result){
            $success = "registered successfully";

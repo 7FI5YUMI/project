@@ -58,7 +58,7 @@ if (isset($_POST['next'])) {
         $insert = mysqli_query($conn, $sql);
         if ($insert) {
             $success = "vehicle added successfully please click next for further process";
-            header("Location:parking.php");
+            header("Location:userparking.php");
         } else {
             $errrLast = "something went wrong";
         }
@@ -73,7 +73,7 @@ if (isset($_POST['next'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/vehicle.css">
-    <script src="/jquery.min.js"></script>
+    <!-- <script src="/jquery.min.js"></script> -->
     <title>Vehicle Entry</title>
     <?php
     if ($success != NULL) {
@@ -174,9 +174,7 @@ if (isset($_POST['next'])) {
                         <?php echo $vehicleValidErr ?>
                     </div>
                 </div>
-                <div class="error">
-                    <?php echo $errrLast; ?>
-                </div>
+                
                 <div class="parking_button">
                     <input type="submit" name="next" value="next" class="parking-login">
                 </div>
@@ -187,6 +185,9 @@ if (isset($_POST['next'])) {
                     </div>
                 </div>
             </div>
+            <div class="error">
+                    <?php echo $errrLast; ?>
+                </div>
         </form>
     </div>
     <?php include("./include/footer.php"); ?>

@@ -2,7 +2,7 @@
 require("./database/databaseconn.php");
 require("./database/adminselect.php");
 session_start();
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['admin'])) {
     header("location:login.php");
     exit;
 }
@@ -77,7 +77,7 @@ if (!isset($_SESSION['username'])) {
         <div class="admin_name">
             <img class="admin-img" src="./assets/icons/Administrator Male (1).svg" alt="">
             <span>
-                <?php echo $_SESSION['username']; ?>
+                <?php echo $_SESSION['admin']; ?>
             </span>
         </div>
         <div class="all_wrapper">
@@ -102,7 +102,7 @@ if (!isset($_SESSION['username'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Category.svg" alt="category">
                             </a>
-                            <a class="tablinks" onclick="showContent(evt, 'category')" href="#">category</a>
+                            <a class="tablinks" onclick="showContent(event, 'category')" href="#">category</a>
                         </span>
                     </li>
                     <li>
@@ -110,7 +110,7 @@ if (!isset($_SESSION['username'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Book online.svg" alt="Booking">
                             </a>
-                            <a class="tablinks" onclick="showContent(evt, 'booking')" href="#">booking</a>
+                            <a class="tablinks" onclick="showContent(event, 'booking')" href="#">booking</a>
                         </span>
 
                     </li>
@@ -119,7 +119,7 @@ if (!isset($_SESSION['username'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Parking.svg" alt="parking">
                             </a>
-                            <a class="tablinks" onclick="showContent(evt, 'parking')" href="#">parking</a>
+                            <a class="tablinks" onclick="showContent(event, 'parking')" href="#">parking</a>
                         </span>
                     </li>
                     <li>
@@ -127,7 +127,7 @@ if (!isset($_SESSION['username'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Payments.svg" alt="payment">
                             </a>
-                            <a class="tablinks" onclick="showContent(evt, 'payment')" href="#">payment</a>
+                            <a class="tablinks" onclick="showContent(event, 'payment')" href="#">payment</a>
                         </span>
                     </li>
                     <li>
@@ -146,7 +146,7 @@ if (!isset($_SESSION['username'])) {
         <div class="tabcontent" id="main_content">
             <div class="adminname-display">
                 <h2>Hello
-                    <?php echo $_SESSION['username']; ?>
+                    <?php echo $_SESSION['admin']; ?>
                 </h2>
                 <h3 class="welcome">Welcome to the administrator dashboard</h3>
             </div>
@@ -205,7 +205,7 @@ if (!isset($_SESSION['username'])) {
                         </div>
 
                     </div>
-                    <div class="head">Booking Status</div>
+                    <div class="head">Membership</div>
                     <div class="more_info">
                         <p>More info</p><span><img src="./assets/icons/More Info.svg" alt=""></span>
                     </div>
@@ -213,21 +213,21 @@ if (!isset($_SESSION['username'])) {
 
             </div>
         </div>
-        <div style="margin-left:16%; margin-top: 3%;" class="tabcontent" id="add_vehicle">
+        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 15.5%;" class="tabcontent" id="add_vehicle">
             <?php include("./add_vehicle.php"); ?>
         </div>
-        <div style="margin-left:16%; margin-top: 13%; margin-bottom: 18.8%;" class="tabcontent" id="category">
+        <div style="margin-left:16%; margin-top: 5%; margin-bottom: 13.33333%;" class="tabcontent" id="category">
             <h2 class="v_category" style="margin:2%;">Vehicle Category</h2>
             <?php include("./vehicle_category.php"); ?>
         </div>
-        <div style="margin-left:16%; margin-top: 3%;" class="tabcontent" id="booking">
+        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="booking">
             hello booking
         </div>
-        <div style="margin-left:12%; margin-top: 4%; margin-bottom:9%;" class="tabcontent" id="parking">
-            <!-- include("./parking.php"); -->
+        <div style="margin-left:16%; margin-top: 4%; margin-bottom:30%;" class="tabcontent" id="parking">
+            <?php include("./admin_parking.php");?>
         </div>
-        <div style="margin-left:16%; margin-top: 3%;" class="tabcontent" id="payment">
-            hello payment
+        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="payment">
+            payment hello
         </div>
     </main>
     <footer>
@@ -240,30 +240,6 @@ if (!isset($_SESSION['username'])) {
         </div>
     </footer>
     <script src="showhide.js"></script>
-
-    <!-- <script>
-        function showContent(evt, _sidebarName) {
-            // Declare all variables
-            var i, tabcontent, tablinks;
-
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab, and add an "active" class to the link that opened the tab
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        document.getElementById("defaultOpen").click();
-    </script> -->
 </body>
 
 </html>

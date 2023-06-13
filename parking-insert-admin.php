@@ -1,29 +1,29 @@
 <?php
 require("./database/databaseconn.php");
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location:login.php");
-}
-$sessionUser = $_SESSION['username'];
-//selecting user id i.e foreign key of vehicle 
-$query = "SELECT id from user  where username = '$sessionUser'";
-$res = mysqli_query($conn, $query);
-$numRows = mysqli_num_rows($res);
-if ($numRows > 0) {
-    while ($row = mysqli_fetch_assoc($res)) {
-        $userId = $row['id'];
-    }
-}
+// session_start();
+// if (!isset($_SESSION['username'])) {
+//     header("Location:login.php");
+// }
+// $sessionUser = $_SESSION['username'];
+// //selecting user id i.e foreign key of vehicle 
+// $query = "SELECT id from user  where username = '$sessionUser'";
+// $res = mysqli_query($conn, $query);
+// $numRows = mysqli_num_rows($res);
+// if ($numRows > 0) {
+//     while ($row = mysqli_fetch_assoc($res)) {
+//         $userId = $row['id'];
+//     }
+// }
 
-//selecting user_id from vehicle to get vehicle_id via user_id
-$sql = "SELECT id from vehicle where user_id = $userId";
-$res = mysqli_query($conn, $sql);
-$numRows = mysqli_num_rows($res);
-if ($numRows > 0) {
-    while ($row = mysqli_fetch_assoc($res)) {
-        $vehicleId = $row['id'];
-    }
-}
+// //selecting user_id from vehicle to get vehicle_id via user_id
+// $sql = "SELECT id from vehicle where user_id = $userId";
+// $res = mysqli_query($conn, $sql);
+// $numRows = mysqli_num_rows($res);
+// if ($numRows > 0) {
+//     while ($row = mysqli_fetch_assoc($res)) {
+//         $vehicleId = $row['id'];
+//     }
+// }
 
 
 $parking_Slot_Error = $parking_statusErr = "";
@@ -38,13 +38,16 @@ if(isset($_POST['parking-login'])){
     elseif(empty($parking_status)){
         $parking_statusErr = "parking status is required";
     }
+    elseif($parking_status == 'occupied'){
+        echo "parking is occupied";
+    }
     else{
-        $parkingInsert = "INSERT INTO parking(parkingslot_number,parking_status,vehicle_id) VALUES
-        ($parking_Slot_Number,'$parking_status',$vehicleId)";
+        $parkingInsert = "INSERT INTO parking(parkingslot_number,parking_status) VALUES
+        ($parking_Slot_Number,'$parking_status')";
         $result = mysqli_query($conn,$parkingInsert);
         if($result){
             $status = "parking added successfully";
-            header("Location:duration.php");
+            // header("Location:duration.php");
         }
         else{
             echo "error";
@@ -68,6 +71,24 @@ if(isset($_POST['parking-login'])){
             color: #DB1F48;
         }
     </style>
+    <?php
+    if ($status != NULL) {
+        ?>
+        <style>
+            .success {
+                display: block;
+                color: white;
+                background-color: lightseagreen;
+                width: 80%;
+                text-align: center;
+                margin: auto;
+                border-radius: 0.2rem;
+                padding: 0.7rem
+            }
+        </style>
+        <?php
+    }
+    ?>
 </head>
 <body>
     <div class="hello">

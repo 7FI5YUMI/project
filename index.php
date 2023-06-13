@@ -5,12 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <title>main</title>
 </head>
 
 <body>
-    <?php include("./include/nav.php");?>
+    <div class="top_nav">
+        <div class="top-nav_wrapper">
+            <div class="left-side">
+                <ul class="left">
+                    <li>+9717712899</li>
+                    <li>vpms@gmail.com</li>
+                </ul>
+
+            </div>
+            <div class="right-side">
+                <ul class="right">
+                    <li><a class="anchor" href="./login.php">Login</a></li>
+                    <li><a class="anchor" href="./register.php">Register</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img src="./assets/logo/logo.png" alt="logo" class="logo-img">
+            </div>
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="user.php">Home</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <header class="header">
         <div class="image-section">
             <img src="./assets/logo/photo-1621929747188-0b4dc28498d2.jpeg" alt="background" class="background-img">
@@ -37,7 +68,6 @@
             </div>
             <div class="about-image">
                 <img src="../assets/logo/about.jpg" alt="about_picture" class="about-img">
-
             </div>
 
         </div>
@@ -54,7 +84,7 @@
 
                 </div>
                 <div class="content-head">
-                    <h3 class="testimonial-name">Nishant</h3>
+                    <h3 class="testimonial-name">Ram</h3>
 
                 </div>
                 <div class="content-para">
@@ -69,7 +99,7 @@
 
                 </div>
                 <div class="content-head">
-                    <h3 class="testimonial-name">Nishant</h3>
+                    <h3 class="testimonial-name">Hari</h3>
 
                 </div>
                 <div class="content-para">
@@ -84,7 +114,7 @@
 
                 </div>
                 <div class="content-head">
-                    <h3 class="testimonial-name">Nishant</h3>
+                    <h3 class="testimonial-name">Shyam</h3>
 
                 </div>
                 <div class="content-para">
@@ -103,7 +133,7 @@
         <div class="partners-wrapper">
             <div class="image-one">
                 <img src="./assets/logo/images.jpeg" alt="bbsm" class="img-one">
-                
+
             </div>
             <div class="image-one">
                 <img src="./assets/logo/restaurant.jpg" alt="bbsm" class="img-one">
@@ -132,7 +162,7 @@
         </div>
     </section>
     <!-- ends -->
-   <?php include("./include/footer.php");?>
+    <?php include("./include/footer.php"); ?>
 </body>
 
 </html>
