@@ -27,9 +27,16 @@ body {
     height: 102px;
     background-color: #f2f2f2;
     text-align: center;
+    display: flex;
     width: 137px;
     border: 1px solid #000;
     border-radius: 5px;
+}
+.box-wrapper{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 2%;
 }
 .register-vehicle{
     display: flex;
@@ -49,4 +56,8 @@ body {
 .footer-user-parking{
     width: 100%;
     margin-top: 5%;
+}
+.parking-lot{
+    color: #fff;
+
 }

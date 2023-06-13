@@ -46,6 +46,11 @@ while($row=mysqli_fetch_assoc($result)){
     $exitTime = $row['exit_time'];
 }
 
+// $queryOne = "SELECT id from parking where vehicle = $vehicleId";
+// $result = mysqli_query($conn,$queryOne);
+// while($row=mysqli_fetch_assoc($result)){
+//     $parkingId = $row['id'];
+// }
   
 $datetime_1 = $entryTime; 
 $datetime_2 = $exitTime; 

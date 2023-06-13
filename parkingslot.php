@@ -1,86 +1,74 @@
 <?php
-
+session_start();
 require("./database/databaseconn.php");
+$sessionUser = $_SESSION['username'];
 
-if (isset($_GET['q'])) {
-    $vehicleIdf = $_GET['q'];
-
-    // echo $vehicleIdf;
-
-
-    $sql = "SELECT parkingslot_number from parking where parking_status = 'free'";
-    $res = mysqli_query($conn, $sql);
-
+//selecting user id i.e foreign key of vehicle 
+$query = "SELECT id from user  where username = '$sessionUser'";
+$res = mysqli_query($conn, $query);
+$numRows = mysqli_num_rows($res);
+if ($numRows > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
-        $parkingNumber = $row['parkingslot_number'];
-        // $parkingStatus = $row['parking_status'];
-        // echo $parkingNumber . "<br>";
-
+        $userId = $row['id'];
     }
+}
 
-    $vehicle_select = "SELECT vehicle_id from parking where parking_status = 'free'";
-    $res = mysqli_query($conn, $vehicle_select);
+//selecting user_id from vehicle to get vehicle_id via user_id
+$sql = "SELECT id from vehicle where user_id = $userId";
+$res = mysqli_query($conn, $sql);
+$numRows = mysqli_num_rows($res);
+if ($numRows > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
-        $vehicle_id = $row['vehicle_id'];
-
+        $vehicleId = $row['id'];
     }
-    // $status = "SELEECT parking_status from parking where parking_status = 'free'";
-    // $res = mysqli_query($conn,$status);
-    // while($row=mysqli_fetch_assoc($res)){
-    //     $parking_status = $row['parking_status'];
-    // }
-    $sql = "SELECT parkingslot_number from parking where parking_status = 'free'";
-    $res = mysqli_query($conn, $sql);
-    $parking_status = 'free';
-    while ($row = mysqli_fetch_assoc($res)) {
-        $parkingNumber = $row['parkingslot_number'];
-        // $parkingStatus = $row['parking_status'];
-        // echo $parkingNumber . "<br>";
-        if ($vehicle_id == NULL && $parking_status != 'occupied') {
-            $query = "INSERT INTO parking(parkingslot_number,vehicle_id) VALUES($parkingNumber,$vehicleIdf)";
-            $result = mysqli_query($conn, $query);
-
-            if($result)
-            {
-                // $parking_status = 'occupied';
-                echo "successfully parked vehicle";
-            }
-            else{
-                echo "denied";
-            }
     
+}
+// echo $vehicleId."<br>";
+if (isset($_GET['q'])) {
+    $parkingSelect = $_GET['q'];
+    $sql = "SELECT id from parking where parkingslot_number = $parkingSelect";
+    $res = mysqli_query($conn, $sql);
+    $numRows = mysqli_num_rows($res);
+    if ($numRows > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+            $parkingId = $row['id'];
         }
+        
+    }
+
+    $sql = "UPDATE parking set vehicle_id = $vehicleId, parking_status = 'occupied' where parkingslot_number = $parkingSelect";
+    $res = mysqli_query($conn, $sql);
+    if($res){
+        echo "success";
+        header("Location:duration.php");
 
     }
-    // $queryOne = "SELECT parkingslot_number from parking where parking_status = 'occupied'";
-    // $outres - mysqli_query($conn,$queryOne);
-    // while($row = mysqli_fetch_assoc($outres)){
-    //     $parkingslot = $row['parkingslot_number'];
-    // }
-    // if($parkingslot == 'occupied'){
-    //     echo "parking slot packed";
-    // }
-    // // echo $parkingNumber;
-    // if ($vehicleIdf == NULL && $parkingStatus == 'free') {
-    // $query = "INSERT INTO parking(parkingslot_number,parking_status,vehicle_id) VALUES($parkingNumber,$vehicleIdf)";
-    // $resutl = mysqli_query($conn, $query);
-    // if($result){
-    //     echo "successfully parked a vehicle";
+    else{
+        die("undefined");
+    }
+
+    // if($res){
+    //     // echo "success";
+    //     // $parking_status = 'occupied';
+    //     // $parking_status = 'occupied';
+    //     echo "success";
     // }
     // else{
-    //     echo "denied";
+    //     die("undefined");
     // }
-    // echo $result = mysqli_query($conn,$query);
-    // if($result){
-    //     echo "successfull";
-    //     $parkingStatus = 'occupied';
-    // }
-    // else{
+    // $sql = "SELECT parking_status from parking";
+    // $result = mysqli_query($conn, $sql);
+    // $parkingstatus = mysqli_fetch_assoc($result);
+
+    // $one = "SELECT vehicle_id from parking";
+    // $res = mysqli_query($conn, $one);
+
+    // $query = "UPDATE parking set parking_status = case when $vehicleId != 'NULL' then 'occupied'";
+    // $result = mysqli_query($conn, $query);
+    // if ($result) {
+    //     echo "success";
+    // } else {
     //     echo "not success";
-    // }
-    // }
-    // else{
-    //     echo "occupied";
     // }
 }
 
