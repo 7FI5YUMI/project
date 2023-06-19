@@ -92,6 +92,9 @@ input[type="password"]{
     margin-bottom: -6px;
     color: #FF0000;
 }
+.pass{
+    margin-bottom: -6%;
+}
 
 .prev_account{
     margin: 18px 10px 10px 10px;

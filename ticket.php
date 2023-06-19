@@ -49,14 +49,6 @@ while ($row = mysqli_fetch_assoc($res)) {
     $exitTime = $row['exit_time'];
 
 }
-// echo $username;
-// echo $vehiclePlateNumber;
-// echo $vehicleCategory;
-// echo $vehicleType;
-// echo $parkingSlot;
-// echo $entryTime;
-// echo $exitTime;
-// echo $exitTime;
 $datetime_1 = $entryTime;
 $datetime_2 = $exitTime;
 
@@ -84,12 +76,16 @@ $parkedHour = $diff->h;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/ticket-generate.css">
+    <link rel="stylesheet" href="./styles/ticket_generate.css">
     <title>Document</title>
 </head>
 
 <body>
+
     <div class="ticket">
+    <div class="payment">
+                <?php include("./payment.php");?>
+            </div>
         <table class="ticket-style" border="1">
             <tr>
                 <th class="ticket_head">owner name:</th>
@@ -139,6 +135,7 @@ $parkedHour = $diff->h;
                 echo "0 result";
             }
             ?>
+            
     </div>
 </body>
 

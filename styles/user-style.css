@@ -13,6 +13,11 @@
 }
 .login-button-text{
     color: #fff;
+    text-decoration: none;
+}
+
+.login-button-text:hover{
+    text-decoration: underline;
 }
 .logo-img{
     height: 68px;
@@ -84,7 +89,7 @@ button{
 
 }
 .vehicle-category{
-    margin-bottom: 1%;
+    margin-bottom: 4%;
 }
 .bike-list{
     display: flex;
@@ -144,6 +149,7 @@ button{
 
 .footer-user{
     margin-top: 2%;
+
 }
 
 
@@ -151,5 +157,42 @@ button{
     width: 50px;
 }
 .logout-img{
-    width: 42px;
+    width: 30px;
+}
+.Btn{
+    color: #fff;
+    text-decoration: none;
+}
+.Btn:hover{
+    text-decoration: underline;
+}
+
+.membership-btn{
+    width: 160px;
+    padding: 6px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.questionaire{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    background-color: #EAEFF2;
+    height: 150px;
+    margin-bottom: -1%;
+}
+.questionaire-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }

@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/payment.css">
     <title>Payment</title>
 </head>
 <body>
     payment: 
-    <button id="payment-button" style="color: red">Pay with Khalti</button>
+    <button id="payment-button">
+        <!-- <img src="./assets/icons/khalti.png" alt="khalti-logo" class="khalti-img"> -->
+        
+        Pay with Khalti
+    </button>
 
 
 
@@ -18,9 +23,9 @@
     <script>
         var config = {
             // replace the publicKey with yours
-            "publicKey": "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
+            "publicKey": "test_public_key_34c055d5e6e84201acacaaf00bfa025b",
             "productIdentity": "1234567890",
-            "productName": "Dragon",
+            "productName": "vehicle-parking",
             "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
             "paymentPreference": [
                 "KHALTI",

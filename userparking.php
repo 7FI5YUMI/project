@@ -25,7 +25,7 @@ if ($numRows > 0) {
         $vehicleId = $row['id'];
     }
 }
-
+$vehicleIdExistErr = "";
 $selectQuery = "SELECT vehicle_type from vehicle where user_id=$userId";
 $result = mysqli_query($conn, $selectQuery);
 $numRows = mysqli_num_rows($result);
@@ -55,10 +55,10 @@ if ($numRows > 0) {
 }
 // $vehicleIdExist = "SELECT vehicle_id FROM parking where vehicle_id = $vehicleId";
 // $result = mysqli_query($conn, $vehicleIdExist);
-// // $numExistRows = mysqli_num_rows($res);
-// // if ($numExistRows > 0) {
-// //     $vehicleIdExistErr = "vehicle exist try another";
-// // }
+// $numExistRows = mysqli_num_rows($res);
+// if ($numExistRows > 0) {
+//     $vehicleIdExistErr = "vehicle exist try another";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

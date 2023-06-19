@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user_style.css">
+    <link rel="stylesheet" href="./styles/user-style.css">
     <title>Users</title>
 </head>
 <body>
@@ -33,7 +33,6 @@
                     <li><a href="#">About us</a></li>
                     <li><a href="#">Payment</a></li>
                 </ul>
-
             </div>
             <div class="nav-login">
                 <div class="profile">
@@ -97,6 +96,19 @@
             
         </div>
         
+    </section>
+    <section class="questionaire">
+        <div class="questionaire-wrapper">
+            <div class="questionaire-box">
+                <h3>Do you want to become member?</h3>
+            </div>
+            <div class="membership-button">
+                <button class="membership-btn">
+                    <a href="./membership.html" class="Btn">Click here</a>
+                    
+                </button>
+            </div>
+        </div>
     </section>
     <div class="footer-user">
        <?php include("./include/footer.php");?>
