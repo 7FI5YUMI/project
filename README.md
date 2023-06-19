@@ -1,2 +1,2 @@
-# Project_4thsem a college group project about vehicle parking management system where user can book thier vehicle park it and make payment through online or cash ongoing project.
+# vehicle management system is an web application that register vehicle and park in a parking lot and store duration of the vehicle.
 

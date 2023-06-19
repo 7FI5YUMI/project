@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.ticket-style{
+    border-collapse: collapse;
+    border-collapse: collapse;
+    width: 66%;
+    height: 124px;
+}
+.ticket{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 9%;
+}
+
+.ticket_head{
+    padding: 10px;
+}

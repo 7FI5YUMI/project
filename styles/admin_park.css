@@ -1,52 +1,24 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-.table {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10%;
-    /* margin-top: 15%; */
-}
-
-.v_category {
+.vehicle_park-admin{
     border-collapse: collapse;
-    width: 60%;
-    height: 55px;
+    width: 95%;
+    text-align: center;
+    margin-left: 0%;
 }
-
-.category_head {
+.park-vehicle{
+    background-color: #f2f2f2;
+    height: 50px;
+    color: #000;
+}
+td{
     padding: 10px;
 }
 
-.btn-update {
-    width: 150px;
-    padding: 10px;
-    background-color: #84a2d9;
-}
-
-.btn-delete {
-    width: 150px;
-    padding: 10px;
-    background-color: #d9534f;
-    color: #fff;
-}
-
-.action {
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-direction: column; */
-    gap: 34px;
-    width: 100%;
-    /* border: none; */
-}
-
-.add-category {
+.add-parking{
     width: 350px;
     padding: 10px;
     background-color: #84a2d9;
@@ -54,16 +26,16 @@
     border-radius: 6px;
 }
 
-.add-category a {
+.add-parking a{
     text-decoration: none;
     color: #fff;
 }
-
-.add-category a:hover {
+.add-parking a:hover{
     text-decoration: underline;
 
 }
 
+/* model for inserting in admin panel */
 .modal {
     display: none;
     /* Hidden by default */
@@ -93,8 +65,7 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 49%;
-    /* height: 100%; */
+    width: 80%;
 }
 
 /* The Close Button */
@@ -110,4 +81,46 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 59vh;
+}
+
+.parking{
+    width: 265px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+.fl_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 7%;
+}
+.parking-login{
+    width: 160px;
+    padding: 8px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+}
+.status{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #008000;
+}
+.error{
+    color: #ff0000;
 }

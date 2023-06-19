@@ -89,9 +89,11 @@ input[type="password"]{
 }
 
 .error{
+    margin-bottom: -6px;
     color: #FF0000;
 }
 
 .prev_account{
     margin: 18px 10px 10px 10px;
 }
+

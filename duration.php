@@ -62,7 +62,7 @@ $diff = $start_datetime->diff(new DateTime($datetime_2));
 // echo $diff->y.' Years<br>'; 
 // echo $diff->m.' Months<br>'; 
 // echo $diff->d.' Days<br>'; 
-// echo $diff->h*50.' Hours<br>'; 
+$rate = $diff->h*50; 
 // echo $diff->i.' Minutes<br>'; 
 // echo $diff->s.' Seconds<br>';
 
@@ -124,7 +124,7 @@ if (isset($_POST['date-time-submit'])) {
     <div class="wrapper-start-end">
     <form method="post" action="">
         <div class="start-end">
-        <?php echo $diff->h*50;?>
+        <?php echo $rate;?>
             <div class="start">
                 <label for="entrydate">Entry date and time</label>
                 <br>

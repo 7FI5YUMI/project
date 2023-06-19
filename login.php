@@ -1,11 +1,11 @@
 <?php
 require("./database/databaseconn.php");
-$login = false;
-session_start();
+// $login = false;
+// session_start();
 $usernameExistErr = "";
 $nameErr = $passwordErr = "";
 $nameErrvalid = $passwordErrvalid = "";
-$passErr = "";
+$passErr = $secLastErr = $lastErr =  "";
 if (isset($_POST['submit'])) {
     $username = $_POST['name'];
     $password = $_POST['pass'];
@@ -17,75 +17,41 @@ if (isset($_POST['submit'])) {
         $passwordErr = "Password is required";
     } else if (strlen($password) <= 8) {
         $passwordErrvalid = "password should be of 8 character ";
-    }
-    else {
+    } else {
         $query = "SELECT * FROM user WHERE username = '$username'";
         $res = mysqli_query($conn, $query);
-        $role = mysqli_fetch_assoc($res);
-        
-        if ($role['role'] == '1') {
-            $login = true;
-            session_start();
-             $_SESSION['admin']=$username;
-            $_SESSION['loggedIn'] == TRUE;
-           header("Location:admin.php");
+        // $role = mysqli_fetch_assoc($res);
 
-        } elseif ($role['role'] == '0') {
-            $login = true;
-            session_start();
-             $_SESSION['username'] = $username;
-            $_SESSION['loggedIn'] == TRUE;
-            header("Location:user.php");
+        if ($res > 0) {
+            if (mysqli_num_rows($res) > 0) {
+                while ($row = mysqli_fetch_assoc($res)) {
+                    // $role = mysqli_fetch_assoc($res);
+                    if (password_verify($password, $row['password'])) {
+                        // $role = mysqli_fetch_assoc($res);
+                        if ($row['role'] == '1') {
+                            // $login = true;
+                            session_start();
+                            $_SESSION['admin'] = $username;
+                            // $_SESSION['loggedIn'] == TRUE;
+                            header("Location:admin.php");
 
+                        } else {
+                            // $login = true;
+                            session_start();
+                            $_SESSION['username'] = $username;
+                            // $_SESSION['loggedIn'] == TRUE;
+                            header("Location:user.php");
+                        }
+                    } else {
+                       $secLastErr =  "Invalid username or password";
+                    }
+                }
 
-        } else {
-            echo 'invalid username or password';
-        }
-        // if ($res) {
-        //     if (mysqli_num_rows($res) == 1) {
-        //         while ($row = mysqli_fetch_assoc($res)) {
-        //             if (password_verify($password, $row['password'])) {
-        //                 session_start();
-        //                 //store data into session
-        //                 // $_SESSION['role'] = $role;
-        //                 // $_SESSION['loggedIn'] = TRUE;
-        //                 // $_SESSION['username'] = $username;
-        //                 // header("location:user.php");
-        //                 // $_SESSION['role'] = $role;
-        //                 $_SESSION['username'] = $username;
-        //                 // $_SESSION['role'] = $role;
-        //                 if($role == '1'){
-        //                     $_SESSION['username'] = $username;
-        //                     header("Location:admin.php");
-        //                 }
-        //                 elseif($role == '0')
-        //                 {
-        //                     $_SESSION['username'] = $username;
-        //                     header("Location:user.php");
-        //                 }
-        //                 else{
-        //                     echo 'invalid username or password';
-        //                 }
-
-
-
-
-
-        //                 // if($_SESSION['role']=="1"){
-        //                 //     header("Location:admin.php");
-
-        //                 // }
-        //                 // else{
-        //                 //     header("location:user.php");
-        //                 // }
-        //             } else {
-        //                 $passErr = "incorrect username or password! please try again";
-        //             }
-
-
-        //         }
-        //     }
-        // }
+            }
+            else {
+                $lastErr =  "User not found please register";
+            }
+        } 
     }
 }
 ?>
@@ -98,15 +64,16 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/login.css">
-    <!-- <link rel="stylesheet" href="./jquery.min.js"> -->
+    <script src="./jquery.min.js"></script>
     <title>Login Form</title>
+  
 </head>
 
 <body>
 
     <div class="all_wrapper">
-    
-        <form method="post" action="">
+
+        <form method="post" id="myForm" action="">
             <div class="wrapper">
                 <div class="form_heading">
                     <h2>Login Form</h2>
@@ -138,6 +105,12 @@ if (isset($_POST['submit'])) {
                     <div class="error">
                         <?php echo $passErr; ?>
                     </div>
+                    <div class="error">
+                        <?php echo $secLastErr;?>
+                    </div>
+                    <div class="error">
+                        <?php echo $lastErr;?>
+                    </div>
                     <a class="forgot" href="">Forgot password?</a>
                     <div class="button">
                         <input type="submit" id="submit" name="submit" value="Login" class="login_button">
@@ -151,6 +124,7 @@ if (isset($_POST['submit'])) {
             </div>
         </form>
     </div>
+    <div class="loader"></div>
 </body>
 
 </html>

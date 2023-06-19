@@ -1,76 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Ubuntu&display=swap');
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
 }
-
-
-.vehicle_add-admin{
-    border-collapse: collapse;
-    width: 95%;
-    text-align: center;
-    margin-left: 0%;
-    
-    
-}
-/* table{
-    border-collapse: collapse;
-    width: 80%;
-    text-align: center;
-    margin-left: 15%;
-    
-
-} */
-
-.head_vehicle{
-    background-color: #f2f2f2;
-    height: 50px;
-    color: #000;
-}
-
-td{
-    padding: 10px;
-}
-
-.add_vehicle{
-    width: 350px;
-    padding: 10px;
-    background-color: #0000ff;
-    margin: 4% 32% 4% 0%;
-    border-radius: 6px;
-}
-
-.add_vehicle a{
-    text-decoration: none;
-    color: #fff;
-}
-.add_vehicle a:hover{
-    text-decoration: underline;
-
-}
-
-.button{
-    width: 180px;
-    padding: 5px;
-    background-color: 	#d9534f;
-    border:1px solid #000;
-    border-radius: 5px;
-
-}
-
-.button a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.button a:hover{
-    text-decoration: underline;
-}
-
-/* form */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -91,7 +23,7 @@ td{
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 49%;
     /* height: 100%; */
   }
   
@@ -172,3 +104,4 @@ select .category{
     border: 1px solid #000;
     border-radius: 5px;
 }
+

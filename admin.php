@@ -7,6 +7,7 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 
+
 ?>
 <!-- // require("./database/databaseconn.php");
 // $parking_Slot_Error = $parking_statusErr = "";
@@ -186,7 +187,9 @@ if (!isset($_SESSION['admin'])) {
             <div class="box-wrapper--two">
                 <div class="box_parking">
                     <div class="box_parking-item">
-                        <div class="number">22/70</div>
+                        <div class="number">
+                            <?php parkingCount();?>
+                        </div>
                         <div class="parking_logo">
                             <img src="./assets/icons/parking.svg" alt="">
                         </div>
@@ -224,7 +227,7 @@ if (!isset($_SESSION['admin'])) {
             hello booking
         </div>
         <div style="margin-left:16%; margin-top: 4%; margin-bottom:30%;" class="tabcontent" id="parking">
-            <?php include("./admin_parking.php");?>
+            <?php include("./admin-parking.php");?>
         </div>
         <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="payment">
             payment hello

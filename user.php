@@ -72,8 +72,9 @@
                 </div>
                 <div class="box-bike-list">
                     <ul class="bike-list">
-                        <!-- <li>Parking fees: 50/hr</li> -->
-                        <li>Vehicle type: Four Wheeler or four wheeler</li>
+                        <li>Parking fees: 25/hr for twowheeler</li>
+                        <li>Parking fees: 50/hr for fourwheeler</li>
+                        <li>Vehicle type: Four Wheeler or two wheeler</li>
                     </ul>
                 </div>
                 <div class="button-park">

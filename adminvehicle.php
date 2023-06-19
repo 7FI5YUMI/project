@@ -132,5 +132,14 @@
                 </div>
             </div>
         </form>
+        <footer>
+        <div class="copyright_wrapper">
+            <div class="copyright">
+                <p>&copy; All rights reserved
+                    <?php echo date('Y'); ?> vehicle parking management system
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
