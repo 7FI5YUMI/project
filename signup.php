@@ -15,7 +15,7 @@ if (isset($_POST['register'])) {
     $email = $_POST['email'];
     $password = $_POST['pass'];
     $nameValid = "/^([a-zA-Z]+)$/";
-    $phoneValid = "/^98[0-9]{8}+$ /";
+    $phoneValid = "/^98[0-9]{8}+$/";
     $confirmPassword = $_POST['cpass'];
 
     if (empty($firstName)) {
@@ -30,9 +30,9 @@ if (isset($_POST['register'])) {
     } elseif (empty($phone)) {
         $phoneErr = "phone is required";
     }
-    // elseif (!preg_match($phoneValid,$phone)) {
-    //     $phoneValidErr = "phone number must be 10 and in a valid format";
-    // }
+    elseif (!preg_match($phoneValid,$phone)) {
+        $phoneValidErr = "phone number must be 10 and in a valid format";
+    }
     elseif (empty($userName)) {
         $userNameErr = "username is required";
     }

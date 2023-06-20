@@ -219,8 +219,8 @@ if (!isset($_SESSION['admin'])) {
         <div style="margin-left:16%; margin-top: 3%; margin-bottom: 15.5%;" class="tabcontent" id="add_vehicle">
             <?php include("./add_vehicle.php"); ?>
         </div>
-        <div style="margin-left:16%; margin-top: 5%; margin-bottom: 13.33333%;" class="tabcontent" id="category">
-            <h2 class="v_category" style="margin:2%;">Vehicle Category</h2>
+        <div style="margin-left:16%; margin-top: 4%; margin-bottom: 13.33333%;" class="tabcontent" id="category">
+            <!-- <h2 class="v_category">Vehicle Category</h2> -->
             <?php include("./vehicle_category.php"); ?>
         </div>
         <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="booking">
