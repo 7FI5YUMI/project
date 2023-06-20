@@ -1,19 +1,20 @@
 <?php
- include("./database/databaseconn.php");
- session_start();
+include("./database/databaseconn.php");
+session_start();
 //  $user = $_SESSION['username'];
- if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
     header("Location:login.php");
     exit;
- }
+}
 
- if(isset($_POST['park'])){
+if (isset($_POST['park'])) {
     header("location: vehicle.php");
- }
+}
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,8 +22,12 @@
     <link rel="stylesheet" href="./styles/user-style.css">
     <title>Users</title>
 </head>
-<body>
-<div class="navigation">
+
+<body onload="loaderBefore()">
+    <div id="load">
+    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div class="navigation">
         <nav class="navbar">
             <div class="nav-logo">
                 <img src="./assets/logo/logo.png" alt="logo" class="logo-img">
@@ -49,14 +54,16 @@
             </div>
         </nav>
     </div>
-    
+
     <main class="main">
         <div class="main-welcome-text">
-            <h2>Hello <?php echo $_SESSION['username']; ?></h2>
+            <h2>Hello
+                <?php echo $_SESSION['username']; ?>
+            </h2>
             <h3>Welcome to the users panel</h3>
         </div>
     </main>
-    
+
     <section class="vehicle-category">
         <div class="vehicle-list-header">
             <h3 class="vehicle-list-head">Choose what you want to park</h3>
@@ -78,7 +85,7 @@
                 </div>
                 <div class="button-park">
                     <form method="post" action="">
-                    <input type="submit" name="park" class="button-parking" value="next">
+                        <input type="submit" name="park" class="button-parking" value="next">
                     </form>
                 </div>
             </div>
@@ -93,9 +100,9 @@
                     <button class="button-parking-slot"><a href="./userparking.php">View parkingslot</a></button>
                 </div>
             </div>
-            
+
         </div>
-        
+
     </section>
     <section class="questionaire">
         <div class="questionaire-wrapper">
@@ -105,13 +112,21 @@
             <div class="membership-button">
                 <button class="membership-btn">
                     <a href="./membership.html" class="Btn">Click here</a>
-                    
+
                 </button>
             </div>
         </div>
     </section>
     <div class="footer-user">
-       <?php include("./include/footer.php");?>
+        <?php include("./include/footer.php"); ?>
     </div>
+
+    <script>
+        var loader = document.getElementById('load');
+        function loaderBefore(){
+            loader.style.display = 'none';
+        }
+    </script>
 </body>
+
 </html>

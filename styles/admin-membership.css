@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.membership{
+    border-collapse: collapse;
+    width: 80%;
+    height: 30px;
+}
+
+tr{
+    width: 90%;
+}

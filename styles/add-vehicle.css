@@ -42,18 +42,19 @@ td{
 }
 
 .add_vehicle{
-    width: 350px;
+    width: 233px;
     padding: 10px;
     background-color: #0000ff;
     margin: 0% 32% 2% 0%;
     border-radius: 6px;
-}
-
-.add_vehicle a{
-    text-decoration: none;
     color: #fff;
 }
-.add_vehicle a:hover{
+
+/* .add_vehicle a{
+    text-decoration: none;
+    color: #fff;
+} */
+.add_vehicle :hover{
     text-decoration: underline;
 
 }

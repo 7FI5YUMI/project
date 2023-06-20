@@ -9,42 +9,6 @@ if (!isset($_SESSION['admin'])) {
 
 
 ?>
-<!-- // require("./database/databaseconn.php");
-// $parking_Slot_Error = $parking_statusErr = "";
-
-// $sessionUser = $_SESSION['username'];
-// $query = "SELECT id from vehicle where username = '$sessionUser'";
-// $res = mysqli_query($conn, $query);
-// $numRows = mysqli_num_rows($res);
-// if ($numRows > 0) {
-//     while ($row = mysqli_fetch_assoc($res)) {
-//         $vehicleId = $row['id'];
-
-//     }
-// }
-
-// if(isset($_POST['submit'])){
-//     $parking_Slot_Number = $_POST['parking-slot-number'];
-//     $parking_status = $_POST['parking_status'];
-
-//     if(empty($parking_Slot_Number)){
-//         $parking_Slot_Error = "parking slot is required";
-//     }
-//     elseif(empty($parking_status)){
-//         $parking_status = "parking status is required";
-//     }
-//     else{
-//         $sql = "INSERT INTO parking(parkingslot_number,parking_status,vehicle_id)VALUES($parking_Slot_Number,$parking_status)";
-//         $result = mysqli_query($conn,$sql);
-//         if($result){
-//             $success = "parking status added";
-//         }
-//         else{
-//             echo "error";
-//         }
-
-//     }
-// } -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -216,17 +180,17 @@ if (!isset($_SESSION['admin'])) {
 
             </div>
         </div>
-        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 15.5%;" class="tabcontent" id="add_vehicle">
+        <div style="margin-left:16%; margin-top: 2%; margin-bottom: 15.5%;" class="tabcontent" id="add_vehicle">
             <?php include("./add_vehicle.php"); ?>
         </div>
-        <div style="margin-left:16%; margin-top: 4%; margin-bottom: 13.33333%;" class="tabcontent" id="category">
+        <div style="margin-left:16%; margin-top: 2%; margin-bottom: 13.33333%;" class="tabcontent" id="category">
             <!-- <h2 class="v_category">Vehicle Category</h2> -->
             <?php include("./vehicle_category.php"); ?>
         </div>
         <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="booking">
-            hello booking
+            <?php include("./admin-membership.php");?>
         </div>
-        <div style="margin-left:16%; margin-top: 4%; margin-bottom:30%;" class="tabcontent" id="parking">
+        <div style="margin-left:16%; margin-top: 2%; margin-bottom:30%;" class="tabcontent" id="parking">
             <?php include("./admin-parking.php");?>
         </div>
         <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="payment">

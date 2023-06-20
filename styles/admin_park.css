@@ -1,24 +1,33 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.vehicle_park-admin{
+
+.vehicle_park-admin {
     border-collapse: collapse;
     width: 95%;
     text-align: center;
     margin-left: 0%;
 }
-.park-vehicle{
+
+.park-vehicle {
     background-color: #f2f2f2;
     height: 50px;
     color: #000;
 }
-td{
-    padding: 10px;
+
+td {
+    padding: 3px;
 }
 
-.add-parking{
+tr {
+    width: 98%;
+    height: 65px;
+
+}
+
+.add-parking {
     width: 350px;
     padding: 10px;
     background-color: #84a2d9;
@@ -26,11 +35,12 @@ td{
     border-radius: 6px;
 }
 
-.add-parking a{
+.add-parking a {
     text-decoration: none;
     color: #fff;
 }
-.add-parking a:hover{
+
+.add-parking a:hover {
     text-decoration: underline;
 
 }
@@ -82,32 +92,36 @@ td{
     text-decoration: none;
     cursor: pointer;
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 59vh;
 }
 
-.parking{
+.parking {
     width: 265px;
     padding: 8px;
     border: 1px solid #000;
     border-radius: 5px;
 }
-.fl_wrapper{
+
+.fl_wrapper {
     display: flex;
     flex-direction: column;
     gap: 19px;
 }
-.button{
+
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     margin-top: 7%;
 }
-.parking-login{
+
+.parking-login {
     width: 160px;
     padding: 8px;
     background-color: #8000FF;
@@ -115,12 +129,14 @@ td{
     border-radius: 5px;
     color: #ffff;
 }
-.status{
+
+.status {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #008000;
 }
-.error{
+
+.error {
     color: #ff0000;
 }

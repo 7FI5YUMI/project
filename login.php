@@ -5,7 +5,7 @@ require("./database/databaseconn.php");
 $usernameExistErr = "";
 $nameErr = $passwordErr = "";
 $nameErrvalid = $passwordErrvalid = "";
-$passErr = $secLastErr = $lastErr =  "";
+$passErr = $secLastErr = $lastErr = "";
 if (isset($_POST['submit'])) {
     $username = $_POST['name'];
     $password = $_POST['pass'];
@@ -43,15 +43,14 @@ if (isset($_POST['submit'])) {
                             header("Location:user.php");
                         }
                     } else {
-                       $secLastErr =  "Invalid username or password";
+                        $secLastErr = "Invalid username or password";
                     }
                 }
 
+            } else {
+                $lastErr = "User not found please register";
             }
-            else {
-                $lastErr =  "User not found please register";
-            }
-        } 
+        }
     }
 }
 ?>
@@ -66,7 +65,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="styles/login-all.css">
     <script src="./jquery.min.js"></script>
     <title>Login Form</title>
-  
+
 </head>
 
 <body>
@@ -106,10 +105,10 @@ if (isset($_POST['submit'])) {
                         <?php echo $passErr; ?>
                     </div>
                     <div class="error">
-                        <?php echo $secLastErr;?>
+                        <?php echo $secLastErr; ?>
                     </div>
                     <div class="error">
-                        <?php echo $lastErr;?>
+                        <?php echo $lastErr; ?>
                     </div>
                     <a class="forgot" href="">Forgot password?</a>
                     <div class="button">
@@ -125,6 +124,18 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
     <div class="loader"></div>
+    <script>
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 3000);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
+    </script>
 </body>
 
 </html>
