@@ -19,7 +19,7 @@ if (isset($_POST['park'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-style.css">
+    <link rel="stylesheet" href="./styles/user_style.css">
     <title>Users</title>
 </head>
 
@@ -35,7 +35,7 @@ if (isset($_POST['park'])) {
             <div class="nav-menu">
                 <ul class="nav-list">
                     <li><a href="user.php">Home</a></li>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="#about-us">About us</a></li>
                     <li><a href="#">Payment</a></li>
                 </ul>
             </div>
@@ -114,6 +114,19 @@ if (isset($_POST['park'])) {
                     <a href="./membership.html" class="Btn">Click here</a>
 
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us">
+        <h2 class="about-us_head">About us</h2>
+        <div class="aboutus_wrapper">
+            <div class="left-side">
+                <p class="left-side_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repudiandae similique beatae officiis voluptates! Aut sapiente similique esse reiciendis? Asperiores iusto natus eius voluptates ratione, dolorum blanditiis excepturi nisi quas animi rerum suscipit sapiente officiis odio, beatae perspiciatis incidunt! Dicta aut id minus, cum blanditiis magnam perspiciatis quo, distinctio at veritatis quaerat expedita repellat tenetur?</p>
+
+            </div>
+            <div class="right-side">
+                <img src="./assets/icons/vehicle-about.png" alt="about-us_img" class="about-img">
             </div>
         </div>
     </section>
