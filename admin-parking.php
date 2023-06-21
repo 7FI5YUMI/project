@@ -67,7 +67,10 @@ if (isset($_POST['parking-login'])) {
 </head>
 
 <body>
-    <button id="myBtn" class="add-parking">Add parking</button>
+    <button id="myBtn" class="add-parking">
+        
+    <a href="./parking-insert_admin.php">Add parking</a>
+    </button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">

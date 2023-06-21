@@ -67,7 +67,7 @@ if ($numRows > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user_parking.css">
+    <link rel="stylesheet" href="./styles/user-parking.css">
 
     <title>Parking slot</title>
 </head>
@@ -116,7 +116,7 @@ if ($numRows > 0) {
                 $parkingNumber = $row['parkingslot_number'];
                 echo ' <div class="box">
                     
-                         <button class="button remove" style="color: red"><a class="parking-lot" href="parkingslot.php?q=' . $parkingNumber . '">' . $parkingNumber . '</a></button>
+                         <button class="button-remove"><a class="parking-lot" href="parkingslot.php?q=' . $parkingNumber . '">' . $parkingNumber . '</a></button>
    
                                 
                         </div>';

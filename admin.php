@@ -67,7 +67,7 @@ if (!isset($_SESSION['admin'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Category.svg" alt="category">
                             </a>
-                            <a class="tablinks" onclick="showContent(event, 'category')" href="#">category</a>
+                            <a class="tablinks" onclick="showContent(event, 'category')" href="#">Category</a>
                         </span>
                     </li>
                     <li>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['admin'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Book online.svg" alt="Booking">
                             </a>
-                            <a class="tablinks" onclick="showContent(event, 'booking')" href="#">booking</a>
+                            <a class="tablinks" onclick="showContent(event, 'booking')" href="#">Membership</a>
                         </span>
 
                     </li>
@@ -84,7 +84,7 @@ if (!isset($_SESSION['admin'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Parking.svg" alt="parking">
                             </a>
-                            <a class="tablinks" onclick="showContent(event, 'parking')" href="#">parking</a>
+                            <a class="tablinks" onclick="showContent(event, 'parking')" href="#">Parking</a>
                         </span>
                     </li>
                     <li>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['admin'])) {
                             <a href="#">
                                 <img class="sidebar-img" src="./assets/icons/Payments.svg" alt="payment">
                             </a>
-                            <a class="tablinks" onclick="showContent(event, 'payment')" href="#">payment</a>
+                            <a class="tablinks" onclick="showContent(event, 'payment')" href="#">Payment</a>
                         </span>
                     </li>
                     <li>

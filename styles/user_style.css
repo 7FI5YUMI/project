@@ -6,19 +6,69 @@
     font-family: 'Ubuntu', sans-serif;
     scroll-behavior: smooth;
 }
-
+body{
+    background-color: #E6E6FA;
+}
   
 #load{
     width: 100%;
     height: 100vh;
     position: fixed;
-    background: #fff url("Spinner-1s-200px.gif") no-repeat center;
     z-index: 9999;
 }
+#load {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #000;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
+  
+  #myDiv {
+    display: none;
+    text-align: center;
+  }
 /* ------------loader end----------------- */
 /* navbar start */
 .navigation{
     background-color: #D9D9D9;
+    /* background-color: #E6E6FA; */
     width: 100%;
     height: 100px;
 }
@@ -52,6 +102,7 @@
     display: flex;
     align-items: center;
     gap: 30px;
+    margin-right: 1%;
 }
 .nav-list li a{
     color: #000;
@@ -86,6 +137,9 @@ button{
     margin-left: 5%;
     margin-top: 2%;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .box-bike{
     display: flex;
@@ -94,7 +148,7 @@ button{
     align-items: center;
     width: 22%;
     height: 450px;
-    background-color: #8000FF;
+    background-color: #008080;
     color: #fff;
     border-top-right-radius: 50%;
 
@@ -198,7 +252,7 @@ button{
     justify-content: center;
     margin-top: 3%;
     /* background-color: #EAEFF2; */
-    background-color: #fff;
+    /* background-color: #fff; */
     height: 150px;
     margin-bottom: -1%;
 }

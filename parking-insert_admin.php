@@ -26,40 +26,43 @@ require("./database/databaseconn.php");
 // }
 
 
-$parking_Slot_Error = $parking_statusErr = "";
+$parking_Slot_Error = $parking_statusErr = $parkingSlotExistErr = "";
 $status = "";
-if(isset($_POST['parking-login'])){
+if (isset($_POST['parking-login'])) {
     $parking_Slot_Number = $_POST['parking-slot-number'];
     $parking_status = $_POST['parking_status'];
 
-    if(empty($parking_Slot_Number)){
+    if (empty($parking_Slot_Number)) {
         $parking_Slot_Error = "parking slot is required";
-    }
-    elseif(empty($parking_status)){
+    } elseif (empty($parking_status)) {
         $parking_statusErr = "parking status is required";
-    }
-    elseif($parking_status == 'occupied'){
+    } elseif ($parking_status == 'occupied') {
         echo "parking is occupied";
     }
-    else{
+    $parkingSlotExist = "SELECT parkingslot_number FROM parking where parkingslot_number = $parking_Slot_Number";
+    $res = mysqli_query($conn, $parkingSlotExist);
+    $numExistRows = mysqli_num_rows($res);
+    if ($numExistRows > 0) {
+        $parkingSlotExistErr = "parking slot number exist try another";
+    } else {
         $parkingInsert = "INSERT INTO parking(parkingslot_number,parking_status) VALUES
         ($parking_Slot_Number,'$parking_status')";
-        $result = mysqli_query($conn,$parkingInsert);
-        if($result){
+        $result = mysqli_query($conn, $parkingInsert);
+        if ($result) {
             $status = "parking added successfully";
             // header("Location:duration.php");
-        }
-        else{
+        } else {
             echo "error";
         }
-       
-        
+
+
     }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,7 +70,7 @@ if(isset($_POST['parking-login'])){
     <link rel="stylesheet" href="./styles/parking.css">
     <title>Parking</title>
     <style>
-        .error{
+        .error {
             color: #DB1F48;
         }
     </style>
@@ -75,7 +78,7 @@ if(isset($_POST['parking-login'])){
     if ($status != NULL) {
         ?>
         <style>
-            .success {
+            .status {
                 display: block;
                 color: white;
                 background-color: lightseagreen;
@@ -83,16 +86,18 @@ if(isset($_POST['parking-login'])){
                 text-align: center;
                 margin: auto;
                 border-radius: 0.2rem;
-                padding: 0.7rem
+                padding: 0.7rem;
+                margin-top: 13%;
             }
         </style>
         <?php
     }
     ?>
 </head>
+
 <body>
     <div class="hello">
-        <?php echo $_SESSION['username'];?>
+        <?php echo $_SESSION['username']; ?>
     </div>
     <div>
         <?php echo $vehicleId; ?>
@@ -100,26 +105,34 @@ if(isset($_POST['parking-login'])){
     <div class="wrapper">
         <form method="post" action="">
             <div class="fl_wrapper">
-            <h2>Enter parking space details</h2>
+                <h2>Enter parking space details</h2>
                 <div class="parking_slot-n">
                     <label for="parking-slot-n">Parking slot number</label>
                     <br>
                     <input type="text" name="parking-slot-number" class="parking">
-                    <div class="error"><?php echo $parking_Slot_Error;?></div>
+                    <div class="error">
+                        <?php echo $parking_Slot_Error; ?>
+                        <?php echo $parkingSlotExistErr; ?>
+                    </div>
                 </div>
                 <div class="parking-status">
                     <label for="parking-status">Parking status</label>
                     <br>
                     <input type="text" name="parking_status" class="parking">
-                    <div class="error"><?php echo $parking_statusErr;?> </div>
-                    
+                    <div class="error">
+                        <?php echo $parking_statusErr; ?>
+                    </div>
+
                 </div>
             </div>
             <div class="button">
                 <input type="submit" name="parking-login" value="next" class="parking-login">
             </div>
-            <div class="status"><?php echo $status;?></div>
+            <div class="status">
+                <?php echo $status; ?>
+            </div>
         </form>
     </div>
 </body>
+
 </html>

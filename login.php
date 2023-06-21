@@ -96,10 +96,11 @@ if (isset($_POST['submit'])) {
                         <input type="password" name="pass">
                         <div class="error">
                             <?php echo $passwordErr; ?>
-                        </div>
-                        <div class="error">
                             <?php echo $passwordErrvalid; ?>
                         </div>
+                        <!-- <div class="error">
+                           
+                        </div> -->
                     </div>
                     <div class="error">
                         <?php echo $passErr; ?>

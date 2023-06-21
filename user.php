@@ -23,10 +23,9 @@ if (isset($_POST['park'])) {
     <title>Users</title>
 </head>
 
-<body onload="loaderBefore()">
-    <div id="load">
-    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    </div>
+<body onload="loaderBefore()" style="margin:0">
+    <div id="load"></div>
+    <div id="myDiv" style="display: none;" class="animate-bottom">
     <div class="navigation">
         <nav class="navbar">
             <div class="nav-logo">
@@ -122,7 +121,11 @@ if (isset($_POST['park'])) {
         <h2 class="about-us_head">About us</h2>
         <div class="aboutus_wrapper">
             <div class="left-side">
-                <p class="left-side_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur repudiandae similique beatae officiis voluptates! Aut sapiente similique esse reiciendis? Asperiores iusto natus eius voluptates ratione, dolorum blanditiis excepturi nisi quas animi rerum suscipit sapiente officiis odio, beatae perspiciatis incidunt! Dicta aut id minus, cum blanditiis magnam perspiciatis quo, distinctio at veritatis quaerat expedita repellat tenetur?</p>
+                <p class="left-side_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
+                    repudiandae similique beatae officiis voluptates! Aut sapiente similique esse reiciendis? Asperiores
+                    iusto natus eius voluptates ratione, dolorum blanditiis excepturi nisi quas animi rerum suscipit
+                    sapiente officiis odio, beatae perspiciatis incidunt! Dicta aut id minus, cum blanditiis magnam
+                    perspiciatis quo, distinctio at veritatis quaerat expedita repellat tenetur?</p>
 
             </div>
             <div class="right-side">
@@ -133,11 +136,19 @@ if (isset($_POST['park'])) {
     <div class="footer-user">
         <?php include("./include/footer.php"); ?>
     </div>
+</div>
 
     <script>
+        var myVar;
         var loader = document.getElementById('load');
-        function loaderBefore(){
-            loader.style.display = 'none';
+        function loaderBefore() {
+            // loader.style.display = 'none';
+            myVar = setTimeout(showPage, 3000);
+
+        }
+        function showPage() {
+            document.getElementById("load").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
         }
     </script>
 </body>

@@ -25,12 +25,13 @@ body {
 
 .box {
     height: 102px;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
     text-align: center;
     display: flex;
     width: 137px;
     border: 1px solid #000;
     border-radius: 5px;
+    color: #000;
 }
 .box-wrapper{
     display: flex;
@@ -58,6 +59,18 @@ body {
     margin-top: 5%;
 }
 .parking-lot{
-    color: #fff;
+    color: #000;
+    text-decoration: none;
 
+}
+.parking-lot:hover{
+    text-decoration: underline;
+}
+.button-remove{
+    width: 160px;
+    padding: 8px;
+    /* background-color: #8000FF;
+    border: 1px solid #8000FF; */
+    border-radius: 5px;
+    color: #000;
 }
