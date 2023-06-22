@@ -59,6 +59,19 @@ if ($numRows > 0) {
 // if ($numExistRows > 0) {
 //     $vehicleIdExistErr = "vehicle exist try another";
 // }
+if (isset($_POST['vehcile_registered-select'])) {
+    $selectedOption = $_POST['vehcile_registered-select'];
+    if($selectedOption=="none"){
+        echo "please select one";
+    }else{
+    // Process the selected option value
+    
+    }
+} else {
+    echo 'No option selected.';
+}
+
+// echo $selectOption;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +80,7 @@ if ($numRows > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-parking.css">
+    <link rel="stylesheet" href="./styles/user_parking.css">
 
     <title>Parking slot</title>
 </head>
@@ -87,23 +100,27 @@ if ($numRows > 0) {
             echo "done";
         }
         ?>
-        <div class="vehicle_registered">
-            <label for="vehicle-register">Choose registered vehicle to park</label>
-            <br>
-            <select name="vehcile_registered-select" id="" class="registered-vehicle">
-                <option value="none">--name--of--registered--vehicle</option>
-                <?php $sql = "SELECT vehicle_type,id  FROM vehicle where user_id = $userId";
-                $result = mysqli_query($conn, $sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) { ?>
-                        <option value="<?php echo $vehicleSelect = $row['id']; ?>"> <?php echo $row['vehicle_type']; ?></option>
-                        </option>
-                    <?php }
-                } ?>
-                </option>
+        <form method="post" action="">
+            <div class="vehicle_registered">
+                <label for="vehicle-register">Choose registered vehicle to park</label>
+                <br>
+                <select name="vehcile_registered-select" id="" class="registered-vehicle">
+                    <option value="none">--name--of--registered--vehicle</option>
+                    <?php $sql = "SELECT vehicle_type,id  FROM vehicle where user_id = $userId";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) { ?>
+                            <option value="<?php echo $vehicleSelect = $row['id']; ?>"> <?php echo $row['vehicle_type']; ?>
+                            </option>
+                            </option>
+                        <?php }
+                    } ?>
+                    </option>
+                    <input type="submit" name="vehicle_submit">
 
-            </select>
-        </div>
+                </select>
+            </div>
+        </form>
     </section>
 
     <div class="box-wrapper">
@@ -131,8 +148,8 @@ if ($numRows > 0) {
         ?>
     </div>
     <div class="error">
-                <?php echo $vehicleIdExistErr;?>
-            </div>
+        <?php echo $vehicleIdExistErr; ?>
+    </div>
 
 
     </div>
