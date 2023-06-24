@@ -26,6 +26,7 @@ if ($numRows > 0) {
 // echo $vehicleId."<br>";
 if (isset($_GET['q'])) {
     $parkingSelect = $_GET['q'];
+    $selectedVehicleId = $GET['query'];
     $sql = "SELECT id from parking where parkingslot_number = $parkingSelect";
     $res = mysqli_query($conn, $sql);
     $numRows = mysqli_num_rows($res);

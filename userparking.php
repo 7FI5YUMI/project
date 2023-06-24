@@ -65,7 +65,7 @@ if (isset($_POST['vehcile_registered-select'])) {
         echo "please select one";
     }else{
     // Process the selected option value
-    
+    //  echo $selectedOption;
     }
 } else {
     echo 'No option selected.';
@@ -96,8 +96,6 @@ if (isset($_POST['vehcile_registered-select'])) {
         <?php
         if ($vehicleCount == 0) {
             echo "please register vehicle";
-        } else {
-            echo "done";
         }
         ?>
         <form method="post" action="">
@@ -116,7 +114,7 @@ if (isset($_POST['vehcile_registered-select'])) {
                         <?php }
                     } ?>
                     </option>
-                    <input type="submit" name="vehicle_submit">
+                  <?php echo '<button class="button-remove"><a class="parking-lot" href="parkingslot.php?query=' . $selectedOption . '">' . $selectedOption . '</a></button>';?>
 
                 </select>
             </div>

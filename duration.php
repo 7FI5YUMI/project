@@ -63,8 +63,17 @@ $diff = $start_datetime->diff(new DateTime($datetime_2));
 // echo $diff->m.' Months<br>'; 
 // echo $diff->d.' Days<br>'; 
 $rate = $diff->h*50; 
+
 // echo $diff->i.' Minutes<br>'; 
 // echo $diff->s.' Seconds<br>';
+// if($difference == $difference){
+//     $sql = "UPDATE parking set vehicle_id = NULL where vehicle_id = $vehicleId";
+//     $res = mysqli_query($conn,$sql);
+//     if($res){
+//         echo "updated successfully";
+
+//     }
+// }
 
 
 
@@ -124,7 +133,6 @@ if (isset($_POST['date-time-submit'])) {
     <div class="wrapper-start-end">
     <form method="post" action="">
         <div class="start-end">
-        <?php echo $rate;?>
             <div class="start">
                 <label for="entrydate">Entry date and time</label>
                 <br>

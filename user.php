@@ -7,9 +7,6 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-if (isset($_POST['park'])) {
-    header("location: vehicle.php");
-}
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +16,7 @@ if (isset($_POST['park'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user_style.css">
+    <link rel="stylesheet" href="./styles/user-style.css">
     <title>Users</title>
 </head>
 
@@ -83,9 +80,11 @@ if (isset($_POST['park'])) {
                     </ul>
                 </div>
                 <div class="button-park">
-                    <form method="post" action="">
-                        <input type="submit" name="park" class="button-parking" value="next">
-                    </form>
+                    
+                       <button class="button-add-vehicle">
+                        <a href="./vehicle.php">Register vehicle</a>
+                       </button>
+                
                 </div>
             </div>
             <div class="box-bike">
@@ -110,7 +109,7 @@ if (isset($_POST['park'])) {
             </div>
             <div class="membership-button">
                 <button class="membership-btn">
-                    <a href="./membership.html" class="Btn">Click here</a>
+                    <a href="./membership.php" class="Btn">Click here</a>
 
                 </button>
             </div>

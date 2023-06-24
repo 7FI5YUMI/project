@@ -68,7 +68,7 @@ if ($vehicleCategory == 'four_wheeler') {
 }
 $parkedHour = $diff->h;
 
-$sql = "UPDATE ticket set vehicle_id = $vehicleId,status = 'occupied' where status = 'free'";
+$sql = "UPDATE  ticket set vehicle_id = $vehicleId,status = 'occupied' where status = 'free'";
 $res = mysqli_query($conn,$sql);
 if($res){
     echo "vehicle id updated";
