@@ -39,12 +39,12 @@ if (isset($_POST['next'])) {
     $numExistRows = mysqli_num_rows($res);
     if ($numExistRows > 0) {
         $vehicleplateExistErr = "vehicle plate number exist try another";
-    } 
+    }
     // if ($exist = true) {
 
-        //  else {
-            // $exist = false;
-        // }
+    //  else {
+    // $exist = false;
+    // }
     // }
     elseif (empty($vehicleType)) {
         $vehicleTypeErr = "vehicle type is required";
@@ -72,8 +72,7 @@ if (isset($_POST['next'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/vehicle.css">
-    <!-- <script src="/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="./styles/vehicle-reg.css">
     <title>Vehicle Entry</title>
     <?php
     if ($success != NULL) {
@@ -105,7 +104,7 @@ if (isset($_POST['next'])) {
             <div>
                 <?php echo $_SESSION['id']; ?>
             </div>
-        
+
             <div class="nav-menu">
                 <ul class="nav-list">
                     <li><a href="./user.php">Home</a></li>
@@ -121,9 +120,11 @@ if (isset($_POST['next'])) {
         </nav>
     </div>
     <div class="hey_user">
-        <p>
-            <?php echo $_SESSION['username']; ?>Register the vehicle
-        </p>
+        <h3>
+            <?php echo $_SESSION['username']; ?>
+            
+        </h3>
+        <h4>Register your vehicle by filing up the details</h4>
     </div>
     <div class="wrapper">
         <form method="post" id="saveVehicle" action="">
@@ -174,7 +175,7 @@ if (isset($_POST['next'])) {
                         <?php echo $vehicleValidErr ?>
                     </div>
                 </div>
-                
+
                 <div class="parking_button">
                     <input type="submit" name="next" value="next" class="parking-login">
                 </div>
@@ -186,8 +187,8 @@ if (isset($_POST['next'])) {
                 </div>
             </div>
             <div class="error">
-                    <?php echo $errrLast; ?>
-                </div>
+                <?php echo $errrLast; ?>
+            </div>
         </form>
     </div>
     <?php include("./include/footer.php"); ?>

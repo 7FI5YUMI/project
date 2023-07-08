@@ -16,6 +16,7 @@ body{
     position: fixed;
     z-index: 9999;
 }
+
 #load {
     position: absolute;
     left: 50%;

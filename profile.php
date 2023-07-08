@@ -42,6 +42,7 @@ if ($numRows > 0) {
         $vehicle_type = $row['vehicle_type'];
     }
 }
+$noResultErr = "";
 
 ?>
 <!DOCTYPE html>
@@ -110,7 +111,7 @@ if ($numRows > 0) {
                 }
                 echo "</table>";
             } else {
-                echo "0 result";
+                echo  "No vehicle registered ";
             }
             ?>
         </table>

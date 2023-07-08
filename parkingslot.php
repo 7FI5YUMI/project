@@ -21,7 +21,10 @@ if ($numRows > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
         $vehicleId = $row['id'];
     }
-    
+
+}
+if (!isset($_GET['q'])) {
+    header("Location:pnotfound.php");
 }
 // echo $vehicleId."<br>";
 if (isset($_GET['q'])) {
@@ -34,43 +37,24 @@ if (isset($_GET['q'])) {
         while ($row = mysqli_fetch_assoc($res)) {
             $parkingId = $row['id'];
         }
-        
+
     }
 
     $sql = "UPDATE parking set vehicle_id = $vehicleId, parking_status = 'occupied' where parkingslot_number = $parkingSelect";
-    $res = mysqli_query($conn, $sql);
-    if($res){
-        echo "success";
-        header("Location:duration.php");
+    
+    if ($vehicleId == NULL) {
+        header("Location:pnotfound.php");
+    } else {
+        $res = mysqli_query($conn, $sql);
 
+        if ($res) {
+            echo "success";
+            header("Location:duration.php");
+
+        } else {
+            die("undefined");
+        }
     }
-    else{
-        die("undefined");
-    }
-
-    // if($res){
-    //     // echo "success";
-    //     // $parking_status = 'occupied';
-    //     // $parking_status = 'occupied';
-    //     echo "success";
-    // }
-    // else{
-    //     die("undefined");
-    // }
-    // $sql = "SELECT parking_status from parking";
-    // $result = mysqli_query($conn, $sql);
-    // $parkingstatus = mysqli_fetch_assoc($result);
-
-    // $one = "SELECT vehicle_id from parking";
-    // $res = mysqli_query($conn, $one);
-
-    // $query = "UPDATE parking set parking_status = case when $vehicleId != 'NULL' then 'occupied'";
-    // $result = mysqli_query($conn, $query);
-    // if ($result) {
-    //     echo "success";
-    // } else {
-    //     echo "not success";
-    // }
 }
 
 

@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location:login.php");
 }
+$vehicleIdExistErr = "";
 $sessionUser = $_SESSION['username'];
 $query = "SELECT id from user  where username = '$sessionUser'";
 $res = mysqli_query($conn, $query);
@@ -32,11 +33,11 @@ if ($numRows > 0) {
 }
 
 // selecting id of username to store in foreign key
-$query = "SELECT vehicle.id, user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time,duration.parkingslot_id FROM vehicle INNER JOIN user ON user.$userId=vehicle.$vehicleId
-INNER JOIN parking
-  ON vehicle.$vehicleId = parking.$parkingId
-  INNER JOIN duration
-  ON parking.$parkingId = parking.$parkingId";
+// $query = "SELECT vehicle.id, user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time,duration.parkingslot_id FROM vehicle INNER JOIN user ON user.$userId=vehicle.$vehicleId
+// INNER JOIN parking
+//   ON vehicle.$vehicleId = parking.$parkingId
+//   INNER JOIN duration
+//   ON parking.$parkingId = parking.$parkingId";
 $query = "SELECT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE user.id = $userId";
 $res = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_assoc($res)) {
@@ -64,18 +65,28 @@ if ($vehicleCategory == 'four_wheeler') {
     $start_datetime = new DateTime($datetime_1);
     $diff = $start_datetime->diff(new DateTime($datetime_2));
     $rate = $diff->h * 50;
-    
-}
-$parkedHour = $diff->h;
 
-$sql = "UPDATE  ticket set vehicle_id = $vehicleId,status = 'occupied' where status = 'free'";
-$res = mysqli_query($conn,$sql);
-if($res){
-    echo "vehicle id updated";
 }
-else{
-    echo "not updated";
+
+$parkedHour = $diff->h;
+$vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
+$res = mysqli_query($conn, $vehicleExist);
+$numExistRows = mysqli_num_rows($res);
+if ($numExistRows > 0) {
+    $vehicleIdExistErr = "vehicle plate number exist try another";
+} else {
+    $sql = "UPDATE  ticket set vehicle_id = $vehicleId,status = 'occupied' where status = 'free'";
+
+    $res = mysqli_query($conn, $sql);
+    if ($res) {
+        echo "vehicle id updated";
+    } else {
+        echo "not updated";
+    }
+
 }
+
+
 
 
 ?>
@@ -86,17 +97,26 @@ else{
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/ticket_generate.css">
+    <link rel="stylesheet" href="./styles/ticketgenerate.css">
     <title>Document</title>
+    <style>
+        .error{
+            color: #FF0000;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="ticket">
-    <div class="payment">
-                <?php include("./payment.php");?>
-            </div>
-        <table class="ticket-style" border="1">
+        <div class="payment">
+            <?php include("./payment.php"); ?>
+        </div>
+       <div class="ticket-parent">
+        <span>----------------------------------------</span>
+        <h4 class="ticket-heading">Parking Receipt</h4>
+        <span>----------------------------------------</span>
+       <table class="ticket-style" border="1">
             <tr>
                 <th class="ticket_head">owner name:</th>
                 <th class="ticket_head">Vehicle name</th>
@@ -132,20 +152,23 @@ else{
                         <td>' . $parkingSlotNumber . '</td>     
                         <td>' . $entryTime . '</td>   
                         <td>' . $exitTime . '</td>   
-                        <td>' . $parkedHour .'hour'. '</td> 
-                        <td>' . $rate . '</td>   
-                          
-                           
-                                
+                        <td>' . $parkedHour . 'hour' . '</td> 
+                        <td>' . $rate . '</td>           
                         </tr>';
 
                 }
                 echo "</table>";
+
             } else {
                 echo "0 result";
             }
             ?>
-            
+            <div class="error">
+                <?php echo $vehicleIdExistErr;?>
+
+            </div>
+
+       </div>
     </div>
 </body>
 

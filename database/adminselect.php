@@ -47,6 +47,15 @@ function parkingCount(){
     }
 }
 
+function membershipCount(){
+    include("databaseconn.php");
+    $query = "SELECT COUNT(*) FROM membership";
+    $res = mysqli_query($conn,$query);
+    while($row=mysqli_fetch_assoc($res)){
+        echo $row['COUNT(*)'];
+    }
+}
+
 
 
 

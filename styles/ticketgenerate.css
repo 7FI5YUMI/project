@@ -3,13 +3,26 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    background-color: #E6E6FA;
+}
 
-
+.ticket-parent{
+    width: 58%;
+    display: flex;
+    justify-content: center;
+    background-color: #ffff;
+    flex-direction: column;
+    height: 440px;
+    gap: 5px;
+    align-items: center;
+    border-radius: 8px;
+}
 
 .ticket-style{
     border-collapse: collapse;
     border-collapse: collapse;
-    width: 66%;
+    width: 90%;
     height: 124px;
 }
 .ticket{

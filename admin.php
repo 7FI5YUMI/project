@@ -166,7 +166,9 @@ if (!isset($_SESSION['admin'])) {
                 </div>
                 <div class="box_booking">
                     <div class="box_booking-item">
-                        <div class="number">22/70</div>
+                        <div class="number">
+                            <?php membershipCount();?>
+                        </div>
                         <div class="booking_logo">
                             <img src="./assets/icons/booking.png" alt="">
                         </div>
