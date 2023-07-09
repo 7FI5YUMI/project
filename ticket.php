@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location:login.php");
 }
-$vehicleIdExistErr = "";
+// $vehicleIdExistErr = "";
 $sessionUser = $_SESSION['username'];
 $query = "SELECT id from user  where username = '$sessionUser'";
 $res = mysqli_query($conn, $query);
@@ -50,10 +50,13 @@ while ($row = mysqli_fetch_assoc($res)) {
     $exitTime = $row['exit_time'];
 
 }
+// $datetime_1 = $entryTime;
+// $datetime_2 = $exitTime;
+
 $datetime_1 = $entryTime;
 $datetime_2 = $exitTime;
 
-if ($vehicleCategory == 'two_wheeler') {
+if($vehicleCategory == 'two_wheeler') {
     $start_datetime = new DateTime($datetime_1);
     $diff = $start_datetime->diff(new DateTime($datetime_2));
     $rate = $diff->h * 25;
@@ -69,23 +72,30 @@ if ($vehicleCategory == 'four_wheeler') {
 }
 
 $parkedHour = $diff->h;
-$vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
-$res = mysqli_query($conn, $vehicleExist);
-$numExistRows = mysqli_num_rows($res);
-if ($numExistRows > 0) {
-    $vehicleIdExistErr = "vehicle plate number exist try another";
-} else {
-    $sql = "UPDATE  ticket set vehicle_id = $vehicleId,status = 'occupied' where status = 'free'";
+// $vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
+// $res = mysqli_query($conn, $vehicleExist);
+// $numExistRows = mysqli_num_rows($res);
+// if ($numExistRows > 0) {
+//     $vehicleIdExistErr = "vehicle plate number exist try another";
+// } else {
+//     $sql = "UPDATE  ticket set vehicle_id = $vehicleId,status = 'occupied' where status = 'free'";
 
-    $res = mysqli_query($conn, $sql);
-    if ($res) {
-        echo "vehicle id updated";
-    } else {
-        echo "not updated";
-    }
+//     $res = mysqli_query($conn, $sql);
+//     if ($res) {
+//         echo "vehicle id updated";
+//     } else {
+//         echo "not updated";
+//     }
 
-}
-
+// }
+    
+    
+    // $vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
+    // $res = mysqli_query($conn, $vehicleExist);
+    // $numExistRows = mysqli_num_rows($res);
+    // if ($numExistRows > 0) {
+    //     $vehicleIdExistErr = "vehicle plate number exist try another";
+    // } else {
 
 
 
@@ -98,7 +108,7 @@ if ($numExistRows > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/ticketgenerate.css">
-    <title>Document</title>
+    <title>Ticket</title>
     <style>
         .error{
             color: #FF0000;
@@ -107,6 +117,7 @@ if ($numExistRows > 0) {
 </head>
 
 <body>
+    <?php include("./include/after-login-nav.php");?>
 
     <div class="ticket">
         <div class="payment">
@@ -163,10 +174,7 @@ if ($numExistRows > 0) {
                 echo "0 result";
             }
             ?>
-            <div class="error">
-                <?php echo $vehicleIdExistErr;?>
-
-            </div>
+           
 
        </div>
     </div>

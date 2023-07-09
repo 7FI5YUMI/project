@@ -64,12 +64,13 @@ if (isset($_POST['vehcile_registered-select'])) {
     if($selectedOption=="none"){
         echo "please select one";
     }else{
-    // Process the selected option value
-    //  echo $selectedOption;
+    
+     echo $selectedOption;
     }
 } else {
     echo 'No option selected.';
 }
+echo $selectedOption;
 
 // echo $selectOption;
 ?>
@@ -86,6 +87,7 @@ if (isset($_POST['vehcile_registered-select'])) {
 </head>
 
 <body>
+    <?php echo $selectedOption;?>
     <?php include("./include/after-login-nav.php"); ?>
     <section class="register-vehicle">
         <?php echo $parkingStatus; ?>
@@ -114,7 +116,7 @@ if (isset($_POST['vehcile_registered-select'])) {
                         <?php }
                     } ?>
                     </option>
-                  <?php echo '<button class="button-remove"><a class="parking-lot" href="parkingslot.php?query=' . $selectedOption . '">' . $selectedOption . '</a></button>';?>
+                  <?php echo '<button class="button-remove">' . $selectedOption . '</a></button>';?>
 
                 </select>
             </div>

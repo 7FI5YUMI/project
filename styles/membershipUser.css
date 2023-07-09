@@ -1,10 +1,27 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.wrapper{
+body {
+    background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+}
+
+.wrapper-all {
+    display: flex;
+    flex-direction: column;
+    background-color: #fafdff;
+    gap: 20px;
+    height: 567px;
+    width: 560px;
+    box-shadow: 14px 0px 13px 9px grey;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.wrapper {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -12,62 +29,64 @@
     margin-top: 10%;
     gap: 18px;
 }
-.f_input{
+
+.f_input {
     width: 190px;
     padding: 10px;
     border-radius: 4px;
 
 }
-.l_input{
+
+.l_input {
     width: 190px;
     padding: 10px;
     border-radius: 4px;
 }
 
-.fl-wrapper{
+.fl-wrapper {
     display: flex;
     gap: 15px;
 }
 
-.email_input{
+.email_input {
     width: 395px;
     padding: 10px;
     border-radius: 4px;
 }
-.phone_input{
-    width: 395px;
-    padding: 10px;
-    border-radius: 4px;
 
-}
-.uname_input{
+.phone_input {
     width: 395px;
     padding: 10px;
     border-radius: 4px;
 
 }
 
-.join-date_input{
+.uname_input {
     width: 395px;
     padding: 10px;
     border-radius: 4px;
 
 }
 
-.submit{
+.join-date_input {
+    width: 395px;
+    padding: 10px;
+    border-radius: 4px;
+
+}
+
+.submit {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.submit_input{
+.submit_input {
     width: 280px;
     padding: 8px;
     border-radius: 5px;
 }
 
-.error{
+.error {
     color: #FF0000;
 }
-
-

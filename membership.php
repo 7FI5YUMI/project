@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/membership-user.css">
+    <link rel="stylesheet" href="./styles/membershipUser.css">
     <title>Membership form</title>
 </head>
 
@@ -77,7 +77,9 @@ if (isset($_POST['submit'])) {
         <div class="text-head">
             <h2>Do you want to become member?</h2>
         </div>
-        <form action="" method="POST">
+       <div class="wrapper-all">
+       <form action="" method="POST">
+            
             <div class="fl-wrapper">
                 <div class="fname">
                     <label for="fname">Firstname</label>
@@ -142,7 +144,9 @@ if (isset($_POST['submit'])) {
             <div class="submit">
                 <input type="submit" name="submit" class="submit_input">
             </div>
+            
         </form>
+       </div>
     </div>
 
 </body>
