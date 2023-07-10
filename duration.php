@@ -1,7 +1,7 @@
 <?php
 require("./database/databaseconn.php");
 session_start();
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
     header("location:login.php");
     exit;
 }
@@ -27,22 +27,22 @@ if ($numRows > 0) {
 }
 
 $parkingslot = "SELECT id from parking where vehicle_id = $vehicleId";
-$parkingresult = mysqli_query($conn,$parkingslot);
+$parkingresult = mysqli_query($conn, $parkingslot);
 $numRows = mysqli_num_rows($parkingresult);
-if($numRows>0){
-    while($row = mysqli_fetch_assoc($parkingresult)){
+if ($numRows > 0) {
+    while ($row = mysqli_fetch_assoc($parkingresult)) {
         $parkingId = $row['id'];
     }
 }
 
 $query = "SELECT entry_time from duration where vehicle_id = $vehicleId";
-$result = mysqli_query($conn,$query);
-while($row=mysqli_fetch_assoc($result)){
+$result = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_assoc($result)) {
     $entryTime = $row['entry_time'];
 }
 $query = "SELECT exit_time from duration where vehicle_id = $vehicleId";
-$result = mysqli_query($conn,$query);
-while($row=mysqli_fetch_assoc($result)){
+$result = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_assoc($result)) {
     $exitTime = $row['exit_time'];
 }
 
@@ -51,18 +51,22 @@ while($row=mysqli_fetch_assoc($result)){
 // while($row=mysqli_fetch_assoc($result)){
 //     $parkingId = $row['id'];
 // }
-  
+
 $datetime_1 = $entryTime; 
 $datetime_2 = $exitTime; 
  
 $start_datetime = new DateTime($datetime_1); 
 $diff = $start_datetime->diff(new DateTime($datetime_2)); 
-// $payment = $diff * 50;
-// echo $diff->days.' Days total<br>'; 
-// echo $diff->y.' Years<br>'; 
-// echo $diff->m.' Months<br>'; 
-// echo $diff->d.' Days<br>'; 
-$rate = $diff->h*50; 
+ 
+//echo $diff->days.' Days total<br>'; 
+//echo $diff->y.' Years<br>'; 
+//echo $diff->m.' Months<br>'; 
+//echo $diff->d.' Days<br>'; 
+echo $diff->h.' Hours<br>'; 
+//echo $diff->i.' Minutes<br>'; 
+//echo $diff->s.' Seconds<br>';
+
+
 
 // echo $diff->i.' Minutes<br>'; 
 // echo $diff->s.' Seconds<br>';
@@ -74,21 +78,50 @@ $rate = $diff->h*50;
 
 //     }
 // }
+// $currentTimestamp = time();
+// $selectedTimestamp = strtotime($date);
 
-
+// if ($selectedTimestamp === false) {
+//     echo "Invalid date format!";
+// } elseif ($selectedTimestamp > $currentTimestamp) {
+//     echo "Selected date is in the future!";
+// } else {
+//     echo "Selected date is valid.";
+// }
 
 
 
 $entry_timeErr = $exit_timeErr = "";
+$entryTimePastErr = $entryFutureDateErr = "";
 if (isset($_POST['date-time-submit'])) {
     $entry_time = $_POST['entry_time'];
     $exit_time = $_POST['exit_time'];
+    $currenttime = time();
+    $selectedTime = strtotime($entry_time);
+    
 
     if (empty($entry_time)) {
         $entry_timeErr = "entry time is required";
     } elseif (empty($exit_time)) {
         $exit_timeErr = "exit time is required";
-    } else {
+    // } elseif ($dateTimestamp < $currentTimestamp) {
+    //     $entryTimePastErr = "time should be current";
+    // } elseif ($dateTimestamp > $currentTimestamp) {
+    //     $entryFutureDateErr = "future date is not accepted";
+    // } 
+    
+    }
+    elseif($selectedTime === false){
+        echo "invalid date format";
+    }
+    elseif($selectedTime > $currentTime){
+        $entryFutureDateErr = "future date not accepted";
+    }
+    elseif($selectedTime < $currentTime){
+        $entryTimePastErr = "past date not accepted";
+
+    }
+    else {
         $duration_insert = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$vehicleId,$parkingId)";
         $result = mysqli_query($conn, $duration_insert);
         if ($result) {
@@ -129,36 +162,41 @@ if (isset($_POST['date-time-submit'])) {
 </head>
 
 <body>
+    <h1>
+        <?php echo $rate; ?>
+    </h1>
     <?php include("./include/after-login-nav.php"); ?>
     <div class="wrapper-start-end">
-    <form method="post" action="">
-        <div class="start-end">
-            <div class="start">
-                <label for="entrydate">Entry date and time</label>
+        <form method="post" action="">
+            <div class="start-end">
+                <div class="start">
+                    <label for="entrydate">Entry date and time</label>
+                    <br>
+                    <input type="datetime-local" name="entry_time" class="entry-time">
+                    <div class="error">
+                        <?php echo $entry_timeErr; ?>
+                        <?php echo $entryTimePastErr; ?>
+                    </div>
+                </div>
+                <div class="end">
+                    <label for="exitdate">Exit date and time</label>
+                    <br>
+                    <input type="datetime-local" name="exit_time" class="exit-time">
+                    <div class="error">
+                        <?php echo $exit_timeErr; ?>
+                        <?php echo $entryFutureDateErr;?>
+                    </div>
+                </div>
                 <br>
-                <input type="datetime-local" name="entry_time" class="entry-time">
-                <div class="error">
-                    <?php echo $entry_timeErr; ?>
+                <input type="submit" name="date-time-submit" value="generate Ticket" class="datetime-submit">
+                <div class="successMsg">
+                    <?php echo $successMsg; ?>
                 </div>
             </div>
-            <div class="end">
-                <label for="exitdate">Exit date and time</label>
-                <br>
-                <input type="datetime-local" name="exit_time" class="exit-time">
-                <div class="error">
-                    <?php echo $exit_timeErr; ?>
-                </div>
-            </div>
-            <br>
-            <input type="submit" name="date-time-submit" value="generate Ticket" class="datetime-submit">
-            <div class="successMsg">
-                <?php echo $successMsg; ?>
-            </div>
-        </div>
-    </form>
+        </form>
     </div>
 
-    <?php include("./include/footer.php");?>
+    <?php include("./include/footer.php"); ?>
 </body>
 
 </html>

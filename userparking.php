@@ -128,6 +128,7 @@ echo $selectedOption;
         include("./database/databaseconn.php");
         $sql = "SELECT parkingslot_number  from parking where parking_status = 'free'";
         $result = mysqli_query($conn, $sql);
+        
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $parkingNumber = $row['parkingslot_number'];

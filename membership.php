@@ -14,16 +14,13 @@ if (isset($_POST['submit'])) {
 
     if (empty($firstname)) {
         $fnameErr = "firstname is required";
-    }
-    elseif(!preg_match($nameValid,$firstname)){
+    } elseif (!preg_match($nameValid, $firstname)) {
         $fnameValidErr = "Name should only contatin letters";
-    }
-     elseif (empty($lastname)) {
+    } elseif (empty($lastname)) {
         $lnameErr = "lastname is required";
-    } elseif(!preg_match($nameValid,$lastname)){
+    } elseif (!preg_match($nameValid, $lastname)) {
         $lnameValidErr = "Lastname should only contain letters";
-    }
-    elseif (empty($userName)) {
+    } elseif (empty($userName)) {
         $unameErr = "username is required";
     } elseif (empty($phone)) {
         $phoneErr = "phone is required";
@@ -35,18 +32,16 @@ if (isset($_POST['submit'])) {
         $emailValidErr = "Email shoud be in format";
     } elseif (empty($joinDate)) {
         $joinDateErr = "join date is required";
-    }
-    else{
+    } else {
         $sql = "INSERT INTO membership(firstname,lastname,username,phone,email,joinDate)
         VALUES('$firstname','$lastname','$userName','$phone','$email','$joinDate')";
-        $result = mysqli_query($conn,$sql);
-        if($result){
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
             echo "<script>alert('registered successfully as member')</script>";
-        }
-        else{
+        } else {
             echo "didn't registered";
         }
-        
+
     }
 }
 
@@ -77,76 +72,76 @@ if (isset($_POST['submit'])) {
         <div class="text-head">
             <h2>Do you want to become member?</h2>
         </div>
-       <div class="wrapper-all">
-       <form action="" method="POST">
-            
-            <div class="fl-wrapper">
-                <div class="fname">
-                    <label for="fname">Firstname</label>
-                    <br>
-                    <input type="text" name="fname" class="f_input">
-                    <div class="error">
-                        <?php echo $fnameErr; ?>
-                        <?php echo $fnameValidErr ?>                   
-                     </div>
+        <div class="wrapper-all">
+            <form action="" method="POST">
+
+                <div class="fl-wrapper">
+                    <div class="fname">
+                        <label for="fname">Firstname</label>
+                        <br>
+                        <input type="text" name="fname" class="f_input">
+                        <div class="error">
+                            <?php echo $fnameErr; ?>
+                            <?php echo $fnameValidErr ?>
+                        </div>
+                    </div>
+                    <div class="lname">
+                        <label for="lname">Lastname</label>
+                        <br>
+                        <input type="text" name="lname" class="l_input">
+                        <div class="error">
+                            <?php echo $lnameErr; ?>
+                            <?php echo $lnameValidErr; ?>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="lname">
-                    <label for="lname">Lastname</label>
+                <br>
+                <div class="username">
+                    <label for="uname">username</label>
                     <br>
-                    <input type="text" name="lname" class="l_input">
+                    <input type="text" name="username" class="uname_input">
                     <div class="error">
-                        <?php echo $lnameErr; ?>
-                        <?php echo $lnameValidErr;?>
+                        <?php echo $unameErr; ?>
+                    </div>
+                </div>
+                <br>
+                <div class="phone">
+                    <label for="phone">phone</label>
+                    <br>
+                    <input type="text" name="phone" class="phone_input">
+                    <div class="error">
+                        <?php echo $phoneErr; ?>
+                        <?php echo $phoneValidErr; ?>
+                    </div>
+                </div>
+                <br>
+                <div class="email">
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="text" name="email" class="email_input">
+                    <div class="error">
+                        <?php echo $emailErr; ?>
+                        <?php echo $emailValidErr; ?>
+                    </div>
+                </div>
+                <br>
+                <div class="join-date">
+                    <label for="join-date">Join date</label>
+                    <br>
+                    <input type="date" name="join-date" class="join-date_input">
+                    <div class="error">
+                        <?php echo $joinDateErr; ?>
                     </div>
 
                 </div>
-            </div>
-            <br>
-            <div class="username">
-                <label for="uname">username</label>
                 <br>
-                <input type="text" name="username" class="uname_input">
-                <div class="error">
-                    <?php echo $unameErr; ?>
-                </div>
-            </div>
-            <br>
-            <div class="phone">
-                <label for="phone">phone</label>
-                <br>
-                <input type="text" name="phone" class="phone_input">
-                <div class="error">
-                    <?php echo $phoneErr; ?>
-                    <?php echo $phoneValidErr; ?>
-                </div>
-            </div>
-            <br>
-            <div class="email">
-                <label for="email">Email</label>
-                <br>
-                <input type="text" name="email" class="email_input">
-                <div class="error">
-                    <?php echo $emailErr; ?>
-                    <?php echo $emailValidErr; ?>
-                </div>
-            </div>
-            <br>
-            <div class="join-date">
-                <label for="join-date">Join date</label>
-                <br>
-                <input type="date" name="join-date" class="join-date_input">
-                <div class="error">
-                    <?php echo $joinDateErr; ?>
+                <div class="submit">
+                    <input type="submit" name="submit" class="submit_input">
                 </div>
 
-            </div>
-            <br>
-            <div class="submit">
-                <input type="submit" name="submit" class="submit_input">
-            </div>
-            
-        </form>
-       </div>
+            </form>
+        </div>
     </div>
 
 </body>
