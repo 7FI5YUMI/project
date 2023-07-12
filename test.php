@@ -7,10 +7,7 @@ if (isset($_POST['submit'])) {
     $exitTime = $_POST['date-end'];
     // $currentDate = date('m/d/y,h:i:s');
     // echo $currentDate;
-    $now_date = strtotime (date ('$entryTime')); // the current date 
-    $key_date = strtotime (date ('$exitTime'));
-    print $hour =  date ($now_date - $key_date);
-    echo $hour;
+    
 }
 
 ?>

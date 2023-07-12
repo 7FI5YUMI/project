@@ -5,6 +5,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location:login.php");
 }
+$selectedMsgErr = "";
 $sessionUser = $_SESSION['username'];
 //selecting user id i.e foreign key of vehicle 
 $query = "SELECT id from user  where username = '$sessionUser'";
@@ -61,16 +62,16 @@ if ($numRows > 0) {
 // }
 if (isset($_POST['vehcile_registered-select'])) {
     $selectedOption = $_POST['vehcile_registered-select'];
-    if($selectedOption=="none"){
-        echo "please select one";
-    }else{
-    
-     echo $selectedOption;
+    if ($selectedOption == "none") {
+        $selectedMsgErr = "please select one";
+    } else {
+
+        //  echo $selectedOption;
     }
 } else {
     echo 'No option selected.';
 }
-echo $selectedOption;
+// echo $selectedOption;
 
 // echo $selectOption;
 ?>
@@ -81,13 +82,18 @@ echo $selectedOption;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user_parking.css">
+    <link rel="stylesheet" href="./styles/user-Parking.css">
 
     <title>Parking slot</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
-    <?php echo $selectedOption;?>
+    <?php echo $selectedOption; ?>
     <?php include("./include/after-login-nav.php"); ?>
     <section class="register-vehicle">
         <?php echo $parkingStatus; ?>
@@ -116,45 +122,48 @@ echo $selectedOption;
                         <?php }
                     } ?>
                     </option>
-                  <?php echo '<button class="button-remove">' . $selectedOption . '</a></button>';?>
-
                 </select>
+                <div class="error">
+                    <?php echo $selectedMsgErr;?>
+                </div>
             </div>
+            <br>
+            <?php echo  '<button class="button-extract"><a class="select-option" href="test-parking.php?query='.$selectedOption.'">"'.$selectedOption.'submit"</a></button>';?>
         </form>
     </section>
 
-    <div class="box-wrapper">
-        <?php
-        include("./database/databaseconn.php");
-        $sql = "SELECT parkingslot_number  from parking where parking_status = 'free'";
-        $result = mysqli_query($conn, $sql);
+    <!-- <div class="box-wrapper">
         
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $parkingNumber = $row['parkingslot_number'];
-                echo ' <div class="box">
+        // include("./database/databaseconn.php");
+        // $sql = "SELECT parkingslot_number  from parking where parking_status = 'free'";
+        // $result = mysqli_query($conn, $sql);
+
+        // if ($result->num_rows > 0) {
+        //     while ($row = $result->fetch_assoc()) {
+        //         $parkingNumber = $row['parkingslot_number'];
+        //         echo ' <div class="box">
                     
-                         <button class="button-remove"><a class="parking-lot" href="parkingslot.php?q=' . $parkingNumber . '">' . $parkingNumber . '</a></button>
+        //                  <button class="button-remove"><a class="parking-lot" href="parkingslot.php?q=' . $parkingNumber . '">' . $parkingNumber . '</a></button>
    
                                 
-                        </div>';
+        //                 </div>';
 
 
-            }
+        //     }
             // echo "</table>";
         
-        } else {
-            echo "0 result";
-        }
-        ?>
+        // } else {
+        //     echo "0 result";
+        // }
+        
     </div>
     <div class="error">
         <?php echo $vehicleIdExistErr; ?>
-    </div>
+    </div> -->
 
 
-    </div>
-    </div>
+    <!-- </div>
+    </div> -->
     <div class="footer-user-parking">
         <?php include("./include/footer.php"); ?>
     </div>

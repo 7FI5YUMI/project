@@ -58,7 +58,7 @@ if (isset($_POST['next'])) {
         $insert = mysqli_query($conn, $sql);
         if ($insert) {
             $success = "vehicle added successfully please click next for further process";
-            header("Location:userparking.php");
+            header("Location:user-parking.php");
         } else {
             $errrLast = "something went wrong";
         }

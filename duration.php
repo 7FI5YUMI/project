@@ -98,6 +98,7 @@ if (isset($_POST['date-time-submit'])) {
     $exit_time = $_POST['exit_time'];
     $currenttime = time();
     $selectedTime = strtotime($entry_time);
+    $selectedExitTime = strtotime($exit_time);
     
 
     if (empty($entry_time)) {
@@ -120,6 +121,12 @@ if (isset($_POST['date-time-submit'])) {
     elseif($selectedTime < $currentTime){
         $entryTimePastErr = "past date not accepted";
 
+    }
+    elseif($selectedExitTime < $currentTime){
+
+    }
+    elseif($selectedExitTime > $currentTime){
+        
     }
     else {
         $duration_insert = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$vehicleId,$parkingId)";

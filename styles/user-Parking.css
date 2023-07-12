@@ -37,13 +37,17 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin-top: 2%;
+    margin-top: 10%;
 }
 .register-vehicle{
     display: flex;
     flex-direction: column;
     gap: 37px;
     margin-top: 8%;
+}
+
+.parking-header{
+    margin-top:6%;
 }
 
 .registered-vehicle{
@@ -80,4 +84,17 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+}
+
+.button-extract{
+    width: 160px;
+    padding: 8px;
+    background-color: #8000FF;
+    border: 1px solid #8000FF;
+    border-radius: 5px;
+    color: #ffff;
+    margin-top: 40px;
+    margin-left: 69px;
+    display: flex;
+    justify-content: center;
 }
