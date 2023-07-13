@@ -60,6 +60,7 @@ if ($numRows > 0) {
 // if ($numExistRows > 0) {
 //     $vehicleIdExistErr = "vehicle exist try another";
 // }
+$optionErr = "";
 if (isset($_POST['vehcile_registered-select'])) {
     $selectedOption = $_POST['vehcile_registered-select'];
     if ($selectedOption == "none") {
@@ -69,7 +70,7 @@ if (isset($_POST['vehcile_registered-select'])) {
         //  echo $selectedOption;
     }
 } else {
-    echo 'No option selected.';
+    $optionErr =  'No option selected.';
 }
 // echo $selectedOption;
 
@@ -82,7 +83,7 @@ if (isset($_POST['vehcile_registered-select'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-Parking.css">
+    <link rel="stylesheet" href="./styles/user_Parking.css">
 
     <title>Parking slot</title>
     <style>
@@ -93,12 +94,11 @@ if (isset($_POST['vehcile_registered-select'])) {
 </head>
 
 <body>
-    <?php echo $selectedOption; ?>
     <?php include("./include/after-login-nav.php"); ?>
     <section class="register-vehicle">
         <?php echo $parkingStatus; ?>
         <h3>Which vehicle do you want to park.?</h3>
-        <p>You have
+        <p class="para-register">You have
             <?php echo $vehicleCount; ?> registered vehicle
         </p>
         <?php
@@ -125,6 +125,7 @@ if (isset($_POST['vehcile_registered-select'])) {
                 </select>
                 <div class="error">
                     <?php echo $selectedMsgErr;?>
+                    <?php echo $optionErr;?>
                 </div>
             </div>
             <br>

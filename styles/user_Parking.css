@@ -37,17 +37,20 @@ body {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin-top: 10%;
+    margin-top: 6%;
 }
 .register-vehicle{
     display: flex;
     flex-direction: column;
     gap: 37px;
-    margin-top: 8%;
+    margin-top: 6%;
+}
+.para-register{
+    text-align: center;
 }
 
 .parking-header{
-    margin-top:6%;
+    margin-top:4%;
 }
 
 .registered-vehicle{
@@ -60,7 +63,7 @@ body {
 
 .footer-user-parking{
     width: 100%;
-    margin-top: 5%;
+    margin-top: 6%;
 }
 .parking-lot{
     color: #000;
@@ -97,4 +100,13 @@ body {
     margin-left: 69px;
     display: flex;
     justify-content: center;
+}
+.select-option{
+    color: #fff;
+    text-decoration: none;
+}
+
+.select-option:hover{
+    text-decoration: underline;
+
 }

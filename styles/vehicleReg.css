@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 59vh;
+    height: 49vh;
 }
 /* navbar start */
 .navigation{
@@ -95,6 +95,9 @@ button{
     border-radius: 5px;
     color: #ffff;
 }
+.parking-login:hover{
+    text-decoration: underline;
+}
 .parking{
     width: 265px;
     padding: 8px;
@@ -121,7 +124,7 @@ button{
     width: 100%;
     height: 261px;
     background-color: #28282B;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 .error{
     color: red;

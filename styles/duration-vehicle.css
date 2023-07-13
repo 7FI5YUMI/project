@@ -7,7 +7,14 @@
 }
 
 .wrapper-start-end{
-    margin-top: 10%;
+    margin-top: 6%;
+}
+.wrapper-all{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 13%;
+    max-height: 325px;
 }
 
 .start-end{
@@ -42,6 +49,9 @@
 /* for generating error */
 .error{
     color: #ff0000;
+}
+.footer-duration{
+    margin-top: 1%;
 }
 
 

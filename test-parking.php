@@ -52,7 +52,7 @@ if ($numRows > 0) {
         $parkingStatus = $row['status'];
     }
 }
-if(isset($_GET['query'])){
+if (isset($_GET['query'])) {
     $selectedVehicle = $_GET['query'];
 }
 
@@ -61,19 +61,21 @@ if(isset($_GET['query'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-Parking.css">
+    <link rel="stylesheet" href="./styles/user_Parking.css">
     <title>Document</title>
 </head>
+
 <body>
-<?php include("./include/after-login-nav.php"); ?>
-<?php echo $selectedVehicle;?>
-<h1 class="parking-header">Choose parking slot for parking</h1>
-<div class="box-wrapper">
-    
+    <?php include("./include/after-login-nav.php"); ?>
+    <?php echo $selectedVehicle; ?>
+    <h1 class="parking-header">Choose parking slot for parking</h1>
+    <div class="box-wrapper">
+
         <?php
         include("./database/databaseconn.php");
         $sql = "SELECT parkingslot_number  from parking where parking_status = 'free'";
@@ -82,9 +84,9 @@ if(isset($_GET['query'])){
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $parkingNumber = $row['parkingslot_number'];
-                echo ' <div class="box">
+                echo ' <div class="box" id="demo">
                     
-                         <button class="button-remove"><a class="parking-lot" href="parkingslot.php?param1='.$parkingNumber.'&param2='.$selectedVehicle.'">'.$parkingNumber . '</a></button>
+                         <button class="button-remove"><a class="parking-lot" href="parkingslot.php?param1='.urlencode($parkingNumber).'&param2='.urlencode($selectedVehicle). '">'.$parkingNumber.'</a></button>
    
                                 
                         </div>';
@@ -105,4 +107,5 @@ if(isset($_GET['query'])){
         <?php include("./include/footer.php"); ?>
     </div>
 </body>
+
 </html>

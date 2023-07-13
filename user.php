@@ -133,7 +133,8 @@ if (!isset($_SESSION['username'])) {
                         Asperiores
                         iusto natus eius voluptates ratione, dolorum blanditiis excepturi nisi quas animi rerum suscipit
                         sapiente officiis odio, beatae perspiciatis incidunt! Dicta aut id minus, cum blanditiis magnam
-                        perspiciatis quo, distinctio at veritatis quaerat expedita repellat tenetur?</p>
+                        perspiciatis quo, distinctio at veritatis quaerat expedita repellat tenetur?
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit aliquam dicta deleniti magni recusandae, laudantium rerum voluptatibus quae quia! Enim</p>
 
                 </div>
                 <div class="right-side">

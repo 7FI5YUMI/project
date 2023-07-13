@@ -56,7 +56,7 @@ $queryOne = "SELECT vehicle_id from parking where vehicle_id = $vehicleId";
 $res = mysqli_query($conn,$queryOne);
     $numExistRows = mysqli_num_rows($res);
     if ($numExistRows > 0) {
-        $vehicleIdExistErr = "vehicle already exist try another";
+        echo "<script>alert('vehicle already exist in parking slot');</script>";
     }
 
 ?>
@@ -68,7 +68,7 @@ $res = mysqli_query($conn,$queryOne);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-Parking.css">
+    <link rel="stylesheet" href="./styles/user_Parking.css">
     <title>Document</title>
 </head>
 <body>
@@ -86,7 +86,7 @@ $res = mysqli_query($conn,$queryOne);
                 $parkingNumber = $row['parkingslot_number'];
                 echo ' <div class="box">
                     
-                         <button class="button-remove"><a class="parking-lot" href="parking-slotvehicle.php?q=' . $parkingNumber . '">' . $parkingNumber . '</a></button>
+                         <button class="button-remove"><a class="parking-lot" href="parking-slotvehicle.php?q='.urlencode($parkingNumber).'">' . $parkingNumber . '</a></button>
    
                                 
                         </div>';

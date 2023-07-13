@@ -48,7 +48,7 @@ if (isset($_GET['param1'])) {
         $res = mysqli_query($conn, $vehicleIdExist);
         $numExistRows = mysqli_num_rows($res);
         if ($numExistRows > 0) {
-            $selectedMsgErr = "vehicle plate number exist try another";
+            echo "<script>alert('vehicle already exist in parking lot')</script>";
         } else {
             $sql = "UPDATE parking set vehicle_id = $selectedVehicleId, parking_status = 'occupied' where parkingslot_number = $parkingSelect";
 
@@ -72,6 +72,3 @@ if (isset($_GET['param1'])) {
 
 
 ?>
-<div class="error">
-    <?php echo $selectedMsgErr; ?>
-</div>

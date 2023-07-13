@@ -29,30 +29,27 @@ if (isset($_POST['next'])) {
     $vehicle_typeValid = "/^([a-zA-Z ]+)$/";
     $userid = $_POST['$userId'];
 
+   
     if (empty($vehiclePlateNumber)) {
         $vehiclePlateNumberErr = "vehicle plate number is required";
     } elseif ($vehiclePlateNumber < 0) {
         $vehicleplatenegErr = "negative value enter valid plate number";
     }
-    $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
-    $res = mysqli_query($conn, $vehicleplateExist);
-    $numExistRows = mysqli_num_rows($res);
-    if ($numExistRows > 0) {
-        $vehicleplateExistErr = "vehicle plate number exist try another";
-    }
-    // if ($exist = true) {
-
-    //  else {
-    // $exist = false;
+    // $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
+    // $res = mysqli_query($conn, $vehicleplateExist);
+    // $numExistRows = mysqli_num_rows($res);
+    // elseif($numExistRows > 0) {
+    //     $vehicleplateExistErr = "vehicle plate number exist try another";
     // }
-    // }
+    
     elseif (empty($vehicleType)) {
         $vehicleTypeErr = "vehicle type is required";
     } elseif (!preg_match($vehicle_typeValid, $vehicleType)) {
         $vehicleTypeValidErr = "please enter a valid vehicle type";
     } elseif (!in_array($vehicle_category, array("two_wheeler", "four_wheeler"))) {
         $vehicleCategoryErr = "choose one option";
-    } else {
+    } 
+    else {
         $sql = "INSERT INTO vehicle(vehicle_platenumber,vehicle_category,vehicle_type,user_id) VALUES 
         ($vehiclePlateNumber,'$vehicle_category','$vehicleType',$userId)";
         $insert = mysqli_query($conn, $sql);
@@ -64,6 +61,7 @@ if (isset($_POST['next'])) {
         }
     }
 }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +70,7 @@ if (isset($_POST['next'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/vehicle-reg.css">
+    <link rel="stylesheet" href="./styles/vehicleReg.css">
     <title>Vehicle Entry</title>
     <?php
     if ($success != NULL) {
@@ -96,29 +94,7 @@ if (isset($_POST['next'])) {
 </head>
 
 <body>
-    <div class="navigation">
-        <nav class="navbar">
-            <div class="nav-logo">
-                <img src="./assets/logo/logo.png" alt="logo" class="logo-img">
-            </div>
-            <div>
-                <?php echo $_SESSION['id']; ?>
-            </div>
-
-            <div class="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="./user.php">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Payment</a></li>
-                </ul>
-            </div>
-            <div class="nav-login">
-                <div class="nav-login_button">
-                    <button><a class="login-button-text" href="">Logout</a></button>
-                </div>
-            </div>
-        </nav>
-    </div>
+    <?php include("./include/after-login-nav.php"); ?>
     <div class="hey_user">
         <h3>
             <?php echo $_SESSION['username']; ?>
@@ -170,14 +146,15 @@ if (isset($_POST['next'])) {
                     <input type="text" name="vehicle_type" class="parking">
                     <div class="error">
                         <?php echo $vehicleTypeErr ?>
+                        <?php echo $vehicleValidErr ?>
                     </div>
                     <div class="error">
-                        <?php echo $vehicleValidErr ?>
+                        
                     </div>
                 </div>
 
                 <div class="parking_button">
-                    <input type="submit" name="next" value="next" class="parking-login">
+                    <input type="submit" name="next" value="Submit" class="parking-login">
                 </div>
 
                 <div class="success_wrapper">
