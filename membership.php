@@ -1,5 +1,23 @@
 <?php
 include("./database/databaseconn.php");
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location:login.php");
+}
+$sessionUser = $_SESSION['username'];
+// echo $sessionUser;
+//selecting id of user to store in foreign key via username session
+$sqlQuery = "SELECT id FROM user WHERE username = $sessionUser";
+$res = mysqli_query($conn, $sqlQuery);
+$numRows = mysqli_num_rows($res);
+if ($numRows > 0) {
+    while ($row = mysqli_fetch_assoc($res)) {
+        $userId = $row['id'];
+    }
+}
+$_SESSION['userId'] = $userIdMember;
+
+
 $fnameErr = $lnameErr = $unameErr = $phoneErr = $emailErr = $joinDateErr = "";
 $fnameValidErr = $lnameValidErr = $phoneValidErr = $emailValidErr = "";
 if (isset($_POST['submit'])) {
@@ -33,28 +51,16 @@ if (isset($_POST['submit'])) {
     } elseif (empty($joinDate)) {
         $joinDateErr = "join date is required";
     } else {
-        $sql = "INSERT INTO membership(firstname,lastname,username,phone,email,joinDate)
-        VALUES('$firstname','$lastname','$userName','$phone','$email','$joinDate')";
+        $sql = "INSERT INTO membership(firstname, lastname, username, phone, email, join_date, user_id) VALUES ('$firstname', '$lastname', '$userName', '$phone', '$email', '$joinDate', '$userId')";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo "<script>alert('registered successfully as member')</script>";
         } else {
             echo "didn't registered";
         }
-
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,7 +145,6 @@ if (isset($_POST['submit'])) {
                 <div class="submit">
                     <input type="submit" name="submit" class="submit_input">
                 </div>
-
             </form>
         </div>
     </div>

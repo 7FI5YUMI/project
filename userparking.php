@@ -83,7 +83,7 @@ if (isset($_POST['vehcile_registered-select'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user_Parking.css">
+    <link rel="stylesheet" href="./styles/user-parking.css">
 
     <title>Parking slot</title>
     <style>
@@ -165,7 +165,7 @@ if (isset($_POST['vehcile_registered-select'])) {
 
     <!-- </div>
     </div> -->
-    <div class="footer-user-parking">
+    <div class="footer-select-option">
         <?php include("./include/footer.php"); ?>
     </div>
 

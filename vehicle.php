@@ -29,27 +29,26 @@ if (isset($_POST['next'])) {
     $vehicle_typeValid = "/^([a-zA-Z ]+)$/";
     $userid = $_POST['$userId'];
 
-   
+
     if (empty($vehiclePlateNumber)) {
         $vehiclePlateNumberErr = "vehicle plate number is required";
     } elseif ($vehiclePlateNumber < 0) {
         $vehicleplatenegErr = "negative value enter valid plate number";
-    }
-    // $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
-    // $res = mysqli_query($conn, $vehicleplateExist);
-    // $numExistRows = mysqli_num_rows($res);
-    // elseif($numExistRows > 0) {
-    //     $vehicleplateExistErr = "vehicle plate number exist try another";
-    // }
-    
-    elseif (empty($vehicleType)) {
+    } elseif (empty($vehicleType)) {
         $vehicleTypeErr = "vehicle type is required";
     } elseif (!preg_match($vehicle_typeValid, $vehicleType)) {
         $vehicleTypeValidErr = "please enter a valid vehicle type";
     } elseif (!in_array($vehicle_category, array("two_wheeler", "four_wheeler"))) {
         $vehicleCategoryErr = "choose one option";
-    } 
+    }
+    // $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
+    // $res = mysqli_query($conn, $vehicleplateExist);
+    // $numExistRows = mysqli_num_rows($res);
+    // if ($numExistRows > 0) {
+    //     $vehicleplateExistErr = "vehicle plate number exist try another";
+    // } 
     else {
+
         $sql = "INSERT INTO vehicle(vehicle_platenumber,vehicle_category,vehicle_type,user_id) VALUES 
         ($vehiclePlateNumber,'$vehicle_category','$vehicleType',$userId)";
         $insert = mysqli_query($conn, $sql);
@@ -61,7 +60,7 @@ if (isset($_POST['next'])) {
         }
     }
 }
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +69,7 @@ if (isset($_POST['next'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/vehicleReg.css">
+    <link rel="stylesheet" href="./styles/vehicle.css">
     <title>Vehicle Entry</title>
     <?php
     if ($success != NULL) {
@@ -98,7 +97,7 @@ if (isset($_POST['next'])) {
     <div class="hey_user">
         <h3>
             <?php echo $_SESSION['username']; ?>
-            
+
         </h3>
         <h4>Register your vehicle by filing up the details</h4>
     </div>
@@ -149,7 +148,7 @@ if (isset($_POST['next'])) {
                         <?php echo $vehicleValidErr ?>
                     </div>
                     <div class="error">
-                        
+
                     </div>
                 </div>
 
@@ -168,7 +167,9 @@ if (isset($_POST['next'])) {
             </div>
         </form>
     </div>
-    <?php include("./include/footer.php"); ?>
+    <div class="footer-vehicle">
+        <?php include("./include/footer.php"); ?>
+    </div>
 </body>
 
 </html>
