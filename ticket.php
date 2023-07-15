@@ -80,7 +80,7 @@ $diff = $start_datetime->diff(new DateTime($datetime_2));
 //echo $diff->y.' Years<br>'; 
 //echo $diff->m.' Months<br>'; 
 //echo $diff->d.' Days<br>'; 
-echo $parkedHour = $diff->h ;
+// echo $parkedHour = $diff->h ;
 
 // $vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
 // $res = mysqli_query($conn, $vehicleExist);
@@ -106,6 +106,16 @@ echo $parkedHour = $diff->h ;
 // if ($numExistRows > 0) {
 //     $vehicleIdExistErr = "vehicle plate number exist try another";
 // } else {
+
+$sql = "SELECT user_id from membership where user_id = $userId";
+$res = mysqli_query($conn,$sql);
+$numRows = mysqli_num_rows($res);
+if ($numRows > 0) {
+    while ($row = mysqli_fetch_assoc($res)) {
+        $membershipId = $row['id'];
+    }
+}
+$membershipId = "yes";
 
 
 
@@ -174,7 +184,9 @@ echo $parkedHour = $diff->h ;
                         <td>' . $entryTime . '</td>   
                         <td>' . $exitTime . '</td>   
                         <td>' . $parkedHour . 'hour' . '</td> 
-                        <td>' . $rate . '</td>           
+                        <td>' . $rate . '</td>   
+                        <td>' . $membershipId . '</td>   
+
                         </tr>';
 
                     }

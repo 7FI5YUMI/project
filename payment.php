@@ -11,14 +11,8 @@
     payment: 
     <button id="payment-button">
         <!-- <img src="./assets/icons/khalti.png" alt="khalti-logo" class="khalti-img"> -->
-        
         Pay with Khalti
-    </button>
-
-
-
-
-    
+</button>
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
     <script>
         var config = {

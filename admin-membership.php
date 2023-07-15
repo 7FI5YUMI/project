@@ -21,6 +21,7 @@
         <th>phone</th>
         <th>email</th>
         <th>join date</th>
+        <th>Action</th>
         </tr>
         <?php
         include("./database/databaseconn.php");
@@ -35,7 +36,7 @@
                 $username = $row['username'];
                 $phone = $row['phone'];
                 $email = $row['email'];
-                $joinDate = $row['joinDate'];
+                $joinDate = $row['join_date'];
                 echo '<tr>
                         <td>' . $id . '</td>
                         <td>' . $firstname . '</td>
@@ -45,7 +46,7 @@
                         <td>' . $email . '</td>
                         <td>' . $joinDate . '</td>
                         <td>
-                         <button class="button"><a href="parking_delete.php?deleteid=' . $id . '">Delete</a></button>
+                         <button class="button"><a href="parking_delete.php?deleteid=' . $id. '">Delete</a></button>
                         </td>    
                                 
                         </tr>';

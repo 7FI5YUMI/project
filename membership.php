@@ -5,16 +5,18 @@ if (!isset($_SESSION['username'])) {
     header("Location:login.php");
 }
 $sessionUser = $_SESSION['username'];
+
 // echo $sessionUser;
 //selecting id of user to store in foreign key via username session
-$sqlQuery = "SELECT id FROM user WHERE username = $sessionUser";
-$res = mysqli_query($conn, $sqlQuery);
+$query = "SELECT id from user  where username = '$sessionUser'";
+$res = mysqli_query($conn, $query);
 $numRows = mysqli_num_rows($res);
 if ($numRows > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
         $userId = $row['id'];
     }
 }
+
 $_SESSION['userId'] = $userIdMember;
 
 
@@ -69,7 +71,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/membershipUser.css">
+    <link rel="stylesheet" href="./styles/membership-user.css">
     <title>Membership form</title>
 </head>
 

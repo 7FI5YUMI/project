@@ -118,7 +118,8 @@ tr {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 7%;
+    margin-top: 1%;
+    padding: 12px;
 }
 
 .parking-login {
