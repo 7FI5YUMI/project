@@ -27,8 +27,7 @@ if (isset($_POST['next'])) {
     $numExistRows = mysqli_num_rows($res);
     if ($numExistRows > 0) {
         $vehicleplateExistErr = "vehicle plate number exist try another";
-    } 
-    elseif (empty($vehicleType)) {
+    } elseif (empty($vehicleType)) {
         $vehicleTypeErr = "vehicle type is required";
     } elseif (!preg_match($vehicle_typeValid, $vehicleType)) {
         $vehicleTypeValidErr = "please enter a valid vehicle type";
@@ -39,7 +38,7 @@ if (isset($_POST['next'])) {
         ($vehiclePlateNumber,'$vehicle_category','$vehicleType')";
         $insert = mysqli_query($conn, $sql);
         if ($insert) {
-           echo " <script> alert('vehicle added')</script>";
+            echo " <script> alert('vehicle added')</script>";
         } else {
             echo "<script>alert('vehicle didn't inserted')</script>";
             $errrLast = "something went wrong";
@@ -137,6 +136,10 @@ if (isset($_POST['next'])) {
 
     </div>
 
+  
+
+<!-- vehicle details -->
+
     <h2>Enter details of vehicle</h2>
     <table class="vehicle_add-admin" border="1" id="table_vehicle">
         <tr>
@@ -149,7 +152,8 @@ if (isset($_POST['next'])) {
         </tr>
         <?php
         include("./database/databaseconn.php");
-        $sql = "SELECT *  from vehicle";
+        $limit = 8;
+        $sql = "SELECT *  from vehicle LIMIT $limit";
         $result = mysqli_query($conn, $sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -176,18 +180,8 @@ if (isset($_POST['next'])) {
 
 
     </table>
-    <footer>
-        <div class="copyright_wrapper">
-            <div class="copyright">
-                <p>&copy; All rights reserved
-                    <?php echo date('Y'); ?> vehicle parking management system
-                </p>
-            </div>
-        </div>
-    </footer>
 
-    
-<!-- javascript for modal -->
+    <!-- javascript for modal -->
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
@@ -215,6 +209,7 @@ if (isset($_POST['next'])) {
             }
         }
     </script>
+
 
 
 </body>

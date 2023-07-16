@@ -41,12 +41,12 @@ if (isset($_POST['next'])) {
     } elseif (!in_array($vehicle_category, array("two_wheeler", "four_wheeler"))) {
         $vehicleCategoryErr = "choose one option";
     }
-    // $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
-    // $res = mysqli_query($conn, $vehicleplateExist);
-    // $numExistRows = mysqli_num_rows($res);
-    // if ($numExistRows > 0) {
-    //     $vehicleplateExistErr = "vehicle plate number exist try another";
-    // } 
+    $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
+    $res = mysqli_query($conn, $vehicleplateExist);
+    $numExistRows = mysqli_num_rows($res);
+    if ($numExistRows > 0) {
+        $vehicleplateExistErr = "vehicle plate number exist try another";
+    } 
     else {
 
         $sql = "INSERT INTO vehicle(vehicle_platenumber,vehicle_category,vehicle_type,user_id) VALUES 
@@ -166,9 +166,6 @@ if (isset($_POST['next'])) {
                 <?php echo $errrLast; ?>
             </div>
         </form>
-    </div>
-    <div class="footer-vehicle">
-        <?php include("./include/footer.php"); ?>
     </div>
 </body>
 

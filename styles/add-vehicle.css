@@ -45,7 +45,7 @@ td{
     width: 233px;
     padding: 10px;
     background-color: #0000ff;
-    margin: 0% 32% 2% 0%;
+    margin: 0% 22% 1% 0%;
     border-radius: 6px;
     color: #fff;
 }
@@ -164,12 +164,17 @@ td{
     flex-direction: column;
     gap: 25px;
 }
-.footer{
+/* .vehicle-footer_wrapper{
+    margin-left: -6%;
+    margin-top: 4%;
+    background-color: #D9D9D9;
+    height: 38px;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 261px;
-    background-color: #28282B;
-    margin-top: 2%;
-}
+} */
 .error{
     color: red;
 }

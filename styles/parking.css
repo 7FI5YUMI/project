@@ -44,3 +44,14 @@
     color: #008000;
     background-color: 
 } */
+.parking-footer_wrapper{
+    margin-left: 15%;
+    margin-top: 4%;
+    background-color: #D9D9D9;
+    height: 38px;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

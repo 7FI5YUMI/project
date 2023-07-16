@@ -16,7 +16,7 @@ if (!isset($_SESSION['admin'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/admin.css">
+    <link rel="stylesheet" href="./styles/admin_dashboard.css">
     <!-- <script src="showhide.js"></script> -->
     <title>Dashboard</title>
 </head>
@@ -182,27 +182,27 @@ if (!isset($_SESSION['admin'])) {
 
             </div>
         </div>
-        <div style="margin-left:16%; margin-top: 2%; margin-bottom: 15.5%;" class="tabcontent" id="add_vehicle">
+        <div style="margin-left:16%; margin-top: 2%; margin-bottom: 1%;" class="tabcontent" id="add_vehicle">
             <?php include("./add_vehicle.php"); ?>
         </div>
-        <div style="margin-left:16%; margin-top: 2%; margin-bottom: 13.33333%;" class="tabcontent" id="category">
+        <div style="margin-left:14%; margin-top: 2%; margin-bottom: 1%;" class="tabcontent" id="category">
             <!-- <h2 class="v_category">Vehicle Category</h2> -->
             <?php include("./vehicle_category.php"); ?>
         </div>
-        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="booking">
+        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 1%;" class="tabcontent" id="booking">
             <?php include("./admin-membership.php");?>
         </div>
-        <div style="margin-left:16%; margin-top: 2%; margin-bottom:30%;" class="tabcontent" id="parking">
+        <div style="margin-left:16%; margin-top: 2%; margin-bottom:1%;" class="tabcontent" id="parking">
             <?php include("./admin-parking.php");?>
         </div>
-        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 35.33333%;" class="tabcontent" id="payment">
+        <div style="margin-left:16%; margin-top: 3%; margin-bottom: 1%;" class="tabcontent" id="payment">
             payment hello
         </div>
     </main>
     <footer>
         <div class="copyright_wrapper">
             <div class="copyright">
-                <p>&copy; All rights reserved
+                <p style="margin-bottom: 0;">&copy; All rights reserved
                     <?php echo date('Y'); ?> vehicle parking management system
                 </p>
             </div>
@@ -210,5 +210,4 @@ if (!isset($_SESSION['admin'])) {
     </footer>
     <script src="showhide.js"></script>
 </body>
-
 </html>

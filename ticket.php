@@ -56,6 +56,16 @@ while ($row = mysqli_fetch_assoc($res)) {
 $datetime_1 = $entryTime;
 $datetime_2 = $exitTime;
 
+$start_datetime = new DateTime($datetime_1);
+$diff = $start_datetime->diff(new DateTime($datetime_2));
+
+// //echo $diff->days.' Days total<br>'; 
+// //echo $diff->y.' Years<br>'; 
+// //echo $diff->m.' Months<br>'; 
+// echo $diff->d.' Days<br>'; 
+$parkedHour = $diff->h;
+
+
 if ($vehicleCategory == 'two_wheeler') {
     $start_datetime = new DateTime($datetime_1);
     $diff = $start_datetime->diff(new DateTime($datetime_2));
@@ -63,24 +73,11 @@ if ($vehicleCategory == 'two_wheeler') {
 
 
 }
-
 if ($vehicleCategory == 'four_wheeler') {
     $start_datetime = new DateTime($datetime_1);
     $diff = $start_datetime->diff(new DateTime($datetime_2));
     $rate = $diff->h * 50;
 }
-
-$datetime_1 = $entryTime;
-$datetime_2 = $exitTime;
-
-$start_datetime = new DateTime($datetime_1);
-$diff = $start_datetime->diff(new DateTime($datetime_2));
-
-//echo $diff->days.' Days total<br>'; 
-//echo $diff->y.' Years<br>'; 
-//echo $diff->m.' Months<br>'; 
-//echo $diff->d.' Days<br>'; 
-// echo $parkedHour = $diff->h ;
 
 // $vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
 // $res = mysqli_query($conn, $vehicleExist);
@@ -108,16 +105,20 @@ $diff = $start_datetime->diff(new DateTime($datetime_2));
 // } else {
 
 $sql = "SELECT user_id from membership where user_id = $userId";
-$res = mysqli_query($conn,$sql);
+$res = mysqli_query($conn, $sql);
 $numRows = mysqli_num_rows($res);
 if ($numRows > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
         $membershipId = $row['id'];
     }
 }
-$membershipId = "yes";
+if ($membershipId == $userId) {
+    $compare = "yes";
+} else {
+    $compare = "no";
+}
 
-
+$success = "Thank you for registering the vehicle";
 
 ?>
 <!DOCTYPE html>
@@ -130,9 +131,24 @@ $membershipId = "yes";
     <link rel="stylesheet" href="./styles/ticketgenerate.css">
     <title>Ticket</title>
     <style>
-        .error {
-            color: #FF0000;
+        <?php
+        if ($success!=NULL) {
+            ?>
+            <style>
+            .success {
+                display: block;
+                color: white;
+                background-color: lightseagreen;
+                width: 80%;
+                text-align: center;
+                margin: auto;
+                border-radius: 0.2rem;
+                padding: 0.7rem;
+            }
+        </style>
+        <?php
         }
+        ?>
     </style>
 </head>
 
@@ -175,6 +191,12 @@ $membershipId = "yes";
                         $parkingSlotNumber = $row['parkingslot_number'];
                         $entryTime = $row['entry_time'];
                         $exitTime = $row['exit_time'];
+                        $datetime_1 = $entryTime;
+                        $datetime_2 = $exitTime;
+
+                        $start_datetime = new DateTime($datetime_1);
+                        $diff = $start_datetime->diff(new DateTime($datetime_2));
+                        $parkedHour = $diff->h;
                         echo '<tr>
                         <td>' . $username . '</td>
                         <td>' . $vehiclePlate . '</td>
@@ -185,7 +207,7 @@ $membershipId = "yes";
                         <td>' . $exitTime . '</td>   
                         <td>' . $parkedHour . 'hour' . '</td> 
                         <td>' . $rate . '</td>   
-                        <td>' . $membershipId . '</td>   
+                        <td>' . $compare . '</td>   
 
                         </tr>';
 
@@ -199,6 +221,9 @@ $membershipId = "yes";
 
 
         </div>
+    </div>
+    <div class="success">
+        <?php echo $success; ?>
     </div>
 </body>
 

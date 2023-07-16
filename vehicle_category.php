@@ -22,34 +22,23 @@ while ($row = mysqli_fetch_assoc($res)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/vehicle-category.css">
+    <link rel="stylesheet" href="./styles/vehicle_category.css">
     <title>Document</title>
 </head>
 
 <body>
-    <button id="myBtn" class="add-category">Add vehicle</button>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div>hello some text here!</div>
-        </div>
-
-    </div>
 
     <div class="table">
-        <table class="v_category" border="1">
-            <tr>
+        <table class="v_category tabe-striped" border="1">
+            <tr class="vehicle_category">
                 <th class="category_head">s.no</th>
                 <th class="category_head">vehicle category</th>
                 <th class="category_head">action</th>
             </tr>
             <?php
             include("./database/databaseconn.php");
-            $categorySelect = "SELECT DISTINCT *  FROM vehicle WHERE vehicle_category IN ('two_wheeler','four_wheeler')";
+            $limit = 8;
+            $categorySelect = "SELECT DISTINCT *  FROM vehicle WHERE vehicle_category IN ('two_wheeler','four_wheeler') LIMIT $limit";
             $result = mysqli_query($conn, $categorySelect);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -71,34 +60,9 @@ while ($row = mysqli_fetch_assoc($res)) {
             }
             ?>
         </table>
+
     </div>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    
 </body>
 
 </html>

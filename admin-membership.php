@@ -12,6 +12,7 @@
 
 <body>
 
+<h3>Membership</h3>
     <table class="membership" border="1">
         <tr>
         <th>s.n</th>
@@ -46,7 +47,7 @@
                         <td>' . $email . '</td>
                         <td>' . $joinDate . '</td>
                         <td>
-                         <button class="button"><a href="parking_delete.php?deleteid=' . $id. '">Delete</a></button>
+                         <button class="button"><a href="membership_delete.php?deleteid='.$id. '">Delete</a></button>
                         </td>    
                                 
                         </tr>';

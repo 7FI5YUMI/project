@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper{
+    background-color: #FFF;
+    /* background: linear-gradient(#2193b0,#6dd5ed);  */
+    /* background: linear-gradient(#000428,#004e92); */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     height: 500px;
+     width: 500px;
+     gap: 50px;
+     box-shadow: 10px 10px 20px 20px grey;
+     border-radius: 4px;
+}
+.pcp-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
