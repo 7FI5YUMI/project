@@ -52,11 +52,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 //     $parkingId = $row['id'];
 // }
 
-$datetime_1 = $entryTime;
-$datetime_2 = $exitTime;
+// $datetime_1 = $entryTime;
+// $datetime_2 = $exitTime;
 
-$start_datetime = new DateTime($datetime_1);
-$diff = $start_datetime->diff(new DateTime($datetime_2));
+// $start_datetime = new DateTime($datetime_1);
+// $diff = $start_datetime->diff(new DateTime($datetime_2));
 
 //echo $diff->days.' Days total<br>'; 
 //echo $diff->y.' Years<br>'; 
@@ -96,11 +96,11 @@ $timePastErr = $timeFutureErr = "";
 if (isset($_POST['date-time-submit'])) {
     $entry_time = $_POST['entry_time'];
     $exit_time = $_POST['exit_time'];
-    $entryDateTime = new DateTime($entry_time);
-    $exitDateTime = new DateTime($exit_time);
+    // $entryDateTime = new DateTime($entry_time);
+    // $exitDateTime = new DateTime($exit_time);
 
-    // Get the current DateTime object
-    $currentDateTime = new DateTime();
+    // // Get the current DateTime object
+    // $currentDateTime = new DateTime();
 
 
 
@@ -108,15 +108,12 @@ if (isset($_POST['date-time-submit'])) {
         $entry_timeErr = "entry time is required";
     } elseif (empty($exit_time)) {
         $exit_timeErr = "exit time is required";
-    } 
-    elseif ($entryDateTime < $currentDateTime && $exitDateTime < $currentDateTime) {
+    } elseif ($entryDateTime < $currentDateTime && $exitDateTime < $currentDateTime) {
         // Entry or exit time is in the past
-        $timePastErr =  "Please select current date and time";
-    }
-    elseif($entryDateTime > $currentDateTime && $exitDateTime > $currentDateTime) {
-        $timeFutureErr =  "future date not accepted";
-    }
-    else {
+        $timePastErr = "Please select current date and time";
+    } elseif ($entryDateTime > $currentDateTime && $exitDateTime > $currentDateTime) {
+        $timeFutureErr = "future date not accepted";
+    } else {
         $duration_insert = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$vehicleId,$parkingId)";
         $result = mysqli_query($conn, $duration_insert);
         if ($result) {
@@ -168,7 +165,7 @@ if (isset($_POST['date-time-submit'])) {
                     <div class="start">
                         <label for="entrydate">Entry date and time</label>
                         <br>
-                        <input type="datetime-local" id="dateInput" name="entry_time" class="entry-time">
+                        <input type="datetime-local" id="dateInput" name="entry_time" class="entry-time" id="entryTime">
                         <div class="error">
                             <?php echo $entry_timeErr; ?>
                             <?php echo $timePastErr; ?>
@@ -177,14 +174,15 @@ if (isset($_POST['date-time-submit'])) {
                     <div class="end">
                         <label for="exitdate">Exit date and time</label>
                         <br>
-                        <input type="datetime-local" id="dateExitInput" name="exit_time" class="exit-time">
+                        <input type="datetime-local" id="dateExitInput" name="exit_time" class="exit-time"
+                            id="exitTime">
                         <div class="error">
                             <?php echo $exit_timeErr; ?>
-                            <?php echo $timeFutureErr;?>
+                            <?php echo $timeFutureErr; ?>
                         </div>
                     </div>
                     <br>
-                    
+
                     <input type="submit" name="date-time-submit" value="generate Ticket" class="datetime-submit">
                     <div class="successMsg">
                         <?php echo $successMsg; ?>
@@ -197,23 +195,6 @@ if (isset($_POST['date-time-submit'])) {
     <div class="footer-duration">
         <?php include("./include/footer.php"); ?>
     </div>
-    <!-- <script>
-        var now = new Date();
-
-        // Get the input element
-        var EntryTime = document.getElementById('dateInput');
-
-
-        // Set the minimum and maximum values for the input
-        EntryTime.min = now.toISOString().slice(0, 16);  // Restrict past dates
-        EntryTime.max = new Date(now.getTime() + (7 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 16);
-        var ExitTime = document.getElementById('dateExitInput');
-
-
-        // Set the minimum and maximum values for the input
-        ExitTime.min = now.toISOString().slice(0, 16);  // Restrict past dates
-        ExitTime.max = new Date(now.getTime() + (7 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 16); 
-    </script> -->
 </body>
 
 </html>

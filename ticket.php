@@ -50,33 +50,28 @@ while ($row = mysqli_fetch_assoc($res)) {
     $exitTime = $row['exit_time'];
 
 }
-// $datetime_1 = $entryTime;
-// $datetime_2 = $exitTime;
+$entryTime_1 = $entryTime;
+$exitTime_1 = $exitTime;
 
-$datetime_1 = $entryTime;
-$datetime_2 = $exitTime;
+// Create DateTime objects for entry time and exit time
+$entryDateTime = new DateTime($entryTime_1);
+$exitDateTime = new DateTime($exitTime_1);
 
-$start_datetime = new DateTime($datetime_1);
-$diff = $start_datetime->diff(new DateTime($datetime_2));
+$interval = $entryDateTime->diff($exitDateTime);
 
-// //echo $diff->days.' Days total<br>'; 
-// //echo $diff->y.' Years<br>'; 
-// //echo $diff->m.' Months<br>'; 
-// echo $diff->d.' Days<br>'; 
-$parkedHour = $diff->h;
+// Get the difference in hours
+$hours = $interval->h;
 
+// Display the result
+echo "Hour difference: " . $hours;
 
 if ($vehicleCategory == 'two_wheeler') {
-    $start_datetime = new DateTime($datetime_1);
-    $diff = $start_datetime->diff(new DateTime($datetime_2));
-    $rate = $diff->h * 25;
+    $rate =  $hours * 25;
 
 
 }
 if ($vehicleCategory == 'four_wheeler') {
-    $start_datetime = new DateTime($datetime_1);
-    $diff = $start_datetime->diff(new DateTime($datetime_2));
-    $rate = $diff->h * 50;
+    $rate=$hours * 50;
 }
 
 // $vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
@@ -95,14 +90,6 @@ if ($vehicleCategory == 'four_wheeler') {
 //     }
 
 // }
-
-
-// $vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
-// $res = mysqli_query($conn, $vehicleExist);
-// $numExistRows = mysqli_num_rows($res);
-// if ($numExistRows > 0) {
-//     $vehicleIdExistErr = "vehicle plate number exist try another";
-// } else {
 
 $sql = "SELECT user_id from membership where user_id = $userId";
 $res = mysqli_query($conn, $sql);
@@ -132,10 +119,9 @@ $success = "Thank you for registering the vehicle";
     <title>Ticket</title>
     <style>
         <?php
-        if ($success!=NULL) {
+        if ($success != NULL) {
             ?>
-            <style>
-            .success {
+            <style>.success {
                 display: block;
                 color: white;
                 background-color: lightseagreen;
@@ -205,7 +191,7 @@ $success = "Thank you for registering the vehicle";
                         <td>' . $parkingSlotNumber . '</td>     
                         <td>' . $entryTime . '</td>   
                         <td>' . $exitTime . '</td>   
-                        <td>' . $parkedHour . 'hour' . '</td> 
+                        <td>' . $hours . 'hour' . '</td> 
                         <td>' . $rate . '</td>   
                         <td>' . $compare . '</td>   
 
