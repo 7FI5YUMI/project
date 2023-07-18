@@ -53,26 +53,25 @@ while ($row = mysqli_fetch_assoc($res)) {
 $entryTime_1 = $entryTime;
 $exitTime_1 = $exitTime;
 
-// Create DateTime objects for entry time and exit time
+
 $entryDateTime = new DateTime($entryTime_1);
 $exitDateTime = new DateTime($exitTime_1);
 
 $interval = $entryDateTime->diff($exitDateTime);
 
-// Get the difference in hours
+
 $hours = $interval->h;
 
-// Display the result
-echo "Hour difference: " . $hours;
+// echo "Hour difference: " . $hours;
 
-if ($vehicleCategory == 'two_wheeler') {
-    $rate =  $hours * 25;
+if ($vehicleCategory === 'four_wheeler') {
+    $rate =  $hours * 50;
 
 
+}else {
+    $rate=$hours * 25;
 }
-if ($vehicleCategory == 'four_wheeler') {
-    $rate=$hours * 50;
-}
+
 
 // $vehicleExist = "SELECT vehicle_id FROM ticket where vehicle_id = $vehicleId";
 // $res = mysqli_query($conn, $vehicleExist);
@@ -191,7 +190,7 @@ $success = "Thank you for registering the vehicle";
                         <td>' . $parkingSlotNumber . '</td>     
                         <td>' . $entryTime . '</td>   
                         <td>' . $exitTime . '</td>   
-                        <td>' . $hours . 'hour' . '</td> 
+                        <td>' . $hours . ' hour ' . '</td> 
                         <td>' . $rate . '</td>   
                         <td>' . $compare . '</td>   
 
