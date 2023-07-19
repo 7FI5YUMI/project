@@ -83,8 +83,7 @@ if (isset($_POST['vehcile_registered-select'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-parking.css">
-
+    <link rel="stylesheet" href="./styles/user_parking.css">
     <title>Parking slot</title>
     <style>
         .error{
@@ -129,7 +128,7 @@ if (isset($_POST['vehcile_registered-select'])) {
                 </div>
             </div>
             <br>
-            <?php echo  '<button class="button-extract"><a class="select-option" href="test-parking.php?query='.$selectedOption.'">"'.$selectedOption.'submit"</a></button>';?>
+            <?php echo  '<button class="button-extract"><a class="select-option" href="test-parking.php?query='.$selectedOption.'">'.$selectedOption.'"submit"</a></button>';?>
         </form>
     </section>
 

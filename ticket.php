@@ -38,18 +38,21 @@ if ($numRows > 0) {
 //   ON vehicle.$vehicleId = parking.$parkingId
 //   INNER JOIN duration
 //   ON parking.$parkingId = parking.$parkingId";
-$query = "SELECT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE user.id = $userId";
+$query = "SELECT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE vehicle.id = $vehicleId";
 $res = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_assoc($res)) {
-    $username = $row['username'];
-    $vehiclePlateNumber = $row['vehicle_platenumber'];
-    $vehicleCategory = $row['vehicle_category'];
-    $vehicle_type = $row['vehicle_type'];
-    $parkingSlot = $row['parkingslot_number'];
-    $entryTime = $row['entry_time'];
-    $exitTime = $row['exit_time'];
+     $username = $row['username'];
+     $vehiclePlateNumber = $row['vehicle_platenumber'];
+     $vehicleCategory = $row['vehicle_category'];
+     $vehicle_type = $row['vehicle_type'];
+     $parkingSlot = $row['parkingslot_number'];
+     $entryTime = $row['entry_time'];
+     $exitTime = $row['exit_time'];
 
 }
+
+
+
 $entryTime_1 = $entryTime;
 $exitTime_1 = $exitTime;
 
@@ -164,7 +167,7 @@ $success = "Thank you for registering the vehicle";
                 <?php
                 include("./database/databaseconn.php");
 
-                $sql = "SELECT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE user.id = $userId";
+                $sql = "SELECT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE vehicle.id = $vehicleId";
                 $result = mysqli_query($conn, $sql);
                 if ($result->num_rows > 0) {
                     $res = mysqli_query($conn, $query);

@@ -27,6 +27,7 @@
     margin-bottom: 15%;
 }
 
+
 .entry-time{
     width: 300px;
     padding: 10px;
@@ -46,6 +47,9 @@
     border-radius: 5px;
     color: #ffff;
 }
+.datetime-submit:hover{
+    text-decoration-color: underline;
+}
 /* for generating error */
 .error{
     color: #ff0000;
@@ -53,6 +57,7 @@
 .footer-duration{
     margin-top: 1%;
 }
+
 
 
 

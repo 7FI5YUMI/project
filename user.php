@@ -95,7 +95,7 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </div>
                     <div class="button-parking-slot-one">
-                        <button class="button-parking-slot"><a href="./userparking.php">View parkingslot</a></button>
+                        <button class="button-parking-slot"><a href="./selected-user_parking.php">View parkingslot</a></button>
                     </div>
                 </div>
 

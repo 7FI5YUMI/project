@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
                     <div class="error">
                         <?php echo $lastErr; ?>
                     </div>
-                    <a class="forgot" href="">Forgot password?</a>
+                    <a class="forgot" href="./forgot-password.php">Forgot password?</a>
                     <div class="button">
                         <input type="submit" id="submit" name="submit" value="Login" class="login_button">
                         <img src="./assets/icons/login.svg" alt="login_icon" class="login_img">

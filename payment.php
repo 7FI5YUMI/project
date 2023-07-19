@@ -17,21 +17,7 @@
     </button>
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
     <script>
-        function verifyPayment(payload) {
-            $.ajax({
-                url: "{% url 'verify_payment' %}",
-                type: 'POST',
-                data: payload,
-                dataType: 'json',
-                success: function (response) {
-                    alert(respone)
-                },
-                error: function (error) { alert(error.responseJSON['message']) }
-
-
-            });
-
-        }
+       
         var config = {
             // replace the publicKey with yours
             "publicKey": "test_public_key_34c055d5e6e84201acacaaf00bfa025b",
