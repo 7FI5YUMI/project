@@ -22,7 +22,7 @@
             <div class="right-side">
                 <ul class="right">
                     <li><a class="anchor" href="./login.php">Login</a></li>
-                    <li><a class="anchor" href="./register.php">Register</a></li>
+                    <li><a class="anchor" href="./signup.php">Register</a></li>
                 </ul>
 
             </div>

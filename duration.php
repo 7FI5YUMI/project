@@ -117,7 +117,7 @@ if (isset($_POST['date-time-submit'])) {
         $duration_insert = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$vehicleId,$parkingId)";
         $result = mysqli_query($conn, $duration_insert);
         if ($result) {
-            header("Location:ticket.php");
+            header("Location:ticket-test.php");
         } else {
             echo "error";
         }
@@ -183,10 +183,11 @@ if (isset($_POST['date-time-submit'])) {
                     </div>
                     <br>
 
-                    <input type="submit" name="date-time-submit" value="generate Ticket" class="datetime-submit">
+                    <input type="submit" name="date-time-submit" value="Submit" class="datetime-submit">
                     <div class="successMsg">
                         <?php echo $successMsg; ?>
                     </div>
+                    
                 </div>
             </div>
         </form>

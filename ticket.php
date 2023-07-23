@@ -38,16 +38,16 @@ if ($numRows > 0) {
 //   ON vehicle.$vehicleId = parking.$parkingId
 //   INNER JOIN duration
 //   ON parking.$parkingId = parking.$parkingId";
-$query = "SELECT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE vehicle.id = $vehicleId";
+$query = "SELECT user.username,vehicle.id,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE vehicle.id = $vehicleId";
 $res = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_assoc($res)) {
-     $username = $row['username'];
-     $vehiclePlateNumber = $row['vehicle_platenumber'];
-     $vehicleCategory = $row['vehicle_category'];
-     $vehicle_type = $row['vehicle_type'];
-     $parkingSlot = $row['parkingslot_number'];
-     $entryTime = $row['entry_time'];
-     $exitTime = $row['exit_time'];
+    $username = $row['username'];
+    $vehiclePlateNumber = $row['vehicle_platenumber'];
+    $vehicleCategory = $row['vehicle_category'];
+    $vehicle_type = $row['vehicle_type'];
+    $parkingSlot = $row['parkingslot_number'];
+    $entryTime = $row['entry_time'];
+    $exitTime = $row['exit_time'];
 
 }
 
@@ -68,11 +68,11 @@ $hours = $interval->h;
 // echo "Hour difference: " . $hours;
 
 if ($vehicleCategory === 'four_wheeler') {
-    $rate =  $hours * 50;
+    $rate = $hours * 50;
 
 
-}else {
-    $rate=$hours * 25;
+} else {
+    $rate = $hours * 25;
 }
 
 
@@ -92,6 +92,7 @@ if ($vehicleCategory === 'four_wheeler') {
 //     }
 
 // }
+require("./config.php");
 
 $sql = "SELECT user_id from membership where user_id = $userId";
 $res = mysqli_query($conn, $sql);
@@ -108,6 +109,59 @@ if ($membershipId == $userId) {
 }
 
 $success = "Thank you for registering the vehicle";
+
+if (isset($_GET['q'])) {
+    $ticketSelect = $_GET['q'];
+    $sql = "SELECT id from ticket where ticket_number = $ticketSelect";
+    $res = mysqli_query($conn, $sql);
+    $numRows = mysqli_num_rows($res);
+    if ($numRows > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+            $ticketId = $row['id'];
+        }
+
+    }
+    // $vehicleIdExist = "SELECT vehicle_id FROM parking where vehicle_id = $vehicleId";
+    // $res = mysqli_query($conn, $vehicleplateExist);
+    // $numExistRows = mysqli_num_rows($res);
+    // if ($numExistRows > 0) {
+    //     echo " <script>alert( 'vehicle plate number exist try another');</script>";
+    // }
+    $sql = "UPDATE ticket set vehicle_id = $vehicleId,amount = $rate, status = 'occupied' where ticket_number = $ticketSelect";
+
+    if ($vehicleId == NULL) {
+        header("Location:pnotfound.php");
+    } else {
+        $res = mysqli_query($conn, $sql);
+
+        if ($res) {
+            // echo "success";
+            header("ticket.php");
+
+        } else {
+            die("undefined");
+        }
+    }
+}
+
+// $query = "SELECT id from ticket where vehicle_id = $vehicleId";
+// $res = mysqli_query($conn,$query);
+// if(mysqli_num_rows($res)){
+//     echo $ticket_id = $row['id'];
+// }
+// echo $ticket_id;
+$sql = "SELECT id,amount from ticket where vehicle_id = $vehicleId";
+$res = mysqli_query($conn, $sql);
+$numRows = mysqli_num_rows($res);
+if ($numRows > 0) {
+    while ($row = mysqli_fetch_assoc($res)) {
+        $tickerId = $row['id'];
+        $amount = $row['amount'];
+    }
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -145,7 +199,11 @@ $success = "Thank you for registering the vehicle";
 
     <div class="ticket">
         <div class="payment">
-            <?php include("./payment.php"); ?>
+            <form action="submit.php" method="POST">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key=<?php echo $publishableKey; ?> data-amount=<?php echo $amount; ?> data-name="vehicle parking"
+                    data-desc="vehicle parking desc" data-currency="usd">
+                    </script>
+            </form>
         </div>
         <div class="ticket-parent">
             <span>----------------------------------------</span>
@@ -154,9 +212,10 @@ $success = "Thank you for registering the vehicle";
             <table class="ticket-style" border="1">
                 <tr>
                     <th class="ticket_head">owner name:</th>
-                    <th class="ticket_head">Vehicle name</th>
+                    <!-- <th class="ticket_head">Vehicle name</th> -->
                     <th class="ticket_head">Vehicle plate number</th>
                     <th class="ticket_head">Vehicle category</th>
+                    <th class="ticket_head">Vehicle Type</th>
                     <th class="ticket_head">parking slot number</th>
                     <th class="ticket_head">Entry time</th>
                     <th class="ticket_head">Exit time</th>
@@ -179,12 +238,9 @@ $success = "Thank you for registering the vehicle";
                         $parkingSlotNumber = $row['parkingslot_number'];
                         $entryTime = $row['entry_time'];
                         $exitTime = $row['exit_time'];
-                        $datetime_1 = $entryTime;
-                        $datetime_2 = $exitTime;
+                        $entryTime_1 = $entryTime;
+                        $exitTime_1 = $exitTime;
 
-                        $start_datetime = new DateTime($datetime_1);
-                        $diff = $start_datetime->diff(new DateTime($datetime_2));
-                        $parkedHour = $diff->h;
                         echo '<tr>
                         <td>' . $username . '</td>
                         <td>' . $vehiclePlate . '</td>

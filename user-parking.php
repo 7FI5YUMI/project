@@ -53,29 +53,37 @@ if ($numRows > 0) {
     }
 }
 $queryOne = "SELECT vehicle_id from parking where vehicle_id = $vehicleId";
-$res = mysqli_query($conn,$queryOne);
-    $numExistRows = mysqli_num_rows($res);
-    if ($numExistRows > 0) {
-        echo "<script>alert('vehicle already exist in parking slot');</script>";
-    }
+$res = mysqli_query($conn, $queryOne);
+$numExistRows = mysqli_num_rows($res);
+if ($numExistRows > 0) {
+    echo "<script>alert('vehicle already exist in parking slot');</script>";
+}
 
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-parking.css">
+    <link rel="stylesheet" href="./styles/user_parking.css">
     <title>Document</title>
+    <style>
+        .footer-user-parking {
+            width: 100%;
+            margin-top: 12.6%;
+        }
+    </style>
 </head>
+
 <body>
-<?php include("./include/after-login-nav.php"); ?>
-<h1 class="parking-header">Choose parking slot for parking</h1>
-<div class="box-wrapper">
-    
+    <?php include("./include/after-login-nav.php"); ?>
+    <h1 class="parking-header">Choose parking slot for parking</h1>
+    <div class="box-wrapper">
+
         <?php
         include("./database/databaseconn.php");
         $sql = "SELECT parkingslot_number  from parking where parking_status = 'free'";
@@ -86,7 +94,7 @@ $res = mysqli_query($conn,$queryOne);
                 $parkingNumber = $row['parkingslot_number'];
                 echo ' <div class="box">
                     
-                         <button class="button-remove"><a class="parking-lot" href="parking-slotvehicle.php?q='.urlencode($parkingNumber).'">' . $parkingNumber . '</a></button>
+                         <button class="button-remove"><a class="parking-lot" href="parking-slotvehicle.php?q=' . urlencode($parkingNumber) . '">' . $parkingNumber . '</a></button>
    
                                 
                         </div>';
@@ -107,4 +115,5 @@ $res = mysqli_query($conn,$queryOne);
         <?php include("./include/footer.php"); ?>
     </div>
 </body>
+
 </html>
