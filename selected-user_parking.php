@@ -128,7 +128,7 @@ if (isset($_POST['vehcile_registered-select'])) {
                 </div>
             </div>
             <br>
-            <?php echo  '<button class="button-extract"><a class="select-option" href="test-parking.php?query='.$selectedOption.'">'.$selectedOption.'"submit"</a></button>';?>
+            <?php echo  '<button class="button-extract"><a class="select-option" href="user_parking.php?query='.$selectedOption.'">'.$selectedOption.'"submit"</a></button>';?>
         </form>
     </section>
 

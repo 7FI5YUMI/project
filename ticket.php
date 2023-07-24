@@ -46,9 +46,33 @@ while ($row = mysqli_fetch_assoc($res)) {
     $vehicleCategory = $row['vehicle_category'];
     $vehicle_type = $row['vehicle_type'];
     $parkingSlot = $row['parkingslot_number'];
-    $entryTime = $row['entry_time'];
-    $exitTime = $row['exit_time'];
+    $entryTime1 = $row['entry_time'];
+    $exitTime1 = $row['exit_time'];
 
+}
+function shouldCheckout($entryTime, $exitTime, $exitTimeIntervalStart, $exitTimeIntervalEnd) {
+    
+    $entryDateTime = new DateTime($entryTime);
+    $exitDateTime = new DateTime($exitTime);
+    $exitTimeIntervalStart = new DateTime($exitTimeIntervalStart);
+    $exitTimeIntervalEnd = new DateTime($exitTimeIntervalEnd);
+
+    // Check if the entry time is within the exit time interval
+    if ($entryDateTime >= $exitTimeIntervalStart && $entryDateTime <= $exitTimeIntervalEnd) {
+        return true;
+    } else {
+        return false;
+    }
+}
+$entryTime = '2023-07-24 10:00:00'; // Replace with the actual entry time
+$exitTime = '2023-07-24 11:30:00'; // Replace with the actual exit time
+$exitTimeIntervalStart = '2023-07-24 11:00:00'; // Replace with the exit time interval start
+$exitTimeIntervalEnd = '2023-07-24 12:00:00'; // Replace with the exit time interval end
+
+if (shouldCheckout($entryTime, $exitTime, $exitTimeIntervalStart, $exitTimeIntervalEnd)) {
+    echo "User should checkout from the parking lot.";
+} else {
+    echo "User can stay in the parking lot.";
 }
 
 
@@ -64,6 +88,10 @@ $interval = $entryDateTime->diff($exitDateTime);
 
 
 $hours = $interval->h;
+
+// if($hours===$hours){
+//     echo "success";
+// }
 
 // echo "Hour difference: " . $hours;
 
@@ -104,6 +132,7 @@ if ($numRows > 0) {
 }
 if ($membershipId == $userId) {
     $compare = "yes";
+    // $amount = $rate / 100 * 10;
 } else {
     $compare = "no";
 }

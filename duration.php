@@ -46,48 +46,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $exitTime = $row['exit_time'];
 }
 
-// $queryOne = "SELECT id from parking where vehicle = $vehicleId";
-// $result = mysqli_query($conn,$queryOne);
-// while($row=mysqli_fetch_assoc($result)){
-//     $parkingId = $row['id'];
-// }
-
-// $datetime_1 = $entryTime;
-// $datetime_2 = $exitTime;
-
-// $start_datetime = new DateTime($datetime_1);
-// $diff = $start_datetime->diff(new DateTime($datetime_2));
-
-//echo $diff->days.' Days total<br>'; 
-//echo $diff->y.' Years<br>'; 
-//echo $diff->m.' Months<br>'; 
-//echo $diff->d.' Days<br>'; 
-// echo $diff->h.' Hours<br>'; 
-//echo $diff->i.' Minutes<br>'; 
-//echo $diff->s.' Seconds<br>';
-
-
-
-// echo $diff->i.' Minutes<br>'; 
-// echo $diff->s.' Seconds<br>';
-// if($difference == $difference){
-//     $sql = "UPDATE parking set vehicle_id = NULL where vehicle_id = $vehicleId";
-//     $res = mysqli_query($conn,$sql);
-//     if($res){
-//         echo "updated successfully";
-
-//     }
-// }
-// $currentTimestamp = time();
-// $selectedTimestamp = strtotime($date);
-
-// if ($selectedTimestamp === false) {
-//     echo "Invalid date format!";
-// } elseif ($selectedTimestamp > $currentTimestamp) {
-//     echo "Selected date is in the future!";
-// } else {
-//     echo "Selected date is valid.";
-// }
 
 
 
@@ -108,12 +66,14 @@ if (isset($_POST['date-time-submit'])) {
         $entry_timeErr = "entry time is required";
     } elseif (empty($exit_time)) {
         $exit_timeErr = "exit time is required";
-    } elseif ($entryDateTime < $currentDateTime && $exitDateTime < $currentDateTime) {
-        // Entry or exit time is in the past
-        $timePastErr = "Please select current date and time";
-    } elseif ($entryDateTime > $currentDateTime && $exitDateTime > $currentDateTime) {
-        $timeFutureErr = "future date not accepted";
-    } else {
+    }
+    // } elseif ($entryDateTime < $currentDateTime && $exitDateTime < $currentDateTime) {
+    //     // Entry or exit time is in the past
+    //     $timePastErr = "Please select current date and time";
+    // } elseif ($entryDateTime > $currentDateTime && $exitDateTime > $currentDateTime) {
+    //     $timeFutureErr = "future date not accepted";
+    // } 
+    else {
         $duration_insert = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$vehicleId,$parkingId)";
         $result = mysqli_query($conn, $duration_insert);
         if ($result) {

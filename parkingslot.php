@@ -58,8 +58,8 @@ if (isset($_GET['param1'])) {
                 $res = mysqli_query($conn, $sql);
 
                 if ($res) {
-                    echo "success";
-                    // header("Location:duration.php");
+                    // echo "success";
+                    header("Location:duration.php");
 
                 } else {
                     die("undefined");

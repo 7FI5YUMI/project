@@ -22,7 +22,7 @@
 
         <?php
         include("./database/databaseconn.php");
-        $sql = "SELECT ticket_number  from ticket where status = 'free'";
+        $sql = "SELECT ticket_number from ticket where status = 'free'";
         $result = mysqli_query($conn, $sql);
 
         if ($result->num_rows > 0) {
