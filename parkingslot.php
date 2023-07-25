@@ -13,21 +13,6 @@ if ($numRows > 0) {
     }
 }
 
-//selecting user_id from vehicle to get vehicle_id via user_id
-// $sql = "SELECT id from vehicle where user_id = $userId";
-// $res = mysqli_query($conn, $sql);
-// $numRows = mysqli_num_rows($res);
-// if ($numRows > 0) {
-//     while ($row = mysqli_fetch_assoc($res)) {
-//         $vehicleId = $row['id'];
-//     }
-
-// }
-// if (!isset($_GET['param1'])) {
-//     if (!isset($_GET['param2'])) {
-//         header("Location:pnotfound.php");
-//     }
-// }
 $selectedMsgErr = "";
 
 // echo $vehicleId."<br>";
@@ -59,7 +44,7 @@ if (isset($_GET['param1'])) {
 
                 if ($res) {
                     // echo "success";
-                    header("Location:duration.php");
+                  header("Location:durationSelect.php");
 
                 } else {
                     die("undefined");
@@ -68,7 +53,6 @@ if (isset($_GET['param1'])) {
         }
     }
 }
-
 
 
 ?>

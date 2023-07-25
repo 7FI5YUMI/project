@@ -46,8 +46,8 @@ while ($row = mysqli_fetch_assoc($res)) {
     $vehicleCategory = $row['vehicle_category'];
     $vehicle_type = $row['vehicle_type'];
     $parkingSlot = $row['parkingslot_number'];
-    $entryTime1 = $row['entry_time'];
-    $exitTime1 = $row['exit_time'];
+    $entryTime = $row['entry_time'];
+    $exitTime = $row['exit_time'];
 
 }
 function shouldCheckout($entryTime, $exitTime, $exitTimeIntervalStart, $exitTimeIntervalEnd) {
@@ -231,6 +231,7 @@ if ($numRows > 0) {
             <form action="submit.php" method="POST">
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key=<?php echo $publishableKey; ?> data-amount=<?php echo $amount; ?> data-name="vehicle parking"
                     data-desc="vehicle parking desc" data-currency="usd">
+                   <?php '<a href="submit.php?q='.$ticketId.'"></a>'?>
                     </script>
             </form>
         </div>
