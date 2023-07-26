@@ -1,31 +1,50 @@
 <?php
 require("./database/databaseconn.php");
+session_start();
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-$emailErr = $emailValidErr= "";
-if(isset($_POST['submit'])){
-    $email = $_POST['email'];
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+function set_password_reset($get_name,$get_email,$token){
+   
 
-    if(empty($email)){
-        $emailErr = "Please enter email";
+}
+$emailErr = $emailValidErr = "";
+if (isset($_POST['submit'])) {
+    $email = mysqli_real_escape_string($conn,$_POST['email']);
+    $token = md5(rand());
+    $checkEmail = "SELECT email FROM user where email = $email LIMIT 1";
+    $res = mysqli_query($conn,$checkEmail);
+    if(mysqli_num_rows($res) > 0)
+    {
+        $row = mysqli_fetch_array($res);
+    $get_name = $row['name'];
+    $get_email = $row['email'];
+    $update_token = "UPDATE user set token = '$token' where email = '$get_email' LIMTI 1";
+    $tokenResult = mysqli_query($conn,$update_token);
+    if($tokenResult){
+        send_password_reset($get_name,$get_email,$token);
+        $_SESSION['status'] = "We emailed you a password reset link";
+        header("Location:login.php");
+        exit(0);
+
+
     }
-    elseif (!FILTER_VAR($email,FILTER_VALIDATE_EMAIL)) {
-        $emailValidErr = "Email should be in proper format";
+    else{
+        $_SESSION['status'] = "Something went wrong";
+        header("Location:login.php");
+        exit(0);
     }
-    $emailQuery = "SELECT * FROM user where email = $email";
-    $res = mysqli_query($conn,$emailQuery);
-    $numRows = mysqli_num_rows($res);
-    if($numRows){
-        $user = "SELECT username from user where email = $email";
-        $result = mysqli_query($conn,$user);
-        $numRows = mysqli_fetch_assoc($result);
-        $username = $user['username'];
-        $token = $user['token']; 
-
-        $subject = "Email Reset";
-        $body = "Hi click here to activate your account 
-        /opt/lampp/htdocs/project_4th/forgot-password.php?token=.$token.";
+    }
+    else{
+        $_SESSION['status'] = "Email not found";
+        header("Location:login.php");
+        exit(0);
     }
 }
+
 
 
 ?>
@@ -42,7 +61,7 @@ if(isset($_POST['submit'])){
     <!-- <link rel="stylesheet" href="./assets/bootstrap/bootstrap-5.3.0-dist/css/bootstrap.min.css"> -->
     <title>forgot password</title>
     <style>
-        .error{
+        .error {
             color: #ff0000;
         }
     </style>
@@ -59,12 +78,12 @@ if(isset($_POST['submit'])){
                     <input type="text" name="email">
                 </div>
                 <div class="error">
-                    <?php echo $emailErr;?>
-                    <?php echo $emailValidErr;?>
+                    <?php echo $emailErr; ?>
+                    <?php echo $emailValidErr; ?>
                 </div>
                 <br>
                 <div class="submit">
-                    <input type="submit" name="submit" value="Forgot password?">
+                    <input type="submit" name="submit" value="submit">
                 </div>
             </div>
         </form>
