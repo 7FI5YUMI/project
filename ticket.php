@@ -137,7 +137,7 @@ if ($membershipId == $userId) {
     $compare = "no";
 }
 
-$success = "Thank you for registering the vehicle";
+$success = "Thank you for registering the vehicle hope to see you again!";
 
 if (isset($_GET['q'])) {
     $ticketSelect = $_GET['q'];
@@ -190,7 +190,9 @@ if ($numRows > 0) {
 }
 
 
-
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    header("Location:submit.php?param1='.$ticketId.'&param2='.$userId.'");
+}
 
 ?>
 <!DOCTYPE html>
@@ -202,36 +204,36 @@ if ($numRows > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/ticketgenerate.css">
     <title>Ticket</title>
-    <style>
         <?php
         if ($success != NULL) {
             ?>
-            <style>.success {
+            <style>
+            .success {
                 display: block;
                 color: white;
                 background-color: lightseagreen;
-                width: 80%;
+                width: 36%;
                 text-align: center;
                 margin: auto;
                 border-radius: 0.2rem;
-                padding: 0.7rem;
+                padding: 0.8rem;
+                margin-top: 3%;
             }
         </style>
         <?php
         }
         ?>
-    </style>
+    
 </head>
 
 <body>
     <?php include("./include/after-login-nav.php"); ?>
-
+    <!-- param1='.urlencode($parkingNumber).'&param2='.urlencode($selectedVehicle). -->
     <div class="ticket">
         <div class="payment">
-            <form action="submit.php" method="POST">
+            <form action="" method="POST">
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key=<?php echo $publishableKey; ?> data-amount=<?php echo $amount; ?> data-name="vehicle parking"
                     data-desc="vehicle parking desc" data-currency="usd">
-                   <?php '<a href="submit.php?q='.$ticketId.'"></a>'?>
                     </script>
             </form>
         </div>

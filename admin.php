@@ -196,7 +196,7 @@ if (!isset($_SESSION['admin'])) {
             <?php include("./admin-parking.php");?>
         </div>
         <div style="margin-left:16%; margin-top: 3%; margin-bottom: 1%;" class="tabcontent" id="payment">
-            payment hello
+            <?php include("./showpayment.php");?>
         </div>
     </main>
     <footer>

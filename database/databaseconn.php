@@ -8,7 +8,7 @@ $conn = mysqli_connect($serverName,$username1,$password1,$db_name);
 if(!$conn){
     die("Terminated");
 }
-// $sql = "CREATE DATABASE Project";
+// $sql = "CREATE DATABASE project_test";
 // if(mysqli_query($conn,$sql)){
 //     echo "sucess";
 // }

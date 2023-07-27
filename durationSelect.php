@@ -16,56 +16,45 @@ if ($numRows > 0) {
         $userId = $row['id'];
     }
 }
-//vehicle id foreign key
-$sql = "SELECT id from vehicle where user_id = $userId";
-$res = mysqli_query($conn, $sql);
-$numRows = mysqli_num_rows($res);
-if ($numRows > 0) {
-    while ($row = mysqli_fetch_assoc($res)) {
-        $vehicleId = $row['id'];
-    }
+if (isset($_GET['query'])) {
+    $selectedVehicleId = $_GET['query'];
+    
 }
 
 
-//
+// //  
 
-$parkingslot = "SELECT id from parking where vehicle_id = $vehicleId";
+$parkingslot = "SELECT id from parking where vehicle_id = $selectedVehicleId";
 $parkingresult = mysqli_query($conn, $parkingslot);
 $numRows = mysqli_num_rows($parkingresult);
 if ($numRows > 0) {
     while ($row = mysqli_fetch_assoc($parkingresult)) {
-        $parkingId = $row['id'];
+       echo  $parkingId = $row['id'];
     }
 }
 
 
-$query = "SELECT entry_time from duration where vehicle_id = $vehicleId";
-$result = mysqli_query($conn, $query);
-while ($row = mysqli_fetch_assoc($result)) {
-    $entryTime = $row['entry_time'];
-}
-$query = "SELECT exit_time from duration where vehicle_id = $vehicleId";
-$result = mysqli_query($conn, $query);
-while ($row = mysqli_fetch_assoc($result)) {
-    $exitTime = $row['exit_time'];
-}
 
-if(isset($_GET['q'])){
-    echo $selectedVehicle = $_GET['q'];
-}
+// $query = "SELECT entry_time from duration where vehicle_id = $selectedId";
+// $result = mysqli_query($conn, $query);
+// while ($row = mysqli_fetch_assoc($result)) {
+//     $entryTime = $row['entry_time'];
+// }
+// $query = "SELECT exit_time from duration where vehicle_id = $selectedId";
+// $result = mysqli_query($conn, $query);
+// while ($row = mysqli_fetch_assoc($result)) {
+//     $exitTime = $row['exit_time'];
+// }
+
+ 
 
 
 
 $entry_timeErr = $exit_timeErr = "";
 $timePastErr = $timeFutureErr = "";
-if (isset($_POST['date-time-submit'])) {
+if (isset($_POST['selected-submit'])) {
     $entry_time = $_POST['entry_time'];
     $exit_time = $_POST['exit_time'];
-    // $entryDateTime = new DateTime($entry_time);
-    // $exitDateTime = new DateTime($exit_time);
-
-    // // Get the current DateTime object
-    // $currentDateTime = new DateTime();
 
 
 
@@ -74,15 +63,15 @@ if (isset($_POST['date-time-submit'])) {
     } elseif (empty($exit_time)) {
         $exit_timeErr = "exit time is required";
     }
-    // } elseif ($entryDateTime < $currentDateTime && $exitDateTime < $currentDateTime) {
-    //     // Entry or exit time is in the past
-    //     $timePastErr = "Please select current date and time";
-    // } elseif ($entryDateTime > $currentDateTime && $exitDateTime > $currentDateTime) {
-    //     $timeFutureErr = "future date not accepted";
-    // } 
+    $vehicleIdExist = "SELECT vehicle_id FROM parking where vehicle_id = $selectedVehicleId";
+        $res = mysqli_query($conn, $vehicleIdExist);
+        $numExistRows = mysqli_num_rows($res);
+        if ($numExistRows > 0) {
+            echo "<script>alert('vehicle already exist in parking lot')</script>";
+        }
     else {
-        $duration_insert = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$vehicleId,$parkingId)";
-        $result = mysqli_query($conn, $duration_insert);
+        $duration_insertSelected = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$selectedVehicleId,$parkingId)";
+        $result = mysqli_query($conn, $duration_insertSelected);
         if ($result) {
             header("Location:ticket-test.php");
         } else {
@@ -121,11 +110,9 @@ if (isset($_POST['date-time-submit'])) {
 </head>
 
 <body>
-    
     <?php include("./include/after-login-nav.php"); ?>
     <div class="wrapper-start-end">
         <form method="post" action="">
-        
             <div class="wrapper-all">
                 <div class="start-end">
                     <div class="start">
@@ -149,7 +136,7 @@ if (isset($_POST['date-time-submit'])) {
                     </div>
                     <br>
 
-                    <input type="submit" name="date-time-submit" value="Submit" class="datetime-submit">
+                    <input type="submit" name="selected-submit" value="Submit" class="datetime-submit">
                     <div class="successMsg">
                         <?php echo $successMsg; ?>
                     </div>

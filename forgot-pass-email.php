@@ -7,10 +7,10 @@ use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require 'vendor/autoload.php';
-function set_password_reset($get_name,$get_email,$token){
+// function set_password_reset($get_name,$get_email,$token){
    
 
-}
+// }
 $emailErr = $emailValidErr = "";
 if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn,$_POST['email']);

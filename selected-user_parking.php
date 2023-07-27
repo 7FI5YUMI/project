@@ -131,32 +131,6 @@ if (isset($_POST['vehcile_registered-select'])) {
             <?php echo  '<button class="button-extract"><a class="select-option" href="user_parking.php?query='.$selectedOption.'">'.$selectedOption.'"submit"</a></button>';?>
         </form>
     </section>
-
-    <!-- <div class="box-wrapper">
-        
-        // include("./database/databaseconn.php");
-        // $sql = "SELECT parkingslot_number  from parking where parking_status = 'free'";
-        // $result = mysqli_query($conn, $sql);
-
-        // if ($result->num_rows > 0) {
-        //     while ($row = $result->fetch_assoc()) {
-        //         $parkingNumber = $row['parkingslot_number'];
-        //         echo ' <div class="box">
-                    
-        //                  <button class="button-remove"><a class="parking-lot" href="parkingslot.php?q=' . $parkingNumber . '">' . $parkingNumber . '</a></button>
-   
-                                
-        //                 </div>';
-
-
-        //     }
-            // echo "</table>";
-        
-        // } else {
-        //     echo "0 result";
-        // }
-        
-    </div>
     <div class="error">
         <?php echo $vehicleIdExistErr; ?>
     </div> -->

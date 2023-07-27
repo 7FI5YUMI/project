@@ -43,8 +43,9 @@ if (isset($_GET['param1'])) {
                 $res = mysqli_query($conn, $sql);
 
                 if ($res) {
+                    $id = $selectedVehicleId;
                     // echo "success";
-                  header("Location:durationSelect.php");
+                  header("Location:durationSelect.php?query=". $id);
 
                 } else {
                     die("undefined");
