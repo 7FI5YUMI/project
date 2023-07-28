@@ -1,5 +1,10 @@
 <?php
 require("./database/databaseconn.php");
+require("./database/databaseconn.php");
+if (!isset($_SESSION['admin'])) {
+    header("location:login.php");
+    exit;
+}
 // session_start();
 // if (!isset($_SESSION['username'])) {
 //     header("Location:login.php");

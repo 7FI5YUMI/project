@@ -1,6 +1,10 @@
 <?php
 require("./database/databaseconn.php");
-
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header("location:login.php");
+    exit;
+}
 // if(isset($_POST['addVehicle'])){
 //     // header("Location:adminvehicle.php");
 
@@ -177,9 +181,6 @@ if (isset($_POST['next'])) {
             echo "0 result";
         }
         ?>
-
-
-    </table>
 
     <!-- javascript for modal -->
     <script>

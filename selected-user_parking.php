@@ -133,7 +133,7 @@ if (isset($_POST['vehcile_registered-select'])) {
     </section>
     <div class="error">
         <?php echo $vehicleIdExistErr; ?>
-    </div> -->
+    </div>
 
 
     <!-- </div>

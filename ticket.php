@@ -64,10 +64,10 @@ function shouldCheckout($entryTime, $exitTime, $exitTimeIntervalStart, $exitTime
         return false;
     }
 }
-$entryTime = '2023-07-24 10:00:00'; // Replace with the actual entry time
-$exitTime = '2023-07-24 11:30:00'; // Replace with the actual exit time
-$exitTimeIntervalStart = '2023-07-24 11:00:00'; // Replace with the exit time interval start
-$exitTimeIntervalEnd = '2023-07-24 12:00:00'; // Replace with the exit time interval end
+$entryTime = '2023-07-24 10:00:00';
+$exitTime = '2023-07-24 11:30:00'; 
+$exitTimeIntervalStart = '2023-07-24 11:00:00';
+$exitTimeIntervalEnd = '2023-07-24 12:00:00'; 
 
 if (shouldCheckout($entryTime, $exitTime, $exitTimeIntervalStart, $exitTimeIntervalEnd)) {
     echo "User should checkout from the parking lot.";
@@ -172,13 +172,6 @@ if (isset($_GET['q'])) {
         }
     }
 }
-
-// $query = "SELECT id from ticket where vehicle_id = $vehicleId";
-// $res = mysqli_query($conn,$query);
-// if(mysqli_num_rows($res)){
-//     echo $ticket_id = $row['id'];
-// }
-// echo $ticket_id;
 $sql = "SELECT id,amount from ticket where vehicle_id = $vehicleId";
 $res = mysqli_query($conn, $sql);
 $numRows = mysqli_num_rows($res);
@@ -272,7 +265,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $exitTime = $row['exit_time'];
                         $entryTime_1 = $entryTime;
                         $exitTime_1 = $exitTime;
-
                         echo '<tr>
                         <td>' . $username . '</td>
                         <td>' . $vehiclePlate . '</td>
@@ -284,9 +276,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <td>' . $hours . ' hour ' . '</td> 
                         <td>' . $rate . '</td>   
                         <td>' . $compare . '</td>   
-
                         </tr>';
-
                     }
                     echo "</table>";
 
@@ -294,8 +284,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     echo "0 result";
                 }
                 ?>
-
-
         </div>
     </div>
     <div class="success">
