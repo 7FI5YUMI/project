@@ -63,12 +63,12 @@ if (isset($_POST['selected-submit'])) {
     } elseif (empty($exit_time)) {
         $exit_timeErr = "exit time is required";
     }
-    $vehicleIdExist = "SELECT vehicle_id FROM parking where vehicle_id = $selectedVehicleId";
-        $res = mysqli_query($conn, $vehicleIdExist);
-        $numExistRows = mysqli_num_rows($res);
-        if ($numExistRows > 0) {
-            echo "<script>alert('vehicle already exist in parking lot')</script>";
-        }
+    // $vehicleIdExist = "SELECT vehicle_id FROM parking where vehicle_id = $selectedVehicleId";
+    //     $res = mysqli_query($conn, $vehicleIdExist);
+    //     $numExistRows = mysqli_num_rows($res);
+    //     if ($numExistRows > 0) {
+    //         echo "<script>alert('vehicle already exist in parking lot')</script>";
+    //     }
     else {
         $duration_insertSelected = "INSERT INTO duration(entry_time,exit_time,vehicle_id,parkingslot_id)VALUES('$entry_time','$exit_time',$selectedVehicleId,$parkingId)";
         $result = mysqli_query($conn, $duration_insertSelected);

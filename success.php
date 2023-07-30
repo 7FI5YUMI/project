@@ -1,3 +1,16 @@
+<?php
+require("./database/databaseconn.php");
+if (isset($_GET['ticketId']) && ($_GET['userId'])) {
+    // if (isset($_GET['param2'])) {
+       echo $ticketId = $_GET['ticketId'];
+        echo $userId = $_GET['userId'];
+    // }    
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
