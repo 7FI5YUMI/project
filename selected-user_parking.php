@@ -65,6 +65,7 @@ if (isset($_POST['vehcile_registered-select'])) {
     $selectedOption = $_POST['vehcile_registered-select'];
     if ($selectedOption == "none") {
         $selectedMsgErr = "please select one";
+        // header("Location:selected-user_parking.php");
     } else {
 
         //  echo $selectedOption;

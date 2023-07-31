@@ -5,6 +5,13 @@ if (isset($_GET['ticketId']) && ($_GET['userId'])) {
        echo $ticketId = $_GET['ticketId'];
         echo $userId = $_GET['userId'];
     // }    
+
+    $sql = "SELECT ticket_number from ticket where ticket_id = $ticketId";
+    $res = mysqli_query($conn,$sql);
+    $numRows = mysqli_num_rows($res);
+    while($row=mysqli_fetch_assoc($res)){
+        $ticket_number = $row['ticket_number'];
+    }
 }
 
 

@@ -55,6 +55,12 @@ if ($numRows > 0) {
 if (isset($_GET['query'])) {
     $selectedVehicle = $_GET['query'];
 }
+elseif($selectedVehicle === 'none'){
+    header("Location:selected-user_parking.php");
+}
+else{
+    header("Location:selected-user_parking.php");
+}
 
 ?>
 
