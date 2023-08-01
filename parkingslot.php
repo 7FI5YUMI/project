@@ -2,6 +2,10 @@
 session_start();
 require("./database/databaseconn.php");
 $sessionUser = $_SESSION['username'];
+if(!isset($_SESSION['username'])){
+    header("Location:login.php");
+    exit();
+}
 
 //selecting user id i.e foreign key of vehicle 
 $query = "SELECT id from user  where username = '$sessionUser'";
