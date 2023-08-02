@@ -55,7 +55,7 @@ if ($numRows > 0) {
 if (isset($_GET['query'])) {
     $selectedVehicle = $_GET['query'];
 }
-elseif($selectedVehicle === 'none'){
+elseif($selectedVehicle === NULL){
     header("Location:selected-user_parking.php");
 }
 else{

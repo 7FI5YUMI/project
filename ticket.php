@@ -41,13 +41,13 @@ if ($numRows > 0) {
 $query = "SELECT user.username,vehicle.id,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE vehicle.id = $vehicleId";
 $res = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_assoc($res)) {
-    $username = $row['username'];
-    $vehiclePlateNumber = $row['vehicle_platenumber'];
-    $vehicleCategory = $row['vehicle_category'];
-    $vehicle_type = $row['vehicle_type'];
-    $parkingSlot = $row['parkingslot_number'];
-    $entryTime = $row['entry_time'];
-    $exitTime = $row['exit_time'];
+    // $username = $row['username'];
+    // $vehiclePlateNumber = $row['vehicle_platenumber'];
+    // $vehicleCategory = $row['vehicle_category'];
+    // $vehicle_type = $row['vehicle_type'];
+    // $parkingSlot = $row['parkingslot_number'];
+    // $entryTime = $row['entry_time'];
+    // $exitTime = $row['exit_time'];
 
 }
 function shouldCheckout($entryTime, $exitTime, $exitTimeIntervalStart, $exitTimeIntervalEnd) {
@@ -183,9 +183,9 @@ if ($numRows > 0) {
 }
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    header("Location:submit.php?param1='.$ticketId.'&param2='.$userId.'");
-}
+// if($_SERVER["REQUEST_METHOD"] == "POST"){
+//     // header("Location:submit.php?param1='.$ticketId.'&param2='.$userId.'");
+// }
 
 ?>
 <!DOCTYPE html>
@@ -224,11 +224,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!-- param1='.urlencode($parkingNumber).'&param2='.urlencode($selectedVehicle). -->
     <div class="ticket">
         <div class="payment">
-            <form action="" method="POST">
+        <?php echo '<form action="submit.php?param1='.$ticketId.'&param2='.$userId.'" method="post">'; ?>
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key=<?php echo $publishableKey; ?> data-amount=<?php echo $amount; ?> data-name="vehicle parking"
                     data-desc="vehicle parking desc" data-currency="usd">
                     </script>
             </form>
+            
         </div>
         <div class="ticket-parent">
             <span>----------------------------------------</span>
