@@ -96,7 +96,7 @@ if (isset($_POST['next'])) {
     <?php include("./include/after-login-nav.php"); ?>
     <div class="hey_user">
         <h3>
-            <?php echo $_SESSION['username']; ?>
+           Hello! <?php echo $_SESSION['username']; ?>
 
         </h3>
         <h4>Register your vehicle by filing up the details</h4>

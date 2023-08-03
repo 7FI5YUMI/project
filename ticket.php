@@ -252,7 +252,7 @@ if ($numRows > 0) {
                 <?php
                 include("./database/databaseconn.php");
 
-                $sql = "SELECT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE vehicle.id = $vehicleId";
+                $sql = "SELECT DISTINCT user.username,vehicle.vehicle_platenumber,vehicle.vehicle_category,vehicle.vehicle_type,parking.parkingslot_number,duration.entry_time,duration.exit_time FROM user INNER JOIN vehicle ON user.id = vehicle.user_id INNER JOIN parking ON vehicle.id = parking.vehicle_id INNER JOIN duration ON parking.id = duration.parkingslot_id WHERE vehicle.id = $vehicleId";
                 $result = mysqli_query($conn, $sql);
                 if ($result->num_rows > 0) {
                     $res = mysqli_query($conn, $query);
