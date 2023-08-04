@@ -47,6 +47,7 @@ if (isset($_POST['next'])) {
     if ($numExistRows > 0) {
         $vehicleplateExistErr = "vehicle plate number exist try another";
     } 
+    
     else {
 
         $sql = "INSERT INTO vehicle(vehicle_platenumber,vehicle_category,vehicle_type,user_id) VALUES 
@@ -167,6 +168,9 @@ if (isset($_POST['next'])) {
             </div>
         </form>
     </div>
+    <div class="fixed-bottom mb-3">
+            <?php include("./include/footer.php");?>
+        </div>
 </body>
 
 </html>

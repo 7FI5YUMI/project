@@ -144,7 +144,7 @@ if (isset($_POST['next'])) {
 
 <!-- vehicle details -->
 
-    <h2>Enter details of vehicle</h2>
+    <h2 class="mt-3">Enter details of vehicle</h2>
     <table class="vehicle_add-admin" border="1" id="table_vehicle">
         <tr>
             <th class="head_vehicle">id</th>

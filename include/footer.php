@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <footer class="footer">
+    <footer class="footer fixed-bottom mb-3">
         <div class="footer-wrapper">
             <div class="footer-one">
                 <div class="head">

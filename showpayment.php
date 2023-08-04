@@ -5,8 +5,29 @@ include("./database/databaseconn.php");
 //     header("location:login.php");
 //     exit;
 // }
-if(isset($_POST['submit-button'])){
-
+if(isset($_POST['submit'])){
+    $ticket_Number = $_POST['ticket-number'];
+    $ticket_status = $_POST['ticket-status'];
+    if(empty($ticket_Number)){
+        echo "Ticket number is mandatory";
+    }
+    // elseif(strlen($ticketNumber) < 4){
+    //     echo "ticket number should be 4";
+    // }
+    elseif(empty($ticket_status)){
+        echo "Ticket status is required";
+    }
+    else{
+        $sql = "INSERT INTO ticket(ticket_number,status)VALUES($ticket_Number,'$ticket_status')";
+        $res = mysqli_query($conn,$sql);
+        if($res){
+            echo '<script>alert("ticket added successfully");</script>';
+        }
+        else{
+            echo '<script>alert("error");</script>';
+        }
+    }
+    // echo '<script>alert("success");</script>';
 }
 // if($conn){
 //     echo "success";
@@ -50,16 +71,16 @@ if(isset($_POST['submit-button'])){
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Ticket number</label>
+                            <label for="ticket_number" class="form-label">Ticket number</label>
                             <input type="text" name="ticket-number" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Ticket status</label>
+                            <label for="ticket_status" class="form-label">Ticket status</label>
                             <input type="text" name="ticket-status" class="form-control">
                         </div>
-                        <button type="submit" name="submit-button" class="btn btn-primary">Submit</button>
+                        <input type="submit" name="submit" class="btn btn-primary">
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -131,7 +152,8 @@ if(isset($_POST['submit-button'])){
         ?>
         <!-- </table> -->
         <!-- bootstrap js -->
-        <script src="./assets/bootstrap/bootstrap-5.3.0-dist/js/bootstrap.min.js"></script>
+ <script src="./assets/bootstrap/bootstrap-5.3.0-dist/js/bootstrap.min.js"></script>
+        
 </body>
 
 </html>
