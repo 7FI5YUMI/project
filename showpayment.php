@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css bootstrap -->
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap-5.3.0-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles/ticket-admin.css">
+    <!-- <link rel="stylesheet" href="./styles/ticket-admin.css"> -->
     <title>Document</title>
 </head>
 
@@ -91,7 +91,7 @@ if(isset($_POST['submit'])){
     </div>
 
     <h2>Payment details</h2>
-    <table class="vehicle_add-admin" border="1" id="table_vehicle">
+    <table class="vehicle_add-admin table-bordered w-85" border="1" id="table_vehicle">
         <tr>
             <th class="head_vehicle">id</th>
             <th class="head_vehicle">username</th>

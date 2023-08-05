@@ -1,10 +1,10 @@
 <?php
 require("./database/databaseconn.php");
 require("./database/databaseconn.php");
-if (!isset($_SESSION['admin'])) {
-    header("location:login.php");
-    exit;
-}
+// if (!isset($_SESSION['admin'])) {
+//     header("location:login.php");
+//     exit;
+// }
 // session_start();
 // if (!isset($_SESSION['username'])) {
 //     header("Location:login.php");
@@ -127,7 +127,7 @@ if (isset($_POST['parking-login'])) {
 </div>
 
 
-    <table class="vehicle_park-admin" border="1">
+    <table class="vehicle_park-admin  table-striped table-bordered w-85" border="1">
         <tr>
             <th class="park-vehicle">sn</th>
             <th class="park-vehicle">parking slot number</th>
