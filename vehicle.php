@@ -19,7 +19,7 @@ $_SESSION['userId'] = $userIdOne;
 $errrLast = "";
 $vehicleplateExistErr = "";
 $vehiclePlateNumberErr = $vehicleplatenegErr = $vehicleTypeErr = $vehicleCategoryErr = "";
-$vehiclePlateValidErr = $vehicleTypeValidErr = $vehicleCategoryValidErr = "";
+$vehiclePlateValidErr = $vehicleTypeValidErr = $vehicleCategoryValidErr = $vehicleNumberValidateErr = "";
 $succes = "";
 // $exist = false;
 if (isset($_POST['next'])) {
@@ -41,13 +41,15 @@ if (isset($_POST['next'])) {
     } elseif (!in_array($vehicle_category, array("two_wheeler", "four_wheeler"))) {
         $vehicleCategoryErr = "choose one option";
     }
-    $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
-    $res = mysqli_query($conn, $vehicleplateExist);
-    $numExistRows = mysqli_num_rows($res);
-    if ($numExistRows > 0) {
-        $vehicleplateExistErr = "vehicle plate number exist try another";
-    } 
-    
+    elseif(strlen($vehiclePlateNumber) < 4){
+        $vehicleNumberValidateErr = "please enter 4 digits plate number only";
+    }
+    // $vehicleplateExist = "SELECT vehicle_platenumber FROM vehicle where vehicle_platenumber = $vehiclePlateNumber";
+    // $res = mysqli_query($conn, $vehicleplateExist);
+    // $numExistRows = mysqli_num_rows($res);
+    // if ($numExistRows > 0) {
+    //     echo '<script>alert("vehicle plate number already exist")</script>';
+    // } 
     else {
 
         $sql = "INSERT INTO vehicle(vehicle_platenumber,vehicle_category,vehicle_type,user_id) VALUES 
@@ -121,6 +123,7 @@ if (isset($_POST['next'])) {
                         </div>
                         <div class="error">
                             <?php echo $vehicleplatenegErr; ?>
+                            <?php echo $vehicleNumberValidateErr?>
                         </div>
                         <div class="error">
                             <?php echo $vehicleplateExistErr; ?>
